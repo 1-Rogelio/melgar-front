@@ -1,0 +1,11 @@
+.tabla{
+    position: absolute;
+    width: 25%;
+    height: 10rem;
+    left: 3rem;
+  }
+  
+  .titulo{
+    font-size: 2rem;
+    
+  }
