@@ -1,11 +1,113 @@
-.tabla{
+  .message{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .container_tabless {
+    display: flex;
+    margin-top: -2rem;
+    width: 22rem;
+    flex-direction: column;
+  }
+
+  .eye_fiel {
+    display: flex;
+    flex-direction: row;
+    margin-top: 18px;
+    margin-left: 2rem;
+    font-size: 20px;
+  }
+
+.fieles_title {
+  display: flex;
+  justify-content: center;
+}
+
+.icon_Eye:hover::before{
+  color: rgb(59, 142, 21);
+}
+
+.icon_Eye{
+    font-size: 1.8rem;
+  }
+
+  .linksNombres:hover {
+    text-decoration: underline;
+    color: green;
+  }
+/* .eye {
     position: absolute;
-    width: 25%;
-    height: 10rem;
-    left: 3rem;
-  }
-  
-  .titulo{
-    font-size: 2rem;
-    
-  }
+    width: 3rem;
+    height: 3rem;
+    background: #fff;
+    border: 3px solid #000;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-top: -1rem;
+}
+
+.eyelid {
+    position: absolute;
+    width: 3rem;
+    height: 3rem;
+    background: #000;
+    transition: transform 0.3s ease;
+}
+
+.eyelid::before, .eyelid::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 30px;
+  background: #000;
+  transform: rotate(45deg);
+}
+
+.eyelid::before {
+  left: 10%;
+  transform: rotate(45deg);
+}
+
+.eyelid::after {
+  right: 10%;
+  transform: rotate(-45deg);
+}
+
+
+.top {
+    top: 0;
+    transform-origin: top;
+}
+
+.bottom {
+    bottom: 0;
+    transform-origin: bottom;
+}
+
+.pupil {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    background: #000;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.3s ease;
+    opacity: 0;
+}
+
+.eye:hover .top {
+    transform: scaleY(0);
+}
+
+.eye:hover .bottom {
+    transform: scaleY(0);
+}
+
+.eye:hover .pupil {
+    opacity: 1;
+} */
+

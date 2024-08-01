@@ -1,0 +1,108 @@
+@font-face {
+    font-family: mondaySans;
+    src: url(../fonts/MondaySans.ttf);
+}
+
+@font-face {
+    font-family: jost;
+    src: url(../fonts/static/Jost-Medium.ttf);
+}
+
+:root {
+    --font_family_sans: 'Helvetica Neue', Arial, sans-serif;
+    --font_size_base: 1rem;
+    --font_size_lg: 1.25rem;
+    --font_size_sm: 0.875rem;
+    --font_weight_normal: 400;
+    --font_weight_bold: 700;
+}
+
+body {
+    font-family: var(--font_family_sans);
+    font-size: var(--font_size_base);
+    font-weight: var(--font_weight_normal);
+    line-height: 1.5;
+}
+
+.text_title {
+    font-size: 55px;
+    font-family: mondaySans;
+    margin-top: 2rem;
+    margin-right: 15px;
+}
+
+.text_caption {
+    font-size: 3rem;
+    font-family: mondaySans;
+    
+}
+
+.text_nav {
+    font-family: jost;
+    font-size: 18px;
+
+}
+
+.text_paragraphs {
+    font-size: 18px;
+}
+
+/* -------POSITIONS-------*/
+.text_positionLeft {
+    left: 50px;
+}
+
+.text_positionRight {
+    right: 50px;
+}
+
+.text_positionCenter {
+    text-align: center;
+}
+
+.text_j {
+    text-align:justify;
+}
+
+/* ------TEXT TITLES COLORS------ */
+.text_title_blue {
+    color: var(--blue_color);
+}
+
+.text_title_grey {
+    color: var(--grey_color);
+}
+
+.text_title_green {
+    color: var(--green_color);
+}
+
+.text_title_red {
+    color: var(--red_color);
+}
+
+.text_title_yellow {
+    color: var(--yellow_color);
+}
+
+.text_title_teal {
+    color: var(--teal_color);
+}
+
+.text_title_white {
+    color: var(--white_color);
+}
+
+.text_title_black {
+    color: var(--black_color);
+}
+
+.text_d_n {
+    text-decoration: none;
+}
+
+/* --------TEXT PARAGRAPHS COLOR------- */
+.text_paragraphs_black {
+    color: var(--black_color)
+}
+

@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container_perfil {
+  height: 37rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+.imagenConfig {
+  height: 6rem;
+  border: 2px solid cadetblue;
+  border-radius: 50%;
+}
+
+.container_title_files {
+  font-size: 18px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-align: center;
+}
+
+.container_uploadsFile {
+  margin-top: 2rem;
+  border: 1px solid black;
+  border-radius: 25px;
+  width: 90%;
+  max-width: 600px;
+}
+
+.botonExit {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-size: 2rem;
+  color: red;
+}
+
+.botonExit:hover {
+  color: green;
+}
+
+@media (max-width: 768px) {
+  .container_perfil {
+    height: auto;
+  }
+
+  .imagenConfig {
+    height: 5rem;
+  }
+
+  .container_uploadsFile {
+    width: 95%;
+  }
+}
+
+@media (max-width: 480px) {
+  .container_perfil {
+    padding: 0.5rem;
+  }
+
+  .imagenConfig {
+    height: 4rem;
+  }
+
+  .container_uploadsFile {
+    width: 100%;
+  }
+
+  .botonExit {
+    font-size: 1.5rem;
+  }
+}

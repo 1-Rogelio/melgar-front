@@ -1,0 +1,229 @@
+/* layout.css */
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+  
+  .col {
+    flex: 1;
+    max-width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  
+  .col_6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  
+  .col_4 {
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%;
+  }
+  
+  .col_3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+
+/* -------POSITIONS THE DIVS------- */
+  .box {
+    background-color: #007bff;
+    color: white;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 5px;
+  }
+  
+  .box_center {
+    display: flex;
+    justify-content: center;
+  }
+
+  .box_left {
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .box_rigth {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+/* --------WIDTH--------- */
+
+  .w{
+    width: 50px;
+  }
+
+  .w_short {
+    width: 25%;
+  }
+
+  .w_medium {
+    width: 50%;
+  }
+
+  .w_long {
+    width: 75%;
+  }
+
+  .w_complet {
+    width: 100%;
+  }
+
+/* --------HEIGHT-------- */
+  .h {
+    height: 50px;
+  }
+
+  .h_short {
+    height: 25%;
+  }
+
+  .h_medium {
+    height: 50%;
+  }
+
+  .h_long {
+    height: 75%;
+  }
+
+  .h_complet {
+    height: 100%;
+  }
+
+  .h_form {
+    height: 40rem;
+  }
+
+/* --------POSITIONS---------- */
+  .p_a {
+    position: absolute;
+  }
+
+  .p_in {
+    position: inherit;
+  }
+
+  .p_rel {
+    position: relative;
+  }
+
+/* -------RIGTH------- */
+  .r{
+    right: 3rem;
+  }
+
+  .r_short {
+    right: 6rem;
+  }
+
+  .r_medium {
+    right: 9rem;
+  }
+
+  .r_big {
+    right: 12rem;
+  }
+
+  /* -------LEFT------- */
+  .r{
+    left: 3rem;
+  }
+
+  .r_short {
+    left: 6rem;
+  } 
+  .l_medium {
+    left: 9rem;
+  }
+
+  .l_big {
+    left:12rem;
+  }
+
+  /* ---------MARGINS-------- */
+.m {
+  margin: 1rem;
+}
+
+.m_medium {
+  margin: 6rem;
+}
+
+.m_big {
+  margin: 12rem;
+}
+
+/* ----------MARGINS TOP------- */
+.m_top-y {
+  margin-top: -3rem;
+}
+.m_top {
+  margin-top: 3rem;
+}
+
+.m_top_medium {
+  margin-top: 6rem;
+}
+
+.m_top_standard {
+  margin-top: 9rem;
+}
+
+.m_top_big {
+  margin-top: 12rem;
+}
+
+/* --------MARGINS LEFT--------- */
+
+.m_left {
+  margin-left: 3rem;
+}
+
+.m_left_medium {
+  margin-left: 6rem;
+}
+
+.m_left_big {
+  margin-left: 12rem;
+}
+
+/* --------MARGINS RIGTH--------- */
+
+.m_rigth {
+  margin-right: 3rem;
+}
+
+.m_rigth_medium {
+  margin-right: 6rem;
+}
+
+.m_rigth_big {
+  margin-right: 12rem;
+}
+
+/* --------MARGINS BOTTOM--------- */
+
+.m_bottom {
+  margin-bottom: 3rem;
+}
+
+.m_bottom_medium {
+  margin-bottom: 6rem;
+}
+
+.m_bottom_big {
+  margin-bottom: 12rem;
+}

@@ -1,32 +1,36 @@
-.heider{
-    position: absolute;
-    width: 100%;
-    padding: 20px 100px;
-    background: cadetblue;
+/* .container_nav {
+    border: 2px solid rgb(255, 0, 0);
     display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
-}
-.navbar a {
-    position: relative;
-    font-size: 18px;
-    color:black ;
+    margin-top: 2.5rem;
+    margin-left: 1rem;
+} */
+
+/* .navbar a {
     font-weight: 500;
     text-decoration: none;
     margin-left: 40px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-.navbar a::before{
+    text-align: center;
+} */
+
+.navbar a::before {
     content: '';
     position: absolute;
     top: 100%;
     left: 0;
     width: 0;
     height: 2px;
-    background: crimson;
-    transition: .3s
+    background: blue;
+    transition: .3s;
 }
-.navbar a:hover::before{
+
+.navbar a:hover::before {
     width: 100%;
 }
+
+.navbar a:hover {
+    color: rgb(57, 137, 234);
+}
+
+/* Media Queries */
+
+/* Pantallas grandes (escritorio) */

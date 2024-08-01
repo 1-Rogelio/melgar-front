@@ -1,0 +1,88 @@
+:root {
+    --blue_color: #007bff;
+    --grey_color: #6c757d;
+    --green_color: #28a745;
+    --red_color: #dc3545;
+    --yellow_color: #ffc107;
+    --teal_color: #17a2b8;
+    --white_color: #f8f9fa;
+    --black_color: #343a40;
+    --nav_color: cadetblue;
+    --form_color: lightskyblue
+}
+
+
+/* ----------COLORS----------- */
+.c_blue {
+    color: var(--blue_color);
+}
+
+.c_grey {
+    color: var(--grey_color);
+}
+
+.c_green {
+    color: var(--green_color);
+}
+
+.c_red {
+    color: var(--red_color);
+}
+
+.c_yellow {
+    color: var(--yellow_color);
+}
+
+.c_teal {
+    color: var(--teal_color);
+}
+
+.c_white {
+    color: var(--white_color);
+}
+
+.c_black {
+    color: black;
+}
+
+/* ---------BACKGROUD COLOR----------- */
+
+.bg_blue {
+    background: var(--blue_color);
+}
+
+.bg_grey {
+    background: var(--grey_color);
+}
+
+.bg_green {
+    background: var(--green_color);
+}
+
+.bg_red {
+    background: var(--red_color);
+}
+
+.bg_yellow {
+    background: var(--yellow_color);
+}
+
+.bg_teal {
+    background: var(--teal_color);
+}
+
+.bg_white {
+    background: var(--white_color);
+}
+
+.bg_black {
+    background: var(--black_color);
+}
+
+.bg_nav {
+    background: var(--nav_color);
+}
+
+.bg_form {
+    color: var(--form_color);
+}

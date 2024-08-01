@@ -1,6 +1,25 @@
-.tusTickets{
-    position: absolute;
-    width: 25%;
-    height: 10rem;
-    left: 61rem;
+.eye_tickets{
+    display: flex;
+    flex-direction: row;
+    margin-top: 18px;
+    margin-left: 2rem;
+    font-size: 20px;
 }
+
+.container_tables {
+    display: flex;
+    margin-top: -2rem;
+    width: 22rem;
+    flex-direction: column;
+}
+
+.tickets_title {
+    display: flex;
+    justify-content: center;
+}
+
+.iconEye{
+    font-size: 1.8rem;
+}
+
+

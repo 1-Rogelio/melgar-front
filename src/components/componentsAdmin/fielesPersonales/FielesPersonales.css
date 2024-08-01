@@ -1,0 +1,19 @@
+.iconEdit {
+    font-size: 20px;
+    color: rgb(21, 116, 163);
+}
+
+.iconEdit:hover{
+    color: rgb(164, 164, 25);
+}
+.icon_exit {
+     position: absolute;
+     font-size: 1.8rem;
+    left: 12rem;
+    margin-top: -3rem;
+}
+
+.icon_exit:hover{
+    color: green;
+}
+

@@ -1,0 +1,87 @@
+.button {
+    position: absolute;
+    right: 18rem;
+    margin-top: 29rem;
+    width: 5rem;
+}
+
+.button_blue {
+    color: #fff;
+    background-color: var(--blue_color);
+}
+
+.button_blue:hover {
+    color: var(--grey-color);
+    background: var(--yellow_color);
+}
+
+.button_grey {
+    color: #fff;
+    background-color: var(--grey_color);
+}
+
+.button_grey:hover {
+    color: var(--yellow-color);
+    background-color: var(--green_color);
+}
+
+.button_green {
+    color: #fff;
+    background-color: var(--green_color);
+}
+
+.button_green:hover {
+    color: var(--black_color);
+    background-color: var(--teal_color);
+}
+
+.button_red {
+    color: #fff;
+    background-color: var(--red_color);
+}
+
+.button_red:hover {
+    color: var(--white-color);
+    background-color: var(--teal_color);
+}
+
+.button_yellow {
+    color: #fff;
+    background: var(--yellow_color);
+}
+
+.button_yellow:hover {
+    color: var(--black_color);
+    background: var(--red_color);
+}
+
+.button_teal {
+    color: #fff;
+    background-color: var(--teal_color);
+}
+
+.button_teal:hover {
+    color: var(--red-color);
+    background-color: var(--grey_color);
+}
+
+.button_white {
+    color: #fff;
+    background: var(--white_color);
+}
+
+.button_white:hover {
+    color: var(--blue_color);
+    background: var(--yellow_color);
+}
+
+.button_black {
+    color: #fff;
+    background: var(--black_color);
+}
+
+.button_black:hover {
+    color: var(--yellow_color);
+    background: var(--white_color);
+}
+
