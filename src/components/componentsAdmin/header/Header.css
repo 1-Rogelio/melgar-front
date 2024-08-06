@@ -175,3 +175,31 @@
         right: 1rem;
     }
   }
+
+  @media (max-width: 385px) {
+    .components_header {
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+        justify-items: center;
+    }
+    .iconMelgar{
+        left: 1rem;
+        margin-top: 1.5rem;
+    }
+    
+    .icon_noti {
+        margin-top: -11rem;
+        right: 5.5rem;
+    }
+    .icon_userHeader {
+        margin-top: -5.5rem;
+        right: 1rem;
+    }
+    .container_nav {
+        display: flex;
+        width: 20rem;
+        margin-top: 2rem;
+        margin-left: 1rem;
+    }
+  }

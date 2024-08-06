@@ -68,6 +68,17 @@ main {
     flex-direction: column;
     gap: 4rem; /* Ajusta el espacio entre las tablas si es necesario */
   }
+
+  @media (max-width: 385px) {
+    .image_responsive {
+      height: 65%;
+    }
+    .tables-container {
+      /* margin-top: -9rem; */
+      flex-direction: column;
+      gap: 4rem; /* Ajusta el espacio entre las tablas si es necesario */
+    }
+  }
   /* .tables-container {
   
     flex-direction: row;
@@ -84,14 +95,14 @@ main {
   } */
 }
 
-@media (max-width: 450px) {
+/* @media (max-width: 450px) {
   .tables-container {
     margin-top: -12rem;
     flex-direction: column;
     gap: 4rem
     
   }
-}
+} */
 
   
     /* -------RESPONSIVE DEL HOME LAS TABLAS FIEL Y TICKETS------- */

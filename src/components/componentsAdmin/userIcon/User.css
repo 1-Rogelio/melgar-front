@@ -49,6 +49,22 @@
   font-size: 35px;
 }
 
+@media(max-width: 385px){
+  .configIcon{
+    position: absolute;
+    font-size: 23px;
+    left: 113px;
+    text-align: justify;
+  }
+  
+  .exitIcon{
+    margin-top: 1px;
+    position: absolute;
+    font-size: 21px;
+    left: 113px;
+    text-align: justify;
+  }
+}
 /* .p_user{
   display: flex;
   justify-content: center;

@@ -165,3 +165,53 @@
         
     }
 }
+
+@media(max-width: 385px){
+    .container_box {
+        width: 23rem;   
+        height: 40rem; 
+    }
+
+    .container_form {
+        width: 22rem;
+        height: 36rem;    
+    }
+    .container_form input{
+        border: 1px solid rgb(217, 213, 213);
+        height: 1rem;
+    }
+    
+    .inputs_datos {
+        width: 12rem;
+        margin-top: -2.5rem;
+    }
+
+    hr{
+        margin-top: 4px;
+        width: 25rem;
+    }
+
+    .caja {
+        font-size: 18px;
+    }
+
+    .inputs_domicilio {
+        width: 12rem;
+    }
+
+    .buttons {
+        margin-top: 33rem;
+        justify-content: center;
+        position: absolute;
+    }
+    
+    .button_confirm {
+        margin-left: 1rem;
+    }
+    
+    .button_cancelar:hover{
+        background: rgb(114, 30, 30);
+        border: none;
+        
+    }
+}

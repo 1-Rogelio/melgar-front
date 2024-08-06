@@ -18,6 +18,14 @@
         font-size: 9px;
     }
 
+@media(max-width: 385px){
+    .container_tableTickets table{
+        justify-content: center;
+        width: 24rem;
+        font-size: 6px;
+    }
+}
+
     /* .table_ticketsTodos { 
         width: 3rem;
         border: 2px solid rgb(255, 0, 0);
