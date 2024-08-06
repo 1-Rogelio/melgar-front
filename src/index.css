@@ -14,6 +14,15 @@ main {
   margin-right: calc(-1 * (100vw - 100%));
 }
 
+/* -------TABLAS EN EL HOME------- */
+.tables-container {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  justify-content: center;
+}
+
 /* -------IMAGEN DEL HOME------- */
 .image_container {
   width: 100vw;
@@ -54,23 +63,25 @@ main {
   .image_responsive {
     height: 70%;
   }
-}
-
-/* -------TABLAS EN EL HOME------- */
-.tables-container {
-  display: flex;
-  flex-direction: row;
-  gap: 16px;
-  justify-content: center;
-}
-
-@media (max-width: 768px) {
   .tables-container {
-    margin-top: -9rem;
+    /* margin-top: -9rem; */
     flex-direction: column;
     gap: 4rem; /* Ajusta el espacio entre las tablas si es necesario */
-    
   }
+  /* .tables-container {
+  
+    flex-direction: row;
+    gap: 16px;
+    justify-content: center;
+  } */
+
+  /* .image_container {
+    width: 100vw;
+    height: 80vh;
+    gap: -3rem;
+    overflow: hidden;
+    position: relative;
+  } */
 }
 
 @media (max-width: 450px) {

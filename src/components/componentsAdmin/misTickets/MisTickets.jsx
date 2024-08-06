@@ -16,7 +16,7 @@ function MisTickets() {
         <div className='box_center'>
             <h1 className='p_a m_top c_black text_caption'>Mis tickets</h1>
             <NavLink to="/">
-                <p className='boton_Exit pi pi-arrow-circle-left p_a c_red m_top'></p>
+                <p className='boton_Exit pi pi-arrow-circle-left c_red'></p>
                 {/* <Button severity="danger" rounded label="Regresar" icon="pi pi-arrow-circle-left" /> */}
             </NavLink>
         </div>

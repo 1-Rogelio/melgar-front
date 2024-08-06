@@ -1,0 +1,11 @@
+.boton_Exit{
+    position: absolute;
+    margin-top: 2rem;
+    margin-left: -2rem;
+}
+
+@media(max-width: 576px){
+    .boton_Exit {
+        margin-left: -8rem;
+    }
+}

@@ -1,3 +1,5 @@
+import '../todosTickets/TodosTickets.css'
+
 // -----------IMPORTAMOS COMPONENTES-------------
 import Header from '../header/Header';
 // import Nav from '../navbar/Nav';
@@ -27,32 +29,36 @@ function TodosTickets() {
     // console.log(getApi());
     return(
     <>
-        <div>
+        <div className='container_todosTickets'>
             {/* ------------MANDAMOS A LLAMAR LOS COMPONENTES--------------         */}
-            <Header/>
+            <div>
+                <Header/>
+            </div>
         
             <h1 className='m_top text_positionCenter text_caption'>Todos los tickets</h1>
-        
+
+            <div className='container_tableTickets'>
                 {/*-----------------------TABLA DE TODOS LOS TICKETS---------------------*/}
-                <table className="titulos w-75 table table-bordered mx-auto mt-4">
-                    <thead className='table-dark'>
-                        <tr>
-                            <th className='text-center' scope="col">#</th>
-                            <th className='text-center' scope="col">Solicitante</th>
-                            <th className='text-center' scope="col">Destinatario</th>
-                            <th className='text-center' scope="col">Asunto</th>
-                            <th className='text-center' scope="col">Descripción</th>
-                            <th className='text-center' scope="col">Tipo</th>
-                            <th className='text-center' scope="col">Fecha de creación</th>
-                            <th className='text-center' scope="col">Fecha de actualización</th>
-                            <th className='text-center' scope="col">Fecha de cierre</th>
+                <center>
+                <table className="table_ticketsTodos table table-bordered">
+                    <thead className='table-dark text-center'>
+                        <tr className='text-center'>
+                            <th scope="col">#</th>
+                            <th scope="col">Solicitante</th>
+                            <th scope="col">Destinatario</th>
+                            <th scope="col">Asunto</th>
+                            <th scope="col">Descripción</th>
+                            <th scope="col">Tipo</th>
+                            <th scope="col">Fecha de creación</th>
+                            <th scope="col">Fecha de actualización</th>
+                            <th scope="col">Fecha de cierre</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody className='text-center'>
                         <tr>
                             <th scope="row">1</th>
                             <td className='text-center'>Mark</td>
-                            <td className='text-center'>Otto</td>
+                            <td className='text-center'>Bob</td>
                             <td className='text-center'>@mdo</td>
                             <td className='text-center'>Mark</td>
                             <td className='text-center'>Otto</td>
@@ -84,8 +90,18 @@ function TodosTickets() {
                         </tr>
                     </tbody>
                 </table><br /><br />
+                </center>
+            </div>
+        </div>
+    </>
+    );    
+}
 
-        {/*-----------------------TABLA DE TODOS LOS CLIENTES---------------------*/}
+export default TodosTickets;
+
+
+
+{/*-----------------------TABLA DE TODOS LOS CLIENTES---------------------*/}
 
             {/* <table className="titulos w-75 table table-bordered mx-auto mt-4">
                 <thead className='table-dark'>
@@ -113,9 +129,3 @@ function TodosTickets() {
                     ))}
                 </tbody>
             </table> */}
-        </div>
-    </>
-    );    
-}
-
-export default TodosTickets;

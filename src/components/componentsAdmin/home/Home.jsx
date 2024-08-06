@@ -28,7 +28,7 @@ function Home() {
       <Header />
 
       <div className='image_container'>
-        <img src={Fondo} className='img-fluid image_responsive box_center' alt="" />
+        <img src={Fondo} className='img-fluid image_responsive' alt="" />
       </div>
 
       <div className="tables-container">

@@ -17,3 +17,11 @@
     color: green;
 }
 
+@media(max-width: 576px){
+    .icon_exit {
+        position: absolute;
+        font-size: 1.8rem;
+       left: 5rem;
+       margin-top: -3rem;
+   }
+}

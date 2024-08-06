@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import '../clientes/clientes.css'
 
 import Header from '../header/Header';
 // import Nav from '../navbar/Nav';
@@ -25,9 +26,9 @@ function Clientes() {
 
         <h1 className='text_positionCenter text_caption m_top'>Clientes</h1>
             
-        <div className='box_center '>
+        <div className='container_tableclientes box_center '>
             {/*-----------------------TABLA DE TODOS LOS TICKETS---------------------*/}
-            <table className="table titulos w-75 table table-bordered mx-auto mt-4">
+            <table className="tablaClientes table titulos table table-bordered mx-auto mt-4">
                 <thead>
                     <tr>
                     <th scope="col">#</th>

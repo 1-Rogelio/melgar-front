@@ -1,0 +1,19 @@
+.tablaClientes{
+    width: 70rem;
+}
+/* .container_tableclientes{
+    display: flex;
+    justify-content: center;
+    width: 70rem;
+} */
+
+/* .container_tableclientes table{
+    width: 70rem;
+} */
+
+@media(max-width: 576px){
+    .tablaClientes {
+        justify-content: center;
+        width: 30rem;
+    }
+}

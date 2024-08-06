@@ -1,0 +1,31 @@
+
+.table_ticketsTodos{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    flex-direction: column;
+    width: 70rem;
+}
+
+.table_ticketsTodos th, .table_ticketsTodos td {
+    width: 7rem;
+}
+
+@media(max-width: 576px){
+    .container_tableTickets table{
+        justify-content: center;
+        width: 30rem;
+        font-size: 9px;
+    }
+
+    /* .table_ticketsTodos { 
+        width: 3rem;
+        border: 2px solid rgb(255, 0, 0);
+    } */
+
+    /* .table_ticketsTodos thead {
+        width: 6rem;
+        border: 2px solid rgb(255, 0, 0);
+    } */
+
+}

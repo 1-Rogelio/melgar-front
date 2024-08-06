@@ -1,15 +1,9 @@
-* {
-  margin: 0;
-  padding: 0;
-  }
-  
-  .clearfix {
+.clearfix {
     float: none;
     clear: both;
   }
 
   .container_all{
-    height: 41.5rem;
     display: flex;
     justify-content: center;
     justify-items: center
@@ -17,29 +11,163 @@
   
   .container_Tickets {
     margin-top: 2rem;
-    height: 39rem;
     width: 55rem;
-    /* transform: translate(30%, -50%); */
+    height: 40rem;
     border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
   }
 
-  .container_boxs {
+  .container_boxTickets {
+    display: flex;
+    border: 2px solid rgb(69, 177, 236);
+    border-radius: 15px;
+    background: rgb(162, 198, 205);
+    width: 50rem;
+    margin-top: 3rem;
+    flex-direction: column;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    /* display: flex;
+    justify-content: center;
+    justify-items: center; */
+  }
+
+  .titulo_Ticket {
+    font-family: mondaySans;
+    margin-top: 1rem;
+    font-size: 2.3rem;
+  }
+
+  .cajas_form {
+    width: 12rem;
+    text-align: center;
+    margin: 5px;
+  }
+
+  .input_tickets {
+    background: none;
+    border: none;
+    border-bottom: 2px solid white;
+    outline: 0px;
+  }
+
+  .solicitante_destinatario {
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    justify-items: center;
+    gap: 9rem;
+  }
+
+  .asunto_descripcion {
+    display: flex;
+    margin-left: -3rem;
+    margin-top: 1rem;
+    gap: 12rem;
+    transform: translate(5rem);
+  }
+
+  .editor {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    width: 100%;
+  }
+
+  .tipo {
+    display: flex;
+  }
+
+  .boton_enviar {
+    margin-top: -12px;
+    margin-left: -13rem;  
+    box-shadow: inset 0 0 0 0 rgb(64, 214, 26);
+    -webkit-transition: ease-out 0.4s;
+    -moz-transition: ease-out 0.4s;
+    transition: ease-out 0.4s;
+  }
+
+  .boton_enviar:hover {
+    box-shadow: inset 0 0 0 50px rgb(64, 214, 26);
+    width: 6rem;
+    height: 2.5rem;
+  }
+
+  /* .icon_arrow {
+    position: absolute;
+    left: 47rem;
+    margin: 4px;
+  } */
+
+  @media(max-width: 576px){
+    
+    .container_Tickets {
+      width: 35rem;
+      height: 48rem;
+      border: 2px solid black;
+    }
+
+    .container_boxTickets {
+      border: 2px solid rgb(69, 177, 236);
+      border-radius: 15px;
+      background: rgb(162, 198, 205);
+      width: 34rem;
+      flex-direction: column;
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
+
+    .cajas_form {
+      width: 8rem;
+      text-align: center;
+      margin: 5px;
+    }
+
+    .solicitante_destinatario {
+      flex-direction: row;
+      gap: 8rem;
+    }
+  
+    .asunto_descripcion {
+      margin-top: 1rem;  
+      flex-direction: column;
+      display: flex;
+      gap: 1px;
+      margin-left: 2rem;
+    }
+  
+    .editor {
+      display: flex;
+      justify-content: center;
+      justify-items: center;
+      width: 98%;
+    }
+  
+    .tipo {
+      display: flex;
+    }
+
+    .boton_enviar {
+      margin-left: 0.5rem;  
+      box-shadow: inset 0 0 0 0 rgb(64, 214, 26);
+      -webkit-transition: ease-out 0.4s;
+      -moz-transition: ease-out 0.4s;
+      transition: ease-out 0.4s;
+    }
+  }
+
+  /* .container_boxs {
+    display: flex;
     background: rgb(162, 198, 205);
     margin-top: -10px;
     width: 50rem;
     transform: translate(5%, -1%);
-    position: absolute;
-    height: 30rem;
     border-radius: 32px;
-  }
-  
-  .titulo_Ticket {
-    font-family: mondaySans;
-    margin-top: 1rem;
-    font-size: 2.5rem;
-  }
-  
-  .solicitante {
+  } */
+
+  /* .solicitante {
     margin-top: 8px;
     position: absolute;
     right: 28rem;
@@ -127,4 +255,4 @@
     position: absolute;
     right: 23rem;
     margin-top: 1rem;
-  }
+  } */

@@ -11,7 +11,6 @@ import { Toast } from 'primereact/toast';
 import '../crearTickets/CrearTickets.css';
 
 // --------importamos Componentes-------
-import Nav from '../navbar/Nav';
 import Header from '../header/Header';
 
 function CrearTickets() {
@@ -68,86 +67,68 @@ const [text, setText] = useState('');
 
   return (
     <>
-      <Header />
+      <div>
+        <Header />
+      </div>
         
       <div className='container_all clearfix '>
-        {/* -----------Mandamos a llamar los componentes a ocupar-------- */}
-        
+        {/* -----------Mandamos a llamar los componentes a ocupar-------- */}     
 
           {/* ----------------FORMULARIO---------------- */}
-          <div className="container_Tickets p_rel p_a bg_nav">
+          <div className="container_Tickets bg_nav">
             <form>
                 <div>
                   <h1 className="titulo_Ticket text_positionCenter c_white">Generar tickets</h1><hr />
                 </div>
+
+                <div className="container_boxTickets">
+                    
+                    <div className="solicitante_destinatario">
+                      <div className="solicitante cajas_form">
+                        <i className="pi pi-user" style={{fontSize: '17px'}}></i> <label> Solicitante</label>
+                        <input required className="input_tickets" />
+                      </div>
+                      <div className="destinatario cajas_form">
+                          <Dropdown value={selectedCountry} onChange={(e) => setSelectedCountry(e.value)} options={countries} optionLabel="name" placeholder="Destinatario" 
+                          filter valueTemplate={selectedCountryTemplate} itemTemplate={countryOptionTemplate} className="w-full md:w-10rem" />
+                          {/* <label className="icon_arrow pi pi-arrow-right"></label> */}
+                      </div>
+                    </div>
+
+                    <div className="asunto_descripcion">
+                      <div className="asunto cajas_form">
+                        <FloatLabel>
+                          <InputTextarea id="asunto" value={value} onChange={(e) => setValue(e.target.value)} rows={4} cols={40} />
+                          <label htmlFor="asunto" className="pi pi-file"> Asunto</label>
+                        </FloatLabel>
+                      </div>
+                      <div className="descripcion cajas_form">
+                        <FloatLabel>
+                          <InputTextarea id="descripcion" value={value} onChange={(e) => setValue(e.target.value)} rows={4} cols={40} />
+                          <label htmlFor="descripcion" className="pi pi-file-edit"> Descripcion</label>
+                        </FloatLabel>
+                      </div>
+                    </div>
+
+                    <div className="editor cajas_form">
+                        <Editor value={text} onTextChange={(e) => setText(e.htmlValue)} style={{ height: '200px' }}/>
+                    </div>
+
+                    <center>
+                      <div className="tipo cajas_form">
+                        <Dropdown value={selectedCountry} onChange={(e) => setSelectedCountry(e.value)} options={countries} optionLabel="name" placeholder="Tipo" 
+                        filter valueTemplate={selectedCountryTemplate} itemTemplate={countryOptionTemplate} className="w-full md:w-10rem" />
+                      </div>
+                    </center>
+
+                </div>
+
+                <div className="col-md-4 mt-4 p_a r_big w_short">
+                  <button type="button" className="boton_enviar col-md-5 offset-md-4 btn bg_green" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal"><label className='pi pi-check'></label>Enviar</button>
+                </div>
               
-              <div className="container_boxs">
-                
-                <div className="solicitante">
-                  <i className="pi pi-user" style={{fontSize: '17px'}}></i> <label> Solicitante</label>
-                  <input required className="input_tickets" />
-                </div>
-
-                <div className="destinatario card flex justify-content-center">
-                  <Dropdown value={selectedCountry} onChange={(e) => setSelectedCountry(e.value)} options={countries} optionLabel="name" placeholder="Destinatario" 
-                  filter valueTemplate={selectedCountryTemplate} itemTemplate={countryOptionTemplate} className="w-full md:w-10rem" />
-                </div>  <label className="icon_arrow pi pi-arrow-right"></label>
-
-                {/* <div className="fechas">
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <br />
-                  <label>Fecha de creacion: </label>
-                  <input required className="input_Fechas" type="date" />
-                </div>
-
-                <div className="fechas">
-                  <br />
-                  <br />
-                  <br />
-                  <label>Fecha de actualización</label>
-                  <br />
-                  <input required className="input_Fechas" type="date" />
-                </div>
-                <div className="fechas">
-                  <label>Fecha de cierre: </label>
-                  <br />
-                  <input required className="input_Fechas" type="date" />
-                </div> */}
-
-                <div className="asunto card flex justify-content-center">
-                  <FloatLabel>
-                    <InputTextarea id="asunto" value={value} onChange={(e) => setValue(e.target.value)} rows={4} cols={40} />
-                    <label htmlFor="asunto" className="pi pi-file"> Asunto</label>
-                  </FloatLabel>
-                </div>
-
-                <div className="descripcion card flex justify-content-center">
-                  <FloatLabel>
-                    <InputTextarea id="descripcion" value={value} onChange={(e) => setValue(e.target.value)} rows={4} cols={40} />
-                    <label htmlFor="descripcion" className="pi pi-file-edit"> Descripcion</label>
-                  </FloatLabel>
-                </div>
-
-                <div className="editor card">
-                  <Editor value={text} onTextChange={(e) => setText(e.htmlValue)} style={{ height: '200px' }}/>
-                </div>
-
-                <div className="tipo card flex justify-content-center">
-                  <Dropdown value={selectedCountry} onChange={(e) => setSelectedCountry(e.value)} options={countries} optionLabel="name" placeholder="Tipo" 
-                  filter valueTemplate={selectedCountryTemplate} itemTemplate={countryOptionTemplate} className="w-full md:w-10rem" />
-                </div> 
-              </div>
-
-              {/* ----------------------------------Boton de enviar----------------------------- */}
-              <div className="col-md-4 mt-4 p_a r_big w_short">
-                <button type="button" className="boton_enviar col-md-5 offset-md-4 btn bg_green" data-bs-toggle="modal"
-                  data-bs-target="#exampleModal"><label className='pi pi-check'></label>Enviar</button>
-              </div>
-
+              
               {/* ----------------------------------Boton de confirmar----------------------------- */}
               <div
                 className="modal fade"
@@ -186,3 +167,78 @@ const [text, setText] = useState('');
 }
 
 export default CrearTickets;
+
+{/* <div className="container_boxs">
+                
+                <div className="solicitante cajas_form">
+                  <i className="pi pi-user" style={{fontSize: '17px'}}></i> <label> Solicitante</label>
+                  <input required className="input_tickets" />
+                </div>
+
+                <div className="destinatario cajas_form card flex justify-content-center">
+                  <Dropdown value={selectedCountry} onChange={(e) => setSelectedCountry(e.value)} options={countries} optionLabel="name" placeholder="Destinatario" 
+                  filter valueTemplate={selectedCountryTemplate} itemTemplate={countryOptionTemplate} className="w-full md:w-10rem" />
+                </div>  <label className="icon_arrow pi pi-arrow-right"></label>
+
+                
+
+                <div className="asunto cajas_form card flex justify-content-center">
+                  <FloatLabel>
+                    <InputTextarea id="asunto" value={value} onChange={(e) => setValue(e.target.value)} rows={4} cols={40} />
+                    <label htmlFor="asunto" className="pi pi-file"> Asunto</label>
+                  </FloatLabel>
+                </div>
+
+                <div className="descripcion cajas_form card flex justify-content-center">
+                  <FloatLabel>
+                    <InputTextarea id="descripcion" value={value} onChange={(e) => setValue(e.target.value)} rows={4} cols={40} />
+                    <label htmlFor="descripcion" className="pi pi-file-edit"> Descripcion</label>
+                  </FloatLabel>
+                </div>
+
+                <div className="editor cajas_form card">
+                  <Editor value={text} onTextChange={(e) => setText(e.htmlValue)} style={{ height: '200px' }}/>
+                </div>
+
+                <div className="tipo cajas_form card flex justify-content-center">
+                  <Dropdown value={selectedCountry} onChange={(e) => setSelectedCountry(e.value)} options={countries} optionLabel="name" placeholder="Tipo" 
+                  filter valueTemplate={selectedCountryTemplate} itemTemplate={countryOptionTemplate} className="w-full md:w-10rem" />
+                </div> 
+              </div> */}
+
+              {/* ----------------------------------Boton de enviar----------------------------- */}
+              {/* <div className="col-md-4 mt-4 p_a r_big w_short">
+                <button type="button" className="boton_enviar col-md-5 offset-md-4 btn bg_green" data-bs-toggle="modal"
+                  data-bs-target="#exampleModal"><label className='pi pi-check'></label>Enviar</button>
+              </div> */}
+
+
+
+
+
+
+
+{/* <div className="fechas">
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <br />
+                  <label>Fecha de creacion: </label>
+                  <input required className="input_Fechas" type="date" />
+                </div>
+
+                <div className="fechas">
+                  <br />
+                  <br />
+                  <br />
+                  <label>Fecha de actualización</label>
+                  <br />
+                  <input required className="input_Fechas" type="date" />
+                </div>
+                <div className="fechas">
+                  <label>Fecha de cierre: </label>
+                  <br />
+                  <input required className="input_Fechas" type="date" />
+                </div> */}

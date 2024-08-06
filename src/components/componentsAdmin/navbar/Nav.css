@@ -31,6 +31,18 @@
     color: rgb(57, 137, 234);
 }
 
+/* @media (max-width: 576px) {
+    .navbar a{
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 450px) {
+    .navbar a{
+        flex-direction: column;
+    }
+} */
+
 /* Media Queries */
 
 /* Pantallas grandes (escritorio) */
