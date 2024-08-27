@@ -15,6 +15,48 @@ import Header from '../header/Header';
 
 function CrearTickets() {
 
+  //Consumiendo api tickets
+
+  // const [formDataTickets, setFormDataTickets] = useState({
+  //   solicitante: '',
+  //   destinatario: '',
+  //   asunto: '',
+  //   descripcion: '',
+  //   fecha_de_creacion: '',
+  //   fecha_de_actualizacion: '',
+  //   fecha_de_cierre: ''
+  // });
+
+  // const handleChange = (e) => {
+  //   setFormDataTickets({
+  //     ...formDataTickets,
+  //     [e.target.solicitante]: e.target.value,
+
+  //   });
+  // };
+
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   try{
+  //     const response = await fetch('http://localhost:3000/api/v1/tickets', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json'
+  //       },
+  //       body: JSON.stringify(formDataTickets)
+  //     });
+  //     if (response.ok) {
+  //       const result = await response.json();
+  //       console.log('Datos guardados', result);
+  //     } else {
+  //       console.error('Error al enviar el formulario');
+  //     }
+  //   } catch (error){
+  //     console.error('Error al conectar con la API:', error);
+  //   }
+  // };
+
 //---------------Editor----------------
 const [text, setText] = useState('');
 
@@ -118,15 +160,16 @@ const [text, setText] = useState('');
                       <div className="tipo cajas_form">
                         <Dropdown value={selectedCountry} onChange={(e) => setSelectedCountry(e.value)} options={countries} optionLabel="name" placeholder="Tipo" 
                         filter valueTemplate={selectedCountryTemplate} itemTemplate={countryOptionTemplate} className="w-full md:w-10rem" />
+                        <button type="button" className="boton_enviar col-md-5 offset-md-4 btn bg_green" data-bs-toggle="modal"
+                data-bs-target="#exampleModal"><label className='pi pi-check'></label>Enviar</button>
                       </div>
                     </center>
 
+                    
+
                 </div>
 
-                <div className="col-md-4 mt-4 p_a r_big w_short">
-                  <button type="button" className="boton_enviar col-md-5 offset-md-4 btn bg_green" data-bs-toggle="modal"
-                    data-bs-target="#exampleModal"><label className='pi pi-check'></label>Enviar</button>
-                </div>
+                
               
               
               {/* ----------------------------------Boton de confirmar----------------------------- */}

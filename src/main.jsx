@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client'
 //-------------Styles Bootstrap 5----------------- 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
+// import '../src/index.css';
 
 //-------------Styles PrimeReact y PrimeFlex---------------
 import "../node_modules/primereact/resources/themes/lara-light-cyan/theme.css";
@@ -26,6 +27,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 //-------------Importamos el Layout------
 import LayoutPublic from './layout/LayoutPublic'
+import PrivateRoute from './components/componentsAdmin/privateRoute/PrivateRoute'
 
 // ---------------Rutas------------------
 const router = createBrowserRouter([
@@ -35,15 +37,16 @@ const router = createBrowserRouter([
     children:[
       {
         index: true,
-        element: <Home/>,
+        element: <PrivateRoute element={<Home/>} />,
+        // element: <Home/>,
       },
       {
         path: '/tickets',
-        element: <CrearTickets/>,
+        element: <PrivateRoute element={<CrearTickets/>} />,
       },
       {
         path: '/todosTickets',
-        element: <TodosTickets/>
+        element: <PrivateRoute element={<TodosTickets/>} />,
       },
       {
         path: '/login',
@@ -51,23 +54,23 @@ const router = createBrowserRouter([
       },
       {
         path: '/configuracion',
-        element: <ConfigUser/>
+        element: <PrivateRoute element={<ConfigUser/>} />,
       },
       {
         path: '/mis-tickets',
-        element: <MisTickets/>
+        element: <PrivateRoute element={<MisTickets/>} />,
       },
       {
         path: '/mis-fieles',
-        element: <MisFieles/>
+        element: <PrivateRoute element={<MisFieles/>} />,
       },
       {
         path: '/fieles',
-        element: <FielesPersonales/>
+        element: <PrivateRoute element={<FielesPersonales/>} />,
       },
       {
         path: '/clientes',
-        element: <Clientes/>
+        element: <PrivateRoute element={<Clientes/>} />,
       },
       
     ]

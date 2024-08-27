@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
 import { Sidebar } from 'primereact/sidebar';
+import { Badge } from 'primereact/badge';
+//import axios from 'axios';
 // import { Button } from 'primereact/button';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -18,7 +20,22 @@ import { NavLink } from 'react-router-dom';
 
 function Header() {
   
-  const [visibleRight, setVisibleRight] = useState(false);               
+  const [visibleRight, setVisibleRight] = useState(false);
+  //const [notifications, setNotifications] = useState([]);
+  
+  //const userId = localStorage.getItem('userId');
+
+  /*useEffect(() => {
+    if (userId) {
+      const fetchNotifications = async () => {
+        try {
+          const response = axios.get(`http://localhost:3000/api/v1/notificaciones/`)
+        } catch (error) {
+          
+        }
+      }
+    }
+  })*/
 
   return (
     <>
@@ -39,12 +56,18 @@ function Header() {
           <Nav/>   
         </div> 
 
-        <div className='icon_bell'>
-          <i className='pi pi-bell icon_noti' aria-controls="offcanvasRight" type='button'  onClick={() => setVisibleRight(true)}></i>
-          {/* <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">99+
-          <span className="visually-hidden"></span>
-          </span>  */}
+        <div className='icon_noti'>
+            <i className="pi pi-bell p-overlay-badge" style={{ fontSize: '1.8rem' }} aria-controls="offcanvasRight" type='button'  onClick={() => setVisibleRight(true)}>
+            <Badge severity="danger"></Badge>
+            </i>
         </div>
+
+        {/* <div className='icon_noti'>
+          <i className='pi pi-bell' aria-controls="offcanvasRight" type='button'  onClick={() => setVisibleRight(true)}></i>
+          <span className="spanNum position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">99+
+          <span className="visually-hidden"></span>
+          </span> 
+        </div> */}
 
         <div className="icon_userHeader shadow-2 hover:shadow-8">
           <User/>
@@ -57,9 +80,21 @@ function Header() {
             <h1 className='text_positionCenter text_caption'>Notificaciones</h1>
           </div><hr />
           <div className='text_positionCenter'>
-            <p>Notificacion <i className='pi pi-file-pdf sizeIcon'></i></p>
-            <p>Notificacion dos <i className='pi pi-file-excel sizeIcon'></i></p>
-            <p>Notificacion tres <i className='pi pi-file sizeIcon'></i></p>
+            <div>
+              <h1 className='title_noti'>Titulo</h1>
+              <p className='text_noti'>Descripcion <i className='pi pi-file-pdf sizeIcon'></i></p>
+            </div><hr />
+
+            <div>
+              <h1 className='title_noti'>Titulo</h1>
+              <p className='text_noti'>Descripcion <i className='pi pi-file-excel sizeIcon'></i></p>
+            </div><hr />
+
+            <div>
+              <h1 className='title_noti'>Titulo</h1>
+              <p className='text_noti'>Descripcion <i className='pi pi-file sizeIcon'></i></p>
+            </div><hr />
+            
           </div>
         </Sidebar>
       </div>

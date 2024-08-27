@@ -34,7 +34,7 @@ function TusTickets() {
                 <tr>
                     <th scope="col" className='text-center'>#</th>
                     <th scope="col" className='text-center'><i className='pi pi-user'></i></th>
-                    <th scope="col" className='text-center'>Tipo</th>
+                    {/* <th scope="col" className='text-center'>Tipo</th> */}
                     <th scope="col"><i className='pi pi-spin pi-clock text-center'></i></th>
                     <th scope="col" className='text-center'><i className='pi pi-chart-bar'></i></th>
                 </tr>
@@ -43,21 +43,21 @@ function TusTickets() {
                 <tr className='text-center'>
                     <th scope="row">1</th>
                     <td>Mark</td>
-                    <td>Otto</td>
+                    {/* <td>Otto</td> */}
                     <td className='text-center'>---</td>
                     <td className='message'><Message severity="info" text="Info Message" /></td>
                 </tr>
                 <tr className='text-center'>
                     <th scope="row">2</th>
                     <td>Jacob</td>
-                    <td>Thornton</td>
+                    {/* <td>Thornton</td> */}
                     <td className='text-center'>---</td>
                     <td><Message severity="warn" text="Warning Message" /></td>
                 </tr>
                 <tr className='text-center'>
                     <th scope="row">3</th>
                     <td>Larry</td>
-                    <td>Otto</td>
+                    {/* <td>Otto</td> */}
                     <td className='text-center'>---</td>
                     <td><Message severity="error" text="Error Message" /></td>
                 </tr>

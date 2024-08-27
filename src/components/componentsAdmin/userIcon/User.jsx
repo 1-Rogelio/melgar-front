@@ -1,17 +1,37 @@
+import React, { useEffect, useState } from 'react';
 import '../userIcon/User.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 
 //--------Importamos imagen de usuario---------------------------
-import user from '../../../assets/images/usuario.png';
+import userImg from '../../../assets/images/usuario.png';
 
 //--------IMPORTAMOS EL NavLink para ocupar el router------------
-import { NavLink } from 'react-router-dom';
+import { Navigate, NavLink } from 'react-router-dom';
+
+import { useNavigate } from 'react-router-dom';
+
 
 function User() {
 
-    const usuario = {
-        // name: 'User',
+    const [usuario, setUsuario] = useState(null);
+    const navigate = useNavigate();
+
+
+    useEffect(() => {
+        // Recupera el token desde localStorage
+        const token = localStorage.getItem('token');
+        
+        if (token) {
+            // Decodificar el token para obtener la información del usuario
+            const payload = JSON.parse(atob(token.split('.')[1]));
+            setUsuario(payload);
+        }
+    }, []);
+
+    const handleLogout = () => {
+        localStorage.removeItem('token');
+        navigate('/login')
     }
 
     return(
@@ -20,8 +40,8 @@ function User() {
         <div>
             {/* --------------------------BOTON de usuario----------------------------------------- */}
             <div className=''>
-                <img className="img-fluid" src={user} alt={'Photo of '+usuario.name} type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"/>
-                <p className="text_paragraphs box_center">{usuario.name}</p>
+                <img className="img-fluid" src={userImg} alt={'Photo of '} type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"/>
+                {usuario && <p className="nombre_user text_paragraphs c_blue">{usuario.nombre}</p>}
             </div>
 
             {/* -------------------------VENTANA emergente de configuracion de usuario------------- */} 
@@ -32,12 +52,13 @@ function User() {
                 </div>
                 <div className="offcanvas-body">
                     <div className='box_center'>
-                        <img className="img-fluid w_short p_a m_top" src={user} alt={'Photo of '+usuario.name} />
-                        <h1 className="m_top_standard text_positionCenter userText">User</h1>
+                        <img className="img-fluid img_user w_short p_a m_top" src={userImg} alt={'Photo of '}/>
+                        <h1 className='text_caption text_user'>{usuario ? usuario.nombre : 'User'}</h1>
                     </div><hr />
                     <i className="pi pi-sign-out exitIcon"></i>
                     <NavLink className="cerrarSesionLink text_d_n m_top text_paragraphs_black" to="/login">
-                        <center><p >Cerrar Sesión</p></center>
+                        <center><p onClick={handleLogout}>Cerrar Sesión</p></center>
+                        {/* <center><button>Cerrar sesión</button></center> */}
                     </NavLink>
                     <i className="pi pi-spin pi-cog configIcon"></i>
                     <NavLink className='configuracionLink text_d_n text_paragraphs_black' to="/configuracion">

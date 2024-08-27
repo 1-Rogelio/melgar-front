@@ -32,12 +32,20 @@
     border-radius: 15px;
 } */
 
-.icon_noti:hover{
+.icon_noti {
+    /* display: flex;
+    justify-content: center; */
+    position: absolute;
+    right: 16rem;
+    margin-top: 2.5rem;
     font-size: 1.8rem;
     color: rgb(67, 28, 6);
-    background: rgb(147, 106, 30);
-    border-radius: 15px;
-    border: 1px solid white;
+    border-radius: 35px;
+}
+
+.icon_noti:hover{ 
+    color: green;
+    border-color: green;
 }
 
 .sizeIcon {

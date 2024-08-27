@@ -25,15 +25,17 @@ function Home() {
   return (
     <>
       {/* --------------MANDAMOS A LLAMAR LOS COMPONENTES A OCUPAR EN EL HOME------------ */}
-      <Header />
+      <div className="fondo_main">
+        <Header />
 
-      <div className='image_container'>
-        <img src={Fondo} className='img-fluid image_responsive' alt="" />
-      </div>
+        <div className='image_container'>
+          <img src={Fondo} className='img-fluid image_responsive' alt="" />
+        </div>
 
-      <div className="tables-container">
-        <FielesHome />
-        <TusTickets />
+        <div className="tables-container">
+          <FielesHome />
+          <TusTickets />
+        </div>
       </div>
     </>
   );

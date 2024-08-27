@@ -2,31 +2,26 @@ import '../todosTickets/TodosTickets.css'
 
 // -----------IMPORTAMOS COMPONENTES-------------
 import Header from '../header/Header';
-// import Nav from '../navbar/Nav';
-// import User from '../userIcon/User'
 
-// import { useState, useEffect } from "react";
-// import axios from "axios";
+ import { useState, useEffect } from "react";
+ import axios from "axios";
 
 //-----------Archivo JSX PARA API----------------
 
 function TodosTickets() {
 
-    // const [clientes, setClientes] = useState([]);
+     const [tickets, setTickets] = useState([]);
 
-    // useEffect(() => {
-    //     axios.get('http://10.10.1.11:3000/api/v1/clientes')
-    //         .then((response) => {
-    //           setClientes(response.data);
-    //             // clientes = setClientes;
-    //         })
-    //         .catch((error) => {
-    //             console.error(error);
-    //         });
-    // }, []); // El array vacío asegura que el efecto solo se ejecute una vez después del primer renderizado
+     useEffect(() => {
+         axios.get('http://localhost:3000/api/v1/tickets')
+             .then((response) => {
+               setTickets(response.data);
+             })
+             .catch((error) => {
+                console.error(error);
+             });
+     }, []); // El array vacío asegura que el efecto solo se ejecute una vez después del primer renderizado
 
-    // GetApi();
-    // console.log(getApi());
     return(
     <>
         <div className='container_todosTickets'>
@@ -40,10 +35,11 @@ function TodosTickets() {
             <div className='container_tableTickets'>
                 {/*-----------------------TABLA DE TODOS LOS TICKETS---------------------*/}
                 <center>
-                <table className="table_ticketsTodos table table-bordered">
+                <table className="table_ticketsTodos table table-bordered text">
                     <thead className='table-dark text-center'>
-                        <tr className='text-center'>
-                            <th scope="col">#</th>
+                        <tr>
+                            
+                            <th scope="col">Id</th>
                             <th scope="col">Solicitante</th>
                             <th scope="col">Destinatario</th>
                             <th scope="col">Asunto</th>
@@ -55,39 +51,20 @@ function TodosTickets() {
                         </tr>
                     </thead>
                     <tbody className='text-center'>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td className='text-center'>Mark</td>
-                            <td className='text-center'>Bob</td>
-                            <td className='text-center'>@mdo</td>
-                            <td className='text-center'>Mark</td>
-                            <td className='text-center'>Otto</td>
-                            <td className='text-center'>@mdo</td>
-                            <td className='text-center'>Mark</td>
-                            <td className='text-center'>Otto</td>
+                        {tickets.map((ticket, index) => (
+                            <tr key={index}>
+                            
+                            <th >{ticket.id_tickets}</th>
+                            <td >{ticket.solicitante}</td>
+                            <td >{ticket.destinatario}</td>
+                            <td >{ticket.asunto}</td>
+                            <td >{ticket.descripcion}</td>
+                            <td >{ticket.tipo}</td>
+                            <td >{ticket.fecha_creacion}</td>
+                            <td >{ticket.fecha_actualizacion}</td>
+                            <td >{ticket.fecha_cierre}</td>
                         </tr>
-                        <tr>
-                            <th scope="row">2</th>
-                            <td className='text-center'>Jacob</td>
-                            <td className='text-center'>Thornton</td>
-                            <td className='text-center'>@fat</td>
-                            <td className='text-center'>Mark</td>
-                            <td className='text-center'>@mdo</td>
-                            <td className='text-center'>Otto</td>
-                            <td className='text-center'>@mdo</td>
-                            <td className='text-center'>Mark</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3</th>
-                            <td className='text-center'>Larry the Bird</td>
-                            <td className='text-center'>Jacob</td>
-                            <td className='text-center'>@twitter</td>
-                            <td className='text-center'>Mark</td>
-                            <td className='text-center'>Otto</td>
-                            <td className='text-center'>@mdo</td>
-                            <td className='text-center'>Mark</td>
-                            <td className='text-center'>Otto</td>
-                        </tr>
+                        ))}
                     </tbody>
                 </table><br /><br />
                 </center>
@@ -129,3 +106,7 @@ export default TodosTickets;
                     ))}
                 </tbody>
             </table> */}
+
+
+
+            

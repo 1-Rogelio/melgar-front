@@ -4,25 +4,37 @@
     justify-content: center;
     justify-items: center;
     flex-direction: column;
-    width: 70rem;
+    width: 75rem;
 }
 
 .table_ticketsTodos th, .table_ticketsTodos td {
-    width: 7rem;
+    width: 8rem;
 }
 
-@media(max-width: 576px){
+.text {
+    font-size: 13px;
+}
+
+@media(max-width: 768px){
     .container_tableTickets table{
         justify-content: center;
-        width: 30rem;
-        font-size: 9px;
+        width: 45rem;
+        
     }
 
-@media(max-width: 385px){
+@media(max-width: 425px){
     .container_tableTickets table{
         justify-content: center;
-        width: 24rem;
-        font-size: 6px;
+        width: 26rem;
+        font-size: 7px;
+    }
+}
+
+@media(max-width: 360px){
+    .container_tableTickets table{
+        justify-content: center;
+        width: 22rem;
+        font-size: 5px;
     }
 }
 

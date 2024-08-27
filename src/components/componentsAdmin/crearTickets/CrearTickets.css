@@ -12,7 +12,7 @@
   .container_Tickets {
     margin-top: 2rem;
     width: 55rem;
-    height: 40rem;
+    height: 38rem;
     border: 2px solid black;
     display: flex;
     justify-content: center;
@@ -63,10 +63,12 @@
 
   .asunto_descripcion {
     display: flex;
-    margin-left: -3rem;
+    justify-content: center;
+    position: relative;
+    left: -4.5rem;
     margin-top: 1rem;
-    gap: 12rem;
-    transform: translate(5rem);
+    gap: 9rem;
+    /* transform: translate(5rem); */
   }
 
   .editor {
@@ -81,8 +83,8 @@
   }
 
   .boton_enviar {
-    margin-top: -12px;
-    margin-left: -13rem;  
+    margin-top: 7px;
+    width: 7rem;
     box-shadow: inset 0 0 0 0 rgb(64, 214, 26);
     -webkit-transition: ease-out 0.4s;
     -moz-transition: ease-out 0.4s;
@@ -158,23 +160,27 @@
     }
   }
 
-  
-  @media(max-width: 385px){
+  @media(max-width: 768px){
     
     .container_Tickets {
-      width: 23rem;
-      height: 47rem;
+      width: 43rem;
+      height: 48rem;
       border: 2px solid black;
+      
     }
 
     .container_boxTickets {
       border: 2px solid rgb(69, 177, 236);
       border-radius: 15px;
       background: rgb(162, 198, 205);
-      width: 22rem;
+      width: 39rem;
       flex-direction: column;
       margin: 0 auto;
       flex-wrap: wrap;
+    }
+
+    .input_tickets {
+      width: 6rem;
     }
 
     .cajas_form {
@@ -185,7 +191,7 @@
 
     .solicitante_destinatario {
       flex-direction: row;
-      gap: 8rem;
+      gap: 15rem;
     }
   
     .asunto_descripcion {
@@ -193,7 +199,144 @@
       flex-direction: column;
       display: flex;
       gap: 1px;
-      margin-left: -4.5rem;
+      position: relative;
+      left: 8rem;
+      /* margin-left: -5rem; */
+    }
+  
+    .editor {
+      display: flex;
+      justify-content: center;
+      justify-items: center;
+      width: 98%;
+    }
+  
+    .tipo {
+      display: flex;
+      justify-content: center;
+    }
+
+    .boton_enviar {
+      display: flex;
+      justify-content: center;  
+      width: 8rem;
+      box-shadow: inset 0 0 0 0 rgb(64, 214, 26);
+      -webkit-transition: ease-out 0.4s;
+      -moz-transition: ease-out 0.4s;
+      transition: ease-out 0.4s;
+    }
+  }
+
+  @media(max-width: 425px){
+    
+    .container_Tickets {
+      width: 22rem;
+      height: 48rem;
+      border: 2px solid black;
+      
+    }
+
+    .container_boxTickets {
+      border: 2px solid rgb(69, 177, 236);
+      border-radius: 15px;
+      background: rgb(162, 198, 205);
+      width: 21rem;
+      flex-direction: column;
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
+
+    .input_tickets {
+      width: 6rem;
+    }
+
+    .cajas_form {
+      width: 6rem;
+      text-align: center;
+      margin: 3px;
+    }
+
+    .solicitante_destinatario {
+      flex-direction: row;
+      gap: 5rem;
+    }
+  
+    .asunto_descripcion {
+      margin-top: 1rem;  
+      flex-direction: column;
+      display: flex;
+      gap: 1px;
+      position: relative;
+      left: -2rem;
+      /* margin-left: -5rem; */
+    }
+  
+    .editor {
+      display: flex;
+      justify-content: center;
+      justify-items: center;
+      width: 98%;
+    }
+  
+    .tipo {
+      display: flex;
+      justify-content: center;
+    }
+
+    .boton_enviar {
+      margin-left: 2rem;  
+      margin-top: 1rem;
+      width: 8rem;
+      box-shadow: inset 0 0 0 0 rgb(64, 214, 26);
+      -webkit-transition: ease-out 0.4s;
+      -moz-transition: ease-out 0.4s;
+      transition: ease-out 0.4s;
+    }
+  }
+
+  
+  @media(max-width: 360px){
+    
+    .container_Tickets {
+      width: 21rem;
+      height: 48rem;
+      border: 2px solid black;
+      
+    }
+
+    .container_boxTickets {
+      border: 2px solid rgb(69, 177, 236);
+      border-radius: 15px;
+      background: rgb(162, 198, 205);
+      width: 20rem;
+      flex-direction: column;
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
+
+    .input_tickets {
+      width: 6rem;
+    }
+
+    .cajas_form {
+      width: 6rem;
+      text-align: center;
+      margin: 3px;
+    }
+
+    .solicitante_destinatario {
+      flex-direction: row;
+      gap: 5rem;
+    }
+  
+    .asunto_descripcion {
+      margin-top: 1rem;  
+      flex-direction: column;
+      display: flex;
+      gap: 1px;
+      position: relative;
+      left: -2.5rem;
+      /* margin-left: -5rem; */
     }
   
     .editor {
@@ -209,7 +352,8 @@
 
     .boton_enviar {
       margin-left: 2rem;  
-      margin-top: -1.5rem;
+      margin-top: 1rem;
+      gap: 2rem;
       width: 8rem;
       box-shadow: inset 0 0 0 0 rgb(64, 214, 26);
       -webkit-transition: ease-out 0.4s;

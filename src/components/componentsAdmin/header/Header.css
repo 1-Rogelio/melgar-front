@@ -10,6 +10,16 @@
     
 }
 
+.title_noti {
+    font-size: 22px;
+    font-family: mondaySans;
+}
+
+.text_noti {
+    font-family: mondaySans;
+    font-size: 18px;
+}
+
 .iconMelgar {
     position: absolute;
     width: 6rem;
@@ -46,18 +56,6 @@
     margin-left: 40px;
     text-align: center;
      /* Asegura que el pseudo-elemento ::before esté posicionado correctamente */
-}
-
-.icon_noti {
-    /* display: flex;
-    justify-content: center; */
-    position: absolute;
-    right: 16rem;
-    margin-top: 2.5rem;
-    font-size: 1.8rem;
-    color: rgb(67, 28, 6);
-    background: orange;
-    border-radius: 15px;
 }
 
 @media (max-width: 1200px) {
@@ -132,7 +130,7 @@
     }
   }
   
-  @media (max-width: 576px) {
+  /* @media (max-width: 768px) {
     .components_header {
         flex-direction: column;
         text-align: center;
@@ -152,9 +150,9 @@
         margin-top: -3rem;
         right: 3rem;
     }
-  }
+  } */
 
-  @media (max-width: 415px) {
+  @media (max-width: 425px) {
     .components_header {
         flex-direction: column;
         text-align: center;
@@ -176,7 +174,7 @@
     }
   }
 
-  @media (max-width: 385px) {
+  @media (max-width: 360px) {
     .components_header {
         flex-direction: column;
         text-align: center;
@@ -184,17 +182,17 @@
         justify-items: center;
     }
     .iconMelgar{
-        left: 1rem;
+        left: 0.2rem;
         margin-top: 1.5rem;
     }
     
     .icon_noti {
         margin-top: -11rem;
-        right: 5.5rem;
+        right: 5rem;
     }
     .icon_userHeader {
         margin-top: -5.5rem;
-        right: 1rem;
+        right: 0.4rem;
     }
     .container_nav {
         display: flex;
