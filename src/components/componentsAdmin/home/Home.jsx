@@ -1,4 +1,4 @@
-// Home.js
+// Home admin.js
 import React, { useEffect } from 'react';
 
 // Importación de bootstrap 5

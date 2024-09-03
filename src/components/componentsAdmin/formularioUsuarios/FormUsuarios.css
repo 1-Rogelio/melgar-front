@@ -1,0 +1,264 @@
+.container_box {
+    width: 60rem;
+    height: 27rem;
+    border: 2px solid black;
+    border-radius: 12px;
+    background: rgba(71, 120, 131, 0.989);
+}
+
+.container_form {
+    border: 2px solid rgb(69, 177, 236);
+    border-radius: 15px;
+    height: 20rem;
+    width: 55rem;
+    margin-top: 3rem;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    background: rgb(233, 236, 246);
+}
+
+.container_form input{
+    border: 1px solid rgb(217, 213, 213);
+}
+
+.inputs_usuarios {
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+    flex-direction: row;
+    width: 50rem;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.caja {
+    width: 12rem;
+    text-align: center;
+    margin: 5px;
+}
+
+
+.nombre {
+    order: 1;
+}
+
+.apellido_paterno {
+    order: 2;  
+}
+
+.apellido_materno {
+    order: 3; 
+}
+
+.email {
+    order: 4;
+    flex-grow: 5;
+}
+
+.contrasena {
+    order: 5;
+    flex-grow: 5;
+}
+
+.rol {
+    order: 6;
+}
+
+.img {
+    order: 7;
+    flex-grow: 5;
+}
+
+.activo {
+    order: 8;
+}
+
+.buttons {
+    margin-top: 20.5rem;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+}
+
+.button_confirm {
+    margin-left: 1rem;
+    background: rgb(207, 236, 197);
+    color: black;
+    border: 2px solid rgb(14, 179, 14);
+    box-shadow: inset 0 0 0 0 #20a904;
+    -webkit-transition: ease-out 0.4s;
+    -moz-transition: ease-out 0.4s;
+    transition: ease-out 0.4s;
+}
+
+.button_cancelar:hover{
+    background: rgb(114, 30, 30);
+    border: none;
+    
+}
+
+.button_confirm:hover {
+    box-shadow: inset 0 0 0 50px #20a904;
+    border: none;
+    color: black;
+}
+
+.iconLock {
+    margin-top: -2rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+}
+
+@media(max-width: 768px){
+    .container_box {
+        width: 45rem;   
+        height: 40rem; 
+    }
+
+    .container_form {
+        width: 42rem;
+        height: 36rem;    
+    }
+    .container_form input{
+        border: 1px solid rgb(217, 213, 213);
+        height: 1rem;
+    }
+    
+    .inputs_datos {
+        width: 15rem;
+        margin-top: -2.5rem;
+    }
+
+    hr{
+        margin-top: 4px;
+        width: 40rem;
+    }
+
+    .caja {
+        font-size: 19px;
+    }
+
+    .inputs_domicilio {
+        width: 15rem;
+    }
+
+    .buttons {
+        margin-top: 33rem;
+        justify-content: center;
+        position: absolute;
+    }
+    
+    .button_confirm {
+        margin-left: 1rem;
+    }
+    
+    .button_cancelar:hover{
+        background: rgb(114, 30, 30);
+        border: none;
+        
+    }
+}
+
+@media(max-width: 425px){
+    .container_box {
+        justify-content: center;
+        width: 20rem;   
+        height: 40rem; 
+    }
+
+    .container_form {
+        width: 19rem;
+        height: 36rem;    
+    }
+    .container_form input{
+        border: 1px solid rgb(217, 213, 213);
+        height: 1rem;
+    }
+    
+    .inputs_datos {
+        width: 12rem;
+        margin-top: -2.5rem;
+    }
+
+    hr{
+        margin-top: 4px;
+        width: 25rem;
+    }
+
+    .caja {
+        font-size: 18px;
+    }
+
+    .inputs_domicilio {
+        width: 12rem;
+    }
+
+    .buttons {
+        margin-top: 33rem;
+        justify-content: center;
+        position: absolute;
+    }
+    
+    .button_confirm {
+        margin-left: 1rem;
+    }
+    
+    .button_cancelar:hover{
+        background: rgb(114, 30, 30);
+        border: none;
+        
+    }
+}
+
+@media(max-width: 360px){
+    .container_box {
+        justify-content: center;
+        width: 20rem;   
+        height: 40rem; 
+    }
+
+    .container_form {
+        width: 19rem;
+        height: 36rem;    
+    }
+    .container_form input{
+        border: 1px solid rgb(217, 213, 213);
+        height: 1rem;
+    }
+    
+    .inputs_datos {
+        width: 12rem;
+        margin-top: -2.5rem;
+    }
+
+    hr{
+        margin-top: 4px;
+        width: 25rem;
+    }
+
+    .caja {
+        font-size: 18px;
+    }
+
+    .inputs_domicilio {
+        width: 12rem;
+    }
+
+    .buttons {
+        margin-top: 33rem;
+        justify-content: center;
+        position: absolute;
+    }
+    
+    .button_confirm {
+        margin-left: 1rem;
+    }
+    
+    .button_cancelar:hover{
+        background: rgb(114, 30, 30);
+        border: none;
+        
+    }
+}

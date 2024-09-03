@@ -6,8 +6,6 @@ import Header from '../header/Header';
  import { useState, useEffect } from "react";
  import axios from "axios";
 
-//-----------Archivo JSX PARA API----------------
-
 function TodosTickets() {
 
      const [tickets, setTickets] = useState([]);
@@ -48,6 +46,7 @@ function TodosTickets() {
                             <th scope="col">Fecha de creación</th>
                             <th scope="col">Fecha de actualización</th>
                             <th scope="col">Fecha de cierre</th>
+                            <th scope='col'>-</th>
                         </tr>
                     </thead>
                     <tbody className='text-center'>
@@ -63,6 +62,7 @@ function TodosTickets() {
                             <td >{ticket.fecha_creacion}</td>
                             <td >{ticket.fecha_actualizacion}</td>
                             <td >{ticket.fecha_cierre}</td>
+                            <td><i className='pi pi-user-edit' style={{ fontSize: '20px' }}></i></td>
                         </tr>
                         ))}
                     </tbody>

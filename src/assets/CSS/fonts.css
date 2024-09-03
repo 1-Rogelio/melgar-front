@@ -1,8 +1,10 @@
+/* -----------FUENTE MONDAY SANS----------- */
 @font-face {
     font-family: mondaySans;
     src: url(../fonts/MondaySans.ttf);
 }
 
+/* --------------FUENTE JOST-------------- */
 @font-face {
     font-family: jost;
     src: url(../fonts/static/Jost-Medium.ttf);
@@ -24,6 +26,7 @@ body {
     line-height: 1.5;
 }
 
+/* -----------TEXTO PARA TITULOS------------- */
 .text_title {
     font-size: 55px;
     font-family: mondaySans;
@@ -31,24 +34,27 @@ body {
     margin-right: 15px;
 }
 
+/* -----------TEXTO PARA SUBTITULOS---------- */
 .text_caption {
     font-size: 3rem;
     font-family: mondaySans;
     
 }
 
+/* ------------TEXTO PARA EL NAV------------- */
 .text_nav {
     font-family: jost;
     font-size: 18px;
 
 }
 
+/* -----------TEXTO PARA PARRAFOS------------ */
 .text_paragraphs {
     font-size: 18px;
     font-family: mondaySans;
 }
 
-/* -------POSITIONS-------*/
+/* -----------TEXTOS DE POSICIONES------------*/
 .text_positionLeft {
     left: 50px;
 }
@@ -65,7 +71,7 @@ body {
     text-align:justify;
 }
 
-/* ------TEXT TITLES COLORS------ */
+/* ------TEXTOS DE TITULOS DE COLORES------ */
 .text_title_blue {
     color: var(--blue_color);
 }
@@ -102,8 +108,49 @@ body {
     text-decoration: none;
 }
 
-/* --------TEXT PARAGRAPHS COLOR------- */
-.text_paragraphs_black {
-    color: var(--black_color)
+/* --------TEXTOS DE PARRAFOS COLOR------- */
+.text_paragraphs_blue {
+    color: var(--blue_color);
 }
+
+.text_paragraphs_grey {
+    color: var(--grey_color);
+}
+
+.text_paragraphs_green {
+    color: var(--green_color);
+}
+
+.text_paragraphs_red {
+    color: var(--red_color);
+}
+
+.text_paragraphs_yellow {
+    color: var(--yellow_color);
+}
+
+.text_paragraphs_teal {
+    color: var(--teal_color);
+}
+
+.text_paragraphs_white {
+    color: var(--white_color);
+}
+
+.text_paragraphs_black {
+    color: var(--black_color);
+}
+
+/* ----------FIELES HOME TITULO---------- */
+.fieles_title {
+    display: flex;
+    justify-content: center;
+  }
+/* ---MENSAJES DE NOTIFICACIONES FIELES HOME--- */
+  .message{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    text-align: center;
+  }
 

@@ -32,6 +32,8 @@
     border-radius: 15px;
 } */
 
+
+/* ------------ICONO DE NOTIFICACION------------ */
 .icon_noti {
     /* display: flex;
     justify-content: center; */
@@ -48,10 +50,12 @@
     border-color: green;
 }
 
+/* ------------TAMAÑO DE ICONO------------ */
 .sizeIcon {
     font-size: 1.5rem;
 }
 
+/* ------------ICONO DE EDITAR------------ */
 .icon_edit {
     font-size: 20px;
     color: rgb(21, 116, 163);
@@ -67,3 +71,69 @@
         align-items: flex-start;
     }
 } */
+
+/* ------------ICONO DE REGRESAR (FLECHA)------------ */
+.botonExit {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    font-size: 2rem;
+    color: red;
+  }
+
+  .botonExit:hover {
+    color: green;
+  }
+
+/* ------------ICONO DE EDITAR FOTO DE PERFIL------------ */
+.imagenConfig {
+    height: 6rem;
+    border: 2px solid cadetblue;
+    border-radius: 50%;
+  }
+
+/* ------------ICONO DE OJO HOME FIEL------------ */
+  .eye_fiel {
+    display: flex;
+    flex-direction: row;
+    margin-top: 18px;
+    margin-left: 2rem;
+    font-size: 20px;
+  }
+
+.icon_Eye:hover::before{
+  color: rgb(59, 142, 21);
+}
+
+.icon_Eye{
+    font-size: 1.8rem;
+  }
+
+/* ------------ICONO DE EDITAR MIS FIELES------------ */
+.iconEdit {
+    font-size: 20px;
+    color: rgb(21, 116, 163);
+}
+
+.iconEdit:hover{
+    color: rgb(164, 164, 25);
+}
+.icon_exit {
+     position: absolute;
+     font-size: 1.8rem;
+    left: 12rem;
+    margin-top: -3rem;
+}
+
+.icon_exit:hover{
+    color: green;
+}
+
+@media(max-width: 576px){
+    .icon_exit {
+        position: absolute;
+        font-size: 1.8rem;
+       left: 5rem;
+       margin-top: -3rem;
+   }
+}

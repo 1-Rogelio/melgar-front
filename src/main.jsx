@@ -1,17 +1,19 @@
+//-----------------IMPORTACION DE REACT Y REACT DOM-----------------
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 
-//-------------Styles Bootstrap 5----------------- 
+//----------------------Styles Bootstrap 5--------------------------
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
-// import '../src/index.css';
 
-//-------------Styles PrimeReact y PrimeFlex---------------
+import './assets/CSS/main.css'
+
+//------------------Styles PrimeReact y PrimeFlex-------------------
 import "../node_modules/primereact/resources/themes/lara-light-cyan/theme.css";
 import '../node_modules/primeicons/primeicons.css';
 import "../node_modules/primeflex/primeflex.css";
         
-// -----------Importación de Componentes para RUTAS-----------------
+// -----------Importación de Componentes del Usuario Administrador para RUTAS--------------
 import Home from './components/componentsAdmin/home/Home'
 import CrearTickets from './components/componentsAdmin/crearTickets/CrearTickets'
 import TodosTickets from './components/componentsAdmin/todosTickets/TodosTickets'
@@ -21,15 +23,26 @@ import MisTickets from './components/componentsAdmin/misTickets/MisTickets';
 import MisFieles from './components/componentsAdmin/misFieles/MisFieles';
 import FielesPersonales from './components/componentsAdmin/fielesPersonales/FielesPersonales';
 import Clientes from './components/componentsAdmin/clientes/Clientes';
+import TodosUsuarios from './components/componentsAdmin/todosUsuarios/TodosUsuarios';
 
-// ------------React Router--------------
+// --------------Importación de Componentes del Usuario para RUTAS-------------------------
+import HomeUser from './components/componentsUsers/homeUser/HomeUser';
+
+// -----------Importación de Componentes del Contador para RUTAS-----------------
+import HomeContador from './components/componentsContadores/home/HomeContador';
+import CrearTicketsContador from './components/componentsContadores/crearTickets/CrearTicketsContador';
+
+// -----------Importación de Componentes del Auxiliar para RUTAS-----------------
+import HomeAuxiliar from './components/componentesAuxiliares/homeAuxiliar/HomeAuxiliar';
+
+// ------------------------------React Router------------------------------------
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
-//-------------Importamos el Layout------
+//------------Importamos el Layout para el home Y PrivateRoute para proteger rutas---------
 import LayoutPublic from './layout/LayoutPublic'
-import PrivateRoute from './components/componentsAdmin/privateRoute/PrivateRoute'
+import PrivateRoute from './privateRoute/PrivateRoute'
 
-// ---------------Rutas------------------
+// ------------------------RUTAS---------------------------
 const router = createBrowserRouter([
   {   
     path: '/',
@@ -38,7 +51,6 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <PrivateRoute element={<Home/>} />,
-        // element: <Home/>,
       },
       {
         path: '/tickets',
@@ -72,7 +84,31 @@ const router = createBrowserRouter([
         path: '/clientes',
         element: <PrivateRoute element={<Clientes/>} />,
       },
+      {
+        path: '/usuarios',
+        element: <PrivateRoute element={<TodosUsuarios/>}/>
+      },
+
+      // ------------------RUTAS USER--------------------
+      {
+        path: '/home-user',
+        element: <PrivateRoute element={<HomeUser/>}/>
+      },
       
+      // ------------------RUTAS CONTADOR--------------------
+      {
+        path: '/home-contador',
+        element: <PrivateRoute element={<HomeContador/>} />
+      },
+      {
+        path: '/crear-tickets',
+        element: <PrivateRoute element={<CrearTicketsContador/>}/>
+      },
+      // ------------------RUTAS Auxiliar--------------------
+      {
+        path: '/home-auxiliar',
+        element: <PrivateRoute element= {<HomeAuxiliar/>}/>
+      },
     ]
   },
 ]);

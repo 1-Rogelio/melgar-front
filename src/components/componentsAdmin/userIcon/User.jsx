@@ -13,7 +13,6 @@ import { useNavigate } from 'react-router-dom';
 
 
 function User() {
-
     const [usuario, setUsuario] = useState(null);
     const navigate = useNavigate();
 
@@ -58,16 +57,11 @@ function User() {
                     <i className="pi pi-sign-out exitIcon"></i>
                     <NavLink className="cerrarSesionLink text_d_n m_top text_paragraphs_black" to="/login">
                         <center><p onClick={handleLogout}>Cerrar Sesión</p></center>
-                        {/* <center><button>Cerrar sesión</button></center> */}
                     </NavLink>
                     <i className="pi pi-spin pi-cog configIcon"></i>
                     <NavLink className='configuracionLink text_d_n text_paragraphs_black' to="/configuracion">
                         <center><p>Configuración</p></center>
                     </NavLink>
-                    {/* <NavLink to="/login">
-                        <button>Iniciar Sesión</button>
-                    </NavLink>
-                    <button>Cerrar Sesión</button> */}
                 </div>
             </div> 
         </div>

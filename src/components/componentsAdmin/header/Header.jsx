@@ -1,14 +1,14 @@
 import React, { useState, useEffect  } from 'react';
 import { Sidebar } from 'primereact/sidebar';
 import { Badge } from 'primereact/badge';
-//import axios from 'axios';
-// import { Button } from 'primereact/button';
+import axios from 'axios';
+import { Button } from 'primereact/button';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import '../header/Header.css'
 import '../navbar/Nav.css'
-import '../../../assets/CSS/main.css'
+
 
 import image from '../../../assets/images/logo.png';
 
@@ -19,23 +19,26 @@ import Nav from '../navbar/Nav';
 import { NavLink } from 'react-router-dom';
 
 function Header() {
-  
   const [visibleRight, setVisibleRight] = useState(false);
-  //const [notifications, setNotifications] = useState([]);
+  // const [notificaciones, setNotificaciones] = useState([]);
   
-  //const userId = localStorage.getItem('userId');
+  // useEffect(() => {
+  //   const userId = localStorage.getItem('userId');
+  //   if (userId) {
+  //     fetchNotificaciones(userId);
+  //   }
+  // }, []);
 
-  /*useEffect(() => {
-    if (userId) {
-      const fetchNotifications = async () => {
-        try {
-          const response = axios.get(`http://localhost:3000/api/v1/notificaciones/`)
-        } catch (error) {
-          
-        }
-      }
-    }
-  })*/
+  // const fetchNotificaciones = async (userId) => {
+  //   try {
+  //     console.log('UserId:', userId);
+  //     const response = await axios.get(`http://localhost:3000/api/v1/notificaciones/usuarios/${userId}`);
+  //     //const response = await axios.get('http://localhost:3000/api/v1/notificaciones/usuarios/',userId);
+  //     setNotificaciones(response.data);
+  //   } catch (error) {
+  //     console.error('Error al obtener las notificaciones', error);
+  //   }
+  // };
 
   return (
     <>
@@ -79,26 +82,22 @@ function Header() {
           <div>
             <h1 className='text_positionCenter text_caption'>Notificaciones</h1>
           </div><hr />
-          <div className='text_positionCenter'>
-            <div>
-              <h1 className='title_noti'>Titulo</h1>
-              <p className='text_noti'>Descripcion <i className='pi pi-file-pdf sizeIcon'></i></p>
-            </div><hr />
 
-            <div>
-              <h1 className='title_noti'>Titulo</h1>
-              <p className='text_noti'>Descripcion <i className='pi pi-file-excel sizeIcon'></i></p>
-            </div><hr />
-
-            <div>
-              <h1 className='title_noti'>Titulo</h1>
-              <p className='text_noti'>Descripcion <i className='pi pi-file sizeIcon'></i></p>
-            </div><hr />
-            
-          </div>
+          {/* <div className='text_positionCenter'>
+            {notificaciones.length > 0 ? (
+              notificaciones.map((noti, index) => (
+                <div key={index} className='notificaciones'>
+                  <h1 className='title_noti'>{noti.titulo}</h1>
+                  <p className='text_noti'>{noti.descripcion} <i className='pi pi-file-pdf sizeIcon'></i></p>
+                  <hr />
+                </div>
+              ))
+            ) : (
+              <p>No tienes notificaciones</p>
+            )}
+          </div> */}
         </Sidebar>
       </div>
-        
     </>
   )
 }

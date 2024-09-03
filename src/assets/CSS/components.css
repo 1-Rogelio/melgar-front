@@ -1,0 +1,446 @@
+/* --------------AVATAR--------------- */
+.nombre_user{
+    margin-top: -3.5rem;
+    position: relative;
+    left: 5rem;
+    font-size: 18px;
+  }
+
+  .img_user {
+    margin-top: -1rem;
+  }
+  
+  .text_user{
+    margin-top: 6rem;
+    font-size: 36px;
+  }
+  
+  .icon_avatar:hover{
+    color: green;
+    border-color: green;
+    box-shadow: 10px 5px 5px red;
+  }
+  
+  .cerrarSesionLink:hover{
+    color: crimson;
+    text-decoration: underline;
+  }
+  
+  .configuracionLink:hover{
+    color: green;
+    text-decoration: underline;
+  }
+  
+  .configIcon{
+    position: absolute;
+    font-size: 23px;
+    left: 123px;
+    text-align: justify;
+  }
+  
+  .exitIcon{
+    margin-top: 1px;
+    position: absolute;
+    font-size: 21px;
+    left: 123px;
+    text-align: justify;
+  }
+  
+  .titleConf {
+    font-family: mondaySans;
+    font-size: 2rem;
+  }
+
+  @media(max-width: 360px){
+    .configIcon{
+      position: absolute;
+      font-size: 23px;
+      left: 105px;
+      text-align: justify;
+    }
+    
+    .exitIcon{
+      margin-top: 1px;
+      position: absolute;
+      font-size: 21px;
+      left: 105px;
+      text-align: justify;
+    }
+  }
+
+
+/* ---------TABLA CLIENTES--------- */
+.tablaClientes{
+  width: 70rem;
+}
+/* .container_tableclientes{
+  display: flex;
+  justify-content: center;
+  width: 70rem;
+} */
+
+/* .container_tableclientes table{
+  width: 70rem;
+} */
+
+@media(max-width: 576px){
+  .tablaClientes {
+      justify-content: center;
+      width: 30rem;
+  }
+}
+
+
+/* ---------COMPONENTE EDITAR PERFIL--------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container_perfil {
+  height: 37rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+.container_title_files {
+  font-size: 18px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  text-align: center;
+}
+
+.container_uploadsFile {
+  margin-top: 2rem;
+  border: 1px solid black;
+  border-radius: 25px;
+  width: 90%;
+  max-width: 600px;
+}
+
+
+@media (max-width: 768px) {
+  .container_perfil {
+    height: auto;
+  }
+
+  .imagenConfig {
+    height: 5rem;
+  }
+
+  .container_uploadsFile {
+    width: 95%;
+  }
+}
+
+@media (max-width: 480px) {
+  .container_perfil {
+    padding: 0.5rem;
+  }
+
+  .imagenConfig {
+    height: 4rem;
+  }
+
+  .container_uploadsFile {
+    width: 100%;
+  }
+
+  .botonExit {
+    font-size: 1.5rem;
+  }
+}
+
+/* ------COMPONENTE FIELES HOME---------- */
+.container_tabless {
+  display: flex;
+  margin-top: -2rem;
+  width: 22rem;
+  flex-direction: column;
+}
+
+.linksNombres:hover {
+  text-decoration: underline;
+  color: green;
+}
+
+/* ----------FORMULARIO CLIENTES---------- */
+.container_box {
+  width: 60rem;
+  height: 27rem;
+  border: 2px solid black;
+  border-radius: 12px;
+  background: rgba(71, 120, 131, 0.989);
+}
+
+.container_form {
+  border: 2px solid rgb(69, 177, 236);
+  border-radius: 15px;
+  height: 20rem;
+  width: 55rem;
+  margin-top: 3rem;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  background: rgb(233, 236, 246);
+}
+
+.container_form input{
+  border: 1px solid rgb(217, 213, 213);
+}
+
+.inputs_datos {
+  display: flex;
+  justify-content: space-between;
+  justify-items: center;
+  flex-direction: row;
+  width: 55rem;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  
+}
+
+.inputs_domicilio {
+  display: flex;
+  justify-content: space-between;
+  justify-items: center;
+  flex-direction: row;
+  width: 55rem;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.caja {
+  width: 12rem;
+  text-align: center;
+  margin: 5px;
+}
+
+
+.nombre {
+  order: 1;
+}
+
+.apellido {
+  order: 2;  
+}
+
+.rfc {
+  order: 3; 
+}
+
+.recibe {
+  order: 4;
+}
+
+.fiel {
+  order: 5;
+  flex-grow: 5;
+}
+
+.calle {
+  order: 6;
+}
+
+.numeroExt {
+  order: 7;
+}
+
+.numeroInt {
+  order: 8;
+}
+
+.x {
+  order: 9;
+}
+
+.buttons {
+  margin-top: 20.5rem;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+}
+
+.button_confirm {
+  margin-left: 1rem;
+  background: rgb(207, 236, 197);
+  color: black;
+  border: 2px solid rgb(14, 179, 14);
+  box-shadow: inset 0 0 0 0 #20a904;
+  -webkit-transition: ease-out 0.4s;
+  -moz-transition: ease-out 0.4s;
+  transition: ease-out 0.4s;
+}
+
+.button_cancelar:hover{
+  background: rgb(114, 30, 30);
+  border: none;
+  
+}
+
+.button_confirm:hover {
+  box-shadow: inset 0 0 0 50px #20a904;
+  border: none;
+  color: black;
+}
+
+.iconLock {
+  margin-top: -2rem;
+  right: 1.5rem;
+  font-size: 1.5rem;
+}
+
+@media(max-width: 768px){
+  .container_box {
+      width: 45rem;   
+      height: 40rem; 
+  }
+
+  .container_form {
+      width: 42rem;
+      height: 36rem;    
+  }
+  .container_form input{
+      border: 1px solid rgb(217, 213, 213);
+      height: 1rem;
+  }
+  
+  .inputs_datos {
+      width: 15rem;
+      margin-top: -2.5rem;
+  }
+
+  hr{
+      margin-top: 4px;
+      width: 40rem;
+  }
+
+  .caja {
+      font-size: 19px;
+  }
+
+  .inputs_domicilio {
+      width: 15rem;
+  }
+
+  .buttons {
+      margin-top: 33rem;
+      justify-content: center;
+      position: absolute;
+  }
+  
+  .button_confirm {
+      margin-left: 1rem;
+  }
+  
+  .button_cancelar:hover{
+      background: rgb(114, 30, 30);
+      border: none;
+      
+  }
+}
+
+@media(max-width: 425px){
+  .container_box {
+      justify-content: center;
+      width: 20rem;   
+      height: 40rem; 
+  }
+
+  .container_form {
+      width: 19rem;
+      height: 36rem;    
+  }
+  .container_form input{
+      border: 1px solid rgb(217, 213, 213);
+      height: 1rem;
+  }
+  
+  .inputs_datos {
+      width: 12rem;
+      margin-top: -2.5rem;
+  }
+
+  hr{
+      margin-top: 4px;
+      width: 25rem;
+  }
+
+  .caja {
+      font-size: 18px;
+  }
+
+  .inputs_domicilio {
+      width: 12rem;
+  }
+
+  .buttons {
+      margin-top: 33rem;
+      justify-content: center;
+      position: absolute;
+  }
+  
+  .button_confirm {
+      margin-left: 1rem;
+  }
+  
+  .button_cancelar:hover{
+      background: rgb(114, 30, 30);
+      border: none;
+      
+  }
+}
+
+@media(max-width: 360px){
+  .container_box {
+      justify-content: center;
+      width: 20rem;   
+      height: 40rem; 
+  }
+
+  .container_form {
+      width: 19rem;
+      height: 36rem;    
+  }
+  .container_form input{
+      border: 1px solid rgb(217, 213, 213);
+      height: 1rem;
+  }
+  
+  .inputs_datos {
+      width: 12rem;
+      margin-top: -2.5rem;
+  }
+
+  hr{
+      margin-top: 4px;
+      width: 25rem;
+  }
+
+  .caja {
+      font-size: 18px;
+  }
+
+  .inputs_domicilio {
+      width: 12rem;
+  }
+
+  .buttons {
+      margin-top: 33rem;
+      justify-content: center;
+      position: absolute;
+  }
+  
+  .button_confirm {
+      margin-left: 1rem;
+  }
+  
+  .button_cancelar:hover{
+      background: rgb(114, 30, 30);
+      border: none;
+      
+  }
+}

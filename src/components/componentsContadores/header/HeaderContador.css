@@ -1,0 +1,49 @@
+.componentes_header_contadores{
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    justify-content: center;
+    justify-items: center;
+    background: rgb(184, 236, 255);
+    width: 100vw; /* Asegurar que el ancho siempre sea igual al ancho del viewport */
+    overflow-x: hidden; /* Evitar overflow horizontal */
+}
+
+.iconMelgarTrujillo {
+    position: absolute;
+    width: 6rem;
+    border-radius: 15rem;
+    border: 1px solid rgb(19, 136, 157);
+    margin-top: 0.3rem;
+    left: 9rem;
+}
+
+.titulo_tickets {
+    position: relative;
+    right: 1.5rem;
+}
+
+.container_navContador {
+    display: flex;
+    margin-top: 2.5rem;
+    margin-left: 1rem;
+}
+
+.navbar_contadores a {
+    font-weight: 500;
+    text-decoration: none;
+    margin-left: 40px;
+    text-align: center;
+     /* Asegura que el pseudo-elemento ::before esté posicionado correctamente */
+}
+
+.avatar_contador {
+    display: flex;
+    position: absolute;
+    right: 9rem;
+    width: 4rem;
+    height: 4rem;
+    border: 2px solid black;
+    margin-top: 1.5rem;
+    border-radius: 55px;
+}

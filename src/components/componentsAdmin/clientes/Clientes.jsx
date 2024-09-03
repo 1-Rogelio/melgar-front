@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '../clientes/clientes.css'
 
 import Header from '../header/Header';
 // import Nav from '../navbar/Nav';

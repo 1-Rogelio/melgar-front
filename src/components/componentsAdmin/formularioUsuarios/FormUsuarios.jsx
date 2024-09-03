@@ -1,9 +1,10 @@
 import React, { useRef } from 'react';
 import { Toast } from 'primereact/toast';
 
-import '../formularioClientes/FormClientes.css';
+import '../formularioUsuarios/FormUsuarios.css';
 
-function FormClientes({ onClose }) {
+function FormUsuarios({onClose}) {
+
   const toast = useRef(null);
 
   const save = () => {
@@ -12,53 +13,48 @@ function FormClientes({ onClose }) {
 
   return (
     <>
-      <center>
+
+<center>
       <div className="container_box box_center"> 
-        <h2 className='text_positionCenter c_white'>Editar fiel</h2>     
+        <h2 className='text_positionCenter c_white'>Editar Usuario</h2>     
         <div className='container_form'>
           <form className='m_top'>
             <i className='pi pi-lock p_a iconLock' type='button'></i>
-            <div className="inputs_datos">
+            <div className="inputs_usuarios">
               <div className="form-group caja nombre">
-                <label>Nombre</label>
+                <label>Nombre(s)</label>
                 <input type="text" name="firstName" className="form-control" />
               </div>
-              <div className="form-group caja recibe">
-                <label>Recibe</label>
+              <div className="form-group caja apellido_paterno">
+                <label>Apellido Paterno</label>
                 <input type="text" name="lastName" className="form-control" />
               </div>
-              <div className="form-group caja rfc">
-                <label>RFC</label>
+              <div className="form-group caja apellido_materno">
+                <label>Apellido Materno</label>
                 <input type="text" name="handle" className="form-control" />
               </div>
-              <div className="form-group caja apellido">
-                <label>Apellido</label>
+              <div className="form-group caja email">
+                <label>Email</label>
                 <input type="text" name="firstName" className="form-control" />
               </div>
-              <div className="form-group caja fiel">
-                <label>Fiel</label>
+              <div className="form-group caja contrasena">
+                <label>Contraseña</label>
                 <input type="text" name="lastName" className="form-control" />
               </div>
-            </div><hr />
-
-            <div className="inputs_domicilio">
-              <div className="form-group caja calle">
-                <label>Calle</label>
-                <input type="text" name="handle" className="form-control" />
-              </div>
-              <div className="form-group caja numeroExt">
-                <label>Numero Ext</label>
-                <input type="text" name="firstName" className="form-control" />
-              </div>
-              <div className="form-group caja numeroInt">
-                <label>NumeroInt</label>
+              <div className="form-group caja rol">
+                <label>Rol</label>
                 <input type="text" name="lastName" className="form-control" />
-              </div>
-              <div className="form-group caja x">
-                <label>Calle</label>
-                <input type="text" name="handle" className="form-control" />
-              </div>
             </div>
+            <div className="form-group caja img">
+                <label>Img</label>
+                <input type="text" name="lastName" className="form-control" />
+            </div>
+            <div className="form-group caja activo">
+                <label>Activo</label>
+                <input type="text" name="lastName" className="form-control" />
+            </div>
+            </div>
+            
           </form>
           <div className='box_center buttons'>
             <button className='btn btn-danger button_cancelar' type="button" onClick={onClose}><label className='pi pi-times'></label> Cancelar</button>
@@ -68,8 +64,9 @@ function FormClientes({ onClose }) {
         </div>
       </div>
       </center>
+    
     </>
   );
 }
 
-export default FormClientes;
+export default FormUsuarios;

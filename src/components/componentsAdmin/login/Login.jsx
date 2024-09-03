@@ -70,10 +70,32 @@ function Login() {
         try {
             const response = await axios.post('http://localhost:3000/api/v1/usuarios/login', { email, contrasena});
                 //alert('Inicio de sesión exitoso');
+
+                //Guardar token, id y rol del usuario en el localStorage
                 localStorage.setItem('token', response.data.token);
+                localStorage.setItem('userId', response.data.id_usuarios);
+                localStorage.setItem('userRole', response.data.rol);
                 //console.log(response.data);  
+
+                console.log(response.data.token);
+                console.log(response.data.id_usuarios);
+                console.log(response.data.rol);
+
+                if (response.data.rol == 'admin') {
+                    navigate('/');
+                } else if (response.data.rol == 'user') {
+                    navigate('/home-user');
+                } else if (response.data.rol == 'contador') {
+                    navigate('/home-contador');
+                } else if (response.data.rol == 'auxiliar') {
+                    navigate('/home-auxiliar');
+                } else {
+                    navigate('/login');
+                }
+
                 //Dirigir al home
-                navigate('/');
+                //navigate('/');
+
         } catch (error) {
             alert('Credenciales inválidas');
             console.error(error);

@@ -6,12 +6,12 @@ import { Editor } from "primereact/editor";
 import { Toast } from 'primereact/toast';
 
 
-
 // -------------Styles-----------------
-import '../crearTickets/CrearTickets.css';
+//import '../crearTickets/CrearTickets.css';
 
 // --------importamos Componentes-------
 import Header from '../header/Header';
+// import FormCrearTickets from '../../FormCrearTickets';
 
 function CrearTickets() {
 
@@ -61,10 +61,11 @@ function CrearTickets() {
 const [text, setText] = useState('');
 
 //--------------Text area--------------
-  const [value, setValue] = useState('');
+const [value, setValue] = useState('');
 
 // ------------Inputs Selects---------------
-  const [selectedCountry, setSelectedCountry] = useState(null);
+  
+const [selectedCountry, setSelectedCountry] = useState(null);
   const countries = [
       { name: 'Australia', code: 'AU' },
       { name: 'Brazil', code: 'BR' },
@@ -106,12 +107,15 @@ const [text, setText] = useState('');
      const save = () => {
          toast.current.show({ severity: 'success', summary: 'Guardado', detail: 'Datos Guardados' });
      };
+    
 
   return (
     <>
       <div>
         <Header />
       </div>
+
+      {/* <FormCrearTickets/> */}
         
       <div className='container_all clearfix '>
         {/* -----------Mandamos a llamar los componentes a ocupar-------- */}     
@@ -132,8 +136,8 @@ const [text, setText] = useState('');
                       </div>
                       <div className="destinatario cajas_form">
                           <Dropdown value={selectedCountry} onChange={(e) => setSelectedCountry(e.value)} options={countries} optionLabel="name" placeholder="Destinatario" 
-                          filter valueTemplate={selectedCountryTemplate} itemTemplate={countryOptionTemplate} className="w-full md:w-10rem" />
-                          {/* <label className="icon_arrow pi pi-arrow-right"></label> */}
+                          filter valueTemplate={selectedCountryTemplate} itemTemplate={countryOptionTemplate} className="w-full md:w-10rem" /> 
+                          <label className="icon_arrow pi pi-arrow-right"></label>
                       </div>
                     </div>
 
@@ -167,7 +171,7 @@ const [text, setText] = useState('');
 
                     
 
-                </div>
+                </div> 
 
                 
               
