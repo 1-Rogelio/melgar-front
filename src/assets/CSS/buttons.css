@@ -85,3 +85,104 @@
     background: var(--white_color);
 }
 
+/* ---------FORMULARIO USUARIOS------------ */
+.button_confirm {
+    margin-left: 1rem;
+    background: rgb(207, 236, 197);
+    color: black;
+    border: 2px solid rgb(14, 179, 14);
+    box-shadow: inset 0 0 0 0 #20a904;
+    -webkit-transition: ease-out 0.4s;
+    -moz-transition: ease-out 0.4s;
+    transition: ease-out 0.4s;
+}
+
+.button_cancelar:hover{
+    background: rgb(114, 30, 30);
+    border: none;
+    
+}
+
+.button_confirm:hover {
+    box-shadow: inset 0 0 0 50px #20a904;
+    border: none;
+    color: black;
+}
+
+.buttons {
+    margin-top: 20.5rem;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+}
+
+/* --------------BOTONES MIS FIELES-------------- */
+.boton_Exit{
+    font-size: 1.8rem;
+    left: 12rem;
+}
+
+.boton_Exit:hover{
+    color: green;
+}
+
+/* --------------BOTONES MIS TICKETS-------------- */
+.boton_Exit{
+    position: absolute;
+    margin-top: 2rem;
+    margin-left: -2rem;
+}
+
+@media(max-width: 576px){
+    .boton_Exit {
+        margin-left: -8rem;
+    }
+}
+
+/*-------------BOTON DE SUBIR IMG------------------*/
+.boton_add_img {
+    width: 10rem;
+    height: 2rem;
+    border: none;
+    background: #224b47;
+    cursor: pointer;
+    color: rgb(255, 251, 251);
+    outline: none;
+
+    box-shadow: inset 0 0 0 0 #55c0b3;
+    -webkit-transition: ease-out 0.4s;
+    -moz-transition: ease-out 0.4s;
+    transition: ease-out 0.4s;
+}
+
+.boton_add_img:hover{
+    color: #000000;
+    box-shadow: inset 0 0 0 50px #55c0b3;
+}
+
+/*-------------BOTON RESPONDER TICKET------------------*/
+
+.button_reply_ticket {
+    width: 10rem;
+    height: 2rem;
+    border: none;
+    background: #224b47;
+    cursor: pointer;
+    color: rgb(255, 251, 251);
+    outline: none;
+
+    box-shadow: inset 0 0 0 0 #55c0b3;
+    -webkit-transition: ease-out 0.4s;
+    -moz-transition: ease-out 0.4s;
+    transition: ease-out 0.4s;
+}
+
+.button_reply_ticket:hover {
+    color: #000000;
+    box-shadow: inset 0 0 0 50px #55c0b3;
+}
+
+.button_send {
+    padding: 1rem;
+    margin-top: -2rem;
+}

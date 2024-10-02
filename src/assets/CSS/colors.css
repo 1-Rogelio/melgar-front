@@ -2,13 +2,15 @@
     --blue_color: #007bff;
     --grey_color: #6c757d;
     --green_color: #28a745;
+    --green_x: rgb(28, 173, 28);
     --red_color: #dc3545;
     --yellow_color: #ffc107;
     --teal_color: #17a2b8;
     --white_color: #f8f9fa;
     --black_color: #343a40;
     --nav_color: cadetblue;
-    --form_color: lightskyblue
+    --form_color: lightskyblue;
+    --orange_color: #ff8102;
 }
 
 
@@ -43,6 +45,14 @@
 
 .c_black {
     color: black;
+}
+
+.c_orange {
+    color: var(--orange_color);
+}
+
+.c_green_x {
+    color: var(--green_x);
 }
 
 /* ---------BACKGROUD COLOR----------- */
@@ -85,4 +95,17 @@
 
 .bg_form {
     color: var(--form_color);
+}
+
+.bg_orange {
+    color: var(--orange_color);
+}
+
+/* ----------TEXT SHADOW COLOR----------- */
+.text_sh_green {
+    text-shadow: 1px 1px 12px rgb(13, 91, 22);
+}
+
+.text_sh_orange {
+    text-shadow: 1px 1px 12px #b78206;
 }

@@ -5,31 +5,28 @@ import '../../../index.css';
 import Fondo from '../../../assets/images/fondoContabilidad.jpg';
 
 // Importar componentes
-import HeaderContador from '../header/HeaderContador';
-import TusTicketsContador from '../TusTicketsContador';
-import TusFielesContador from '../TusFielesContador';
+import HeaderAuxiliar from '../header/HeaderAuxiliar';
+import TusTicketsAuxiliar from '../TusTicketsAuxiliar'
 
-function HomeUser() {
+function HomeAuxiliar() {
   return (
     <>
-    
+
     <div className="fondo_main">
 
-      <HeaderContador/>
+      <HeaderAuxiliar/>
 
       <div className='image_container'>
         <img src={Fondo} className='img-fluid image_responsive' alt="" />
       </div>
 
       <div className="tables-container">
-        <TusFielesContador/>
-        <TusTicketsContador/>
+        <TusTicketsAuxiliar/>
       </div>
 
     </div>
-    
     </>
   );
 }
 
-export default HomeUser;
+export default HomeAuxiliar;

@@ -1,74 +1,3 @@
-/* --------------AVATAR--------------- */
-.nombre_user{
-    margin-top: -3.5rem;
-    position: relative;
-    left: 5rem;
-    font-size: 18px;
-  }
-
-  .img_user {
-    margin-top: -1rem;
-  }
-  
-  .text_user{
-    margin-top: 6rem;
-    font-size: 36px;
-  }
-  
-  .icon_avatar:hover{
-    color: green;
-    border-color: green;
-    box-shadow: 10px 5px 5px red;
-  }
-  
-  .cerrarSesionLink:hover{
-    color: crimson;
-    text-decoration: underline;
-  }
-  
-  .configuracionLink:hover{
-    color: green;
-    text-decoration: underline;
-  }
-  
-  .configIcon{
-    position: absolute;
-    font-size: 23px;
-    left: 123px;
-    text-align: justify;
-  }
-  
-  .exitIcon{
-    margin-top: 1px;
-    position: absolute;
-    font-size: 21px;
-    left: 123px;
-    text-align: justify;
-  }
-  
-  .titleConf {
-    font-family: mondaySans;
-    font-size: 2rem;
-  }
-
-  @media(max-width: 360px){
-    .configIcon{
-      position: absolute;
-      font-size: 23px;
-      left: 105px;
-      text-align: justify;
-    }
-    
-    .exitIcon{
-      margin-top: 1px;
-      position: absolute;
-      font-size: 21px;
-      left: 105px;
-      text-align: justify;
-    }
-  }
-
-
 /* ---------TABLA CLIENTES--------- */
 .tablaClientes{
   width: 70rem;
@@ -99,7 +28,7 @@
 }
 
 .container_perfil {
-  height: 37rem;
+  height: 34rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -444,3 +373,624 @@
       
   }
 }
+
+
+/* --------------FORMULARIO USUARIOS---------------- */
+.container_box {
+  width: 60rem;
+  height: 27rem;
+  border: 2px solid black;
+  border-radius: 12px;
+  background: rgba(71, 120, 131, 0.989);
+}
+
+.container_form {
+  border: 2px solid rgb(69, 177, 236);
+  border-radius: 15px;
+  height: 20rem;
+  width: 55rem;
+  margin-top: 3rem;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  background: rgb(233, 236, 246);
+}
+
+.container_form input{
+  border: 1px solid rgb(217, 213, 213);
+}
+
+.inputs_usuarios {
+  display: flex;
+  justify-content: space-between;
+  justify-items: center;
+  flex-direction: row;
+  width: 50rem;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.caja {
+  width: 12rem;
+  text-align: center;
+  margin: 5px;
+}
+
+
+.nombre {
+  order: 1;
+}
+
+.apellido_paterno {
+  order: 2;  
+}
+
+.apellido_materno {
+  order: 3; 
+}
+
+.email {
+  order: 4;
+  flex-grow: 5;
+}
+
+.contrasena {
+  order: 5;
+  flex-grow: 5;
+}
+
+.rol {
+  order: 6;
+}
+
+.img {
+  order: 7;
+  flex-grow: 5;
+}
+
+.activo {
+  order: 8;
+}
+
+/* -----------COMPONENTE HEADER------------ */
+.components_header {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  justify-content: center;
+  justify-items: center;
+  background: rgb(184, 236, 255);
+  width: 100vw; /* Asegurar que el ancho siempre sea igual al ancho del viewport */
+  overflow-x: hidden; /* Evitar overflow horizontal */
+  
+}
+
+.iconMelgar {
+  position: absolute;
+  width: 6rem;
+  border-radius: 15rem;
+  border: 1px solid rgb(19, 136, 157);
+  margin-top: 0.3rem;
+  left: 9rem;
+}
+
+
+/* .icon_userHeader {
+display: flex;
+position: absolute;
+right: 9rem;
+width: 4rem;
+height: 4rem;
+border: 1px solid black;
+margin-top: 1.5rem;
+border-radius: 55px;
+} */
+
+.icon_userHeader {
+  position: relative;
+  left: 10rem;
+  width: 4rem;
+  height: 4rem;
+  border: 1px solid black;
+  margin-top: 1.5rem;
+  border-radius: 50%;
+}
+
+.container_nav {
+  display: flex;
+  margin-top: 2.5rem;
+  margin-left: 1rem;
+}
+
+.navbar a {
+  font-weight: 500;
+  text-decoration: none;
+  margin-left: 40px;
+  text-align: center;
+   /* Asegura que el pseudo-elemento ::before esté posicionado correctamente */
+}
+
+@media (max-width: 1200px) {
+  .components_header {
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
+      justify-items: center;
+  }
+  .iconMelgar{
+      left: 8rem;
+      margin-top: 2rem;
+  }
+  
+  .icon_noti {
+      margin-top: -9rem;
+      right: 14rem;
+  }
+  .icon_userHeader {
+      margin-top: -3rem;
+      right: 8rem;
+  }
+  .container_nav{
+      justify-content: center;
+  }
+}
+
+@media (max-width: 992px) {
+  .components_header {
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
+      justify-items: center;
+  }
+  .iconMelgar{
+      left: 4rem;
+      margin-top: 1.5rem;
+  }
+  
+  .icon_noti {
+      margin-top: -9rem;
+      right: 12rem;
+  }
+  .icon_userHeader {
+      margin-top: -3rem;
+      right: 5rem;
+  }
+  .container_nav{
+      justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .components_header {
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
+      justify-items: center;
+  }
+  .iconMelgar{
+      left: 4rem;
+      margin-top: 1.5rem;
+  }
+  
+  .icon_noti {
+      margin-top: -9rem;
+      right: 12rem;
+  }
+  .icon_userHeader {
+      margin-top: -3rem;
+      right: 5rem;
+  }
+}
+
+/* @media (max-width: 768px) {
+  .components_header {
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
+      justify-items: center;
+  }
+  .iconMelgar{
+      left: 4rem;
+      margin-top: 1.5rem;
+  }
+  
+  .icon_noti {
+      margin-top: -9rem;
+      right: 9rem;
+  }
+  .icon_userHeader {
+      margin-top: -3rem;
+      right: 3rem;
+  }
+} */
+
+@media (max-width: 425px) {
+  .components_header {
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
+      justify-items: center;
+  }
+  .iconMelgar{
+      left: 1rem;
+      margin-top: 1.5rem;
+  }
+  
+  .icon_noti {
+      margin-top: -11rem;
+      right: 6rem;
+  }
+  .icon_userHeader {
+      margin-top: -5.5rem;
+      right: 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .components_header {
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
+      justify-items: center;
+  }
+  .iconMelgar{
+      left: 0.2rem;
+      margin-top: 1.5rem;
+  }
+  
+  .icon_noti {
+      margin-top: -11rem;
+      right: 5rem;
+  }
+  .icon_userHeader {
+      margin-top: -5.5rem;
+      right: 0.4rem;
+  }
+  .container_nav {
+      display: flex;
+      width: 20rem;
+      margin-top: 2rem;
+      margin-left: 1rem;
+  }
+}
+
+/* ----------COMPONENTE TODOS LOS TICKETS TABLA----------- */
+.table_ticketsTodos{
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  flex-direction: column;
+  width: 75rem;
+}
+
+.table_ticketsTodos th, .table_ticketsTodos td {
+  width: 8rem;
+}
+
+.text {
+  font-size: 12px;
+}
+
+@media(max-width: 768px){
+  .container_tableTickets table{
+      justify-content: center;
+      width: 45rem;
+      
+  }
+
+@media(max-width: 425px){
+  .container_tableTickets table{
+      justify-content: center;
+      width: 26rem;
+      font-size: 7px;
+  }
+}
+
+@media(max-width: 360px){
+  .container_tableTickets table{
+      justify-content: center;
+      width: 22rem;
+      font-size: 5px;
+  }
+}
+}
+
+/* ---------------MIS TICKETS CONTAINER TABLA-------------------*/
+.container_tables {
+  display: flex;
+  margin-top: -2rem;
+  width: 22rem;
+  flex-direction: column;
+}
+
+.select_tickets {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row-reverse;
+  margin-top: 2rem;
+}
+
+/* .container_header_misTickets {
+  display: flex;
+  justify-content: end;
+  flex-direction: row;
+  gap: 56rem;
+  margin-top: 1rem;
+} */
+
+.header-contable h2 {
+  color: #2196F3; /* Verde para tipo "Contable" */
+}
+
+.header-tecnico h2 {
+  color: #3f9212; /* Azul para tipo "Técnico" */
+}
+
+.header-otro h2 {
+  color: #ff6a07; /* Amarillo para otros tipos */
+}
+
+.tickets-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 80px;
+  margin-top: -2rem;
+  text-align: center;
+  padding: 2rem;
+}
+
+.ticket-card {
+  border: 2px solid cadetblue;
+  border-radius: 12px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ticket-header {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.ticket-body {
+  margin-bottom: 10px;
+}
+
+.ticket-body div {
+  margin-bottom: 5px;
+}
+
+.ticket-footer {
+  text-align: center;
+}
+
+.ver-mas-btn {
+  padding: 8px 12px;
+  background-color: cadetblue;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.ver-mas-btn:hover {
+  background-color: darkcyan;
+}
+
+.status-circle {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-left: 5px;
+}
+
+.status-circle.active {
+  background-color: green;
+}
+
+.status-circle.inactive {
+  background-color: red;
+}
+
+/* ---------------VER MAS DETALLES DE MIS TICKETS-------------------*/
+
+.main_detalles_ticket {
+  padding: 3rem;
+}
+
+.container_main_ver_mas_tickets {
+  border: 2px solid rgb(13, 148, 157);
+  border-radius: 1rem;
+  width: 75%;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  margin-top: -2rem;
+}
+
+.hrr {
+  border: 1px solid rgb(13, 76, 80);
+  color: rgb(8, 63, 49);
+}
+
+.form_ver {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.container_detalles_ticket {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  flex-direction: column;
+  gap: -1rem;
+  padding: 0.5rem;
+}
+
+.container_detalles_ticket input {
+  text-align: center;
+  border: 1px solid cadetblue;
+}
+
+.container_detalles_ticket textarea {
+  text-align: center;
+  border: 1px solid cadetblue;
+}
+
+.columUno {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  flex-direction: row;
+  gap: 15rem;
+}
+
+.columUno input {
+  height: 1.5rem;
+}
+
+.columDos {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.columDos textarea {
+  width: 46rem;
+}
+
+.width_editor {
+  border: 1px solid cadetblue;
+  border-radius: 6px;
+  font-size: 25px;
+}
+
+.fechass {
+  width: 18rem;
+}
+
+.status_ticket {
+  display: flex;
+  justify-content: end;
+  flex-direction: row;
+  gap: 1rem;
+  margin-top: -1rem;
+}
+
+.input_status_ticket {
+  border: 1px solid teal;
+  border-radius: 6px;
+  width: 8rem;
+  height: 2rem;
+}
+
+.columTres {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  padding: 1rem;
+  /* margin-top: 1rem; */
+}
+
+.editor_responder_ticket {
+  margin: 2rem;
+  margin-top: -1rem;
+  border: 1px solid teal;
+}
+
+.steps {
+  border: none;
+}
+
+/* --------------Form Reenviar Ticket------------- */
+
+.container_respuestas {
+  border: 2px solid rgb(16, 165, 16);
+  border-radius: 1rem;
+  width: 75%;
+  padding: 2rem;
+}
+
+.container_chat_solicitante {
+  display: flex;
+  justify-content: baseline;
+  flex-direction: row;
+  margin-top: 2rem;
+}
+
+.container_chat_destinatario {
+  display: flex;
+  justify-content: end;
+  margin-top: 2rem;
+}
+
+.time {
+  position: relative;
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+
+.caja_chat {
+  border: 1px solid black ;
+  border-radius: 1rem;
+  margin-left: 2rem;
+  width: 23rem;
+}
+
+/* .columTres {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  flex-direction: row;
+  gap: 3rem;
+} */
+
+/* --------------Form Reenviar Ticket------------- */
+
+.container_responder_tickets {
+  padding: 0.5rem;
+}
+
+.flex_buttons_cerrar{
+  display: flex;
+  justify-content: center;
+  margin-left: 3rem;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.tipo_responder {
+  display: flex;
+  justify-content: center;
+}
+
+/* .container_form_responder {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  border: 2px solid black;
+  margin-top: 1rem;
+  width: 75%;
+}
+
+.container_form_responder {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  flex-direction: column;
+}
+
+.columOne {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  flex-direction: row;
+  gap: 2rem;
+} */

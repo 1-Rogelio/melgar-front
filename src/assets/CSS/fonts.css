@@ -38,19 +38,34 @@ body {
 .text_caption {
     font-size: 3rem;
     font-family: mondaySans;
-    
 }
 
 /* ------------TEXTO PARA EL NAV------------- */
 .text_nav {
     font-family: jost;
     font-size: 18px;
-
 }
 
 /* -----------TEXTO PARA PARRAFOS------------ */
 .text_paragraphs {
     font-size: 18px;
+    font-family: mondaySans;
+}
+
+/* -----------TEXTO GLOBAL------------ */
+
+.text_global {
+    font-size: 20px;
+    font-family: mondaySans;
+}
+
+.text_mis_tickets {
+    font-size: 40px;
+    font-family: mondaySans;
+}
+
+.text_global_medium {
+    font-size: 30px;
     font-family: mondaySans;
 }
 
@@ -153,4 +168,102 @@ body {
     justify-items: center;
     text-align: center;
   }
+
+  /* TITULO COMPONENTE AVATAR*/
+  .titleConf {
+    font-family: mondaySans;
+    font-size: 2rem;
+  }
+  
+  .text_user{
+    margin-top: 6rem;
+    font-size: 36px;
+  }
+
+  .nombre_user{
+    margin-top: -3rem;
+    position: relative;
+    left: 15rem;
+    font-size: 18px;
+  }
+
+  .nombre_perfil_home {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  /* TEXTO DE USUARIOS (COMPONENT USER)*/
+  .userText {
+    font-family: mondaySans;
+    font-size: 35px;
+  }
+
+/* TITULO DE HEADER*/  
+.title_noti {
+    font-size: 22px;
+    font-family: mondaySans;
+}
+
+.text_noti {
+    font-family: mondaySans;
+    font-size: 18px;
+}
+
+
+.title_tickets{
+    position: relative;
+    right: 1.5rem;
+}
+
+/* -----------A NAVBAR------------- */
+.navbar a {
+    position: relative;
+    right: 2rem;
+    font-weight: 500;
+    text-decoration: none;
+    margin-left: 30px;
+    text-align: center;
+}
+
+.navbar a::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: blue;
+    transition: .3s;
+}
+
+.navbar a:hover::before {
+    width: 100%;
+}
+
+.navbar a:hover {
+    color: rgb(57, 137, 234);
+}
+
+
+.title_usuarios{
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.text_email {
+    font-size: 12px;
+}
+
+.text_table{
+    font-size: 12px;
+}
+
+/* -----------TITULO TUS TICKETS------------- */
+.tickets_title {
+    display: flex;
+    justify-content: center;
+}
+
+
 

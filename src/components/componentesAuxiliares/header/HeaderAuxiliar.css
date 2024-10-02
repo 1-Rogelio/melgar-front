@@ -1,4 +1,4 @@
-.componentes_header_contadores{
+.componentes_header_auxiliares{
     display: flex;
     flex-direction: row;
     gap: 6px;
@@ -23,13 +23,13 @@
     right: 1.5rem;
 }
 
-.container_navContador {
+.container_navAuxiliar {
     display: flex;
     margin-top: 2.5rem;
     margin-left: 1rem;
 }
 
-.navbar_contadores a {
+.navbar_auxiliares a {
     font-weight: 500;
     text-decoration: none;
     margin-left: 40px;
@@ -37,7 +37,7 @@
      /* Asegura que el pseudo-elemento ::before esté posicionado correctamente */
 }
 
-.avatar_contador {
+.avatar_auxiliar {
   position: relative;
   left: 10rem;
   width: 4rem;

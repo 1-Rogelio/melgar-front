@@ -1,0 +1,27 @@
+.navbar_user a{
+    position: relative;
+    right: 2rem;
+    font-weight: 500;
+    text-decoration: none;
+    margin-left: 30px;
+    text-align: center;
+}
+
+.navbar_user a::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: blue;
+    transition: .3s;
+}
+
+.navbar_user a:hover::before {
+    width: 100%;
+}
+
+.navbar_user a:hover {
+    color: rgb(57, 137, 234);
+}

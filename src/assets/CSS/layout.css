@@ -170,6 +170,11 @@
 .m_top-y {
   margin-top: -3rem;
 }
+
+.m_top_f {
+  margin-top: 1rem;
+}
+
 .m_top {
   margin-top: 3rem;
 }
@@ -226,4 +231,9 @@
 
 .m_bottom_big {
   margin-bottom: 12rem;
+}
+
+/* --------INPUT EDITAR PERFIL--------- */
+.input_url {
+  width: 30rem;
 }

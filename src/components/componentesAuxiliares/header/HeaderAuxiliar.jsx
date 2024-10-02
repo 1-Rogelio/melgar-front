@@ -2,9 +2,8 @@ import {React, useState} from 'react';
 import { Sidebar } from 'primereact/sidebar';
 import { Badge } from 'primereact/badge';
 
-
-import '../header/HeaderContador.css';
-import '../navbar/NavContador.css';
+import '../header/HeaderAuxiliar.css';
+import '../nav/NavAuxiliar.css';
 
 //------------Importamos imagen del logo del avatar-----------------------
 import image from '../../../assets/images/logo.png';
@@ -12,23 +11,21 @@ import image from '../../../assets/images/logo.png';
 //-------------IMPORTAMOS EL NavLink para ocupar el router----------------
 import { NavLink } from 'react-router-dom';
 
-//-------------------IMPORTAMOS COMPONENTES-------------------
-import NavContador from '../navbar/NavContador';
-import AvatarContador from '../AvatarContador';
+//-------------------------IMPORTAMOS COMPONENTES-------------------------
+import NavAuxiliar from '../nav/NavAuxiliar';
+import AvatarAuxiliar from '../AvatarAuxiliar';
 
-function HeaderUser() {
+function HeaderAuxiliar() {
 
-  const [visibleRight, setVisibleRight] = useState(false);
-
-
+    const [visibleRight, setVisibleRight] = useState(false);
 
   return (
     <>
 
-    <div className="componentes_header_contadores">
+    <div className="componentes_header_auxiliares">
 
       <div className="">
-        <NavLink to="/home-contador">
+        <NavLink to="/home-auxiliar">
           <img className='img-fluid iconMelgarTrujillo' src={image} alt="" />
         </NavLink>
       </div>
@@ -37,8 +34,8 @@ function HeaderUser() {
         <h1 className='  text_title text_title_blue'>Tickets</h1>
       </div>
 
-      <div className="navbar_contadores box_nav">
-        <NavContador/>
+      <div className="navbar_auxiliares box_nav">
+        <NavAuxiliar/>
       </div>
 
       <div className="icon_noti">
@@ -47,8 +44,8 @@ function HeaderUser() {
         </i>
       </div>
 
-      <div >
-        <AvatarContador/>
+      <div>
+        <AvatarAuxiliar/>
       </div>
 
     </div>
@@ -79,4 +76,5 @@ function HeaderUser() {
   );
 }
 
-export default HeaderUser;
+export default HeaderAuxiliar;
+

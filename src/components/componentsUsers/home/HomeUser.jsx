@@ -4,10 +4,7 @@ import '../../../index.css';
 
 import Fondo from '../../../assets/images/fondoContabilidad.jpg';
 
-// Importar componentes
-import HeaderContador from '../header/HeaderContador';
-import TusTicketsContador from '../TusTicketsContador';
-import TusFielesContador from '../TusFielesContador';
+import HeaderUser from '../header/HeaderUser';
 
 function HomeUser() {
   return (
@@ -15,19 +12,14 @@ function HomeUser() {
     
     <div className="fondo_main">
 
-      <HeaderContador/>
+      <HeaderUser/>
 
       <div className='image_container'>
         <img src={Fondo} className='img-fluid image_responsive' alt="" />
       </div>
 
-      <div className="tables-container">
-        <TusFielesContador/>
-        <TusTicketsContador/>
-      </div>
-
     </div>
-    
+
     </>
   );
 }

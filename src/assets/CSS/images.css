@@ -37,8 +37,8 @@
 .icon_noti {
     /* display: flex;
     justify-content: center; */
-    position: absolute;
-    right: 16rem;
+    position: relative;
+    right: -6rem;
     margin-top: 2.5rem;
     font-size: 1.8rem;
     color: rgb(67, 28, 6);
@@ -92,6 +92,11 @@
     border-radius: 50%;
   }
 
+  .container_subir_img {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
 /* ------------ICONO DE OJO HOME FIEL------------ */
   .eye_fiel {
     display: flex;
@@ -137,3 +142,106 @@
        margin-top: -3rem;
    }
 }
+
+/* ------------ICONO DE BLOQUEO DE ------------ */
+.iconLock {
+    margin-top: -2rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+}
+
+/* --------------IMG ICON AVATAR--------------- */
+.img_user {
+    margin-top: -1rem;
+    border-radius: 50%;
+    /* border: 2px solid black; */
+  }
+
+/* --------------AVATAR--------------- */
+.icon_avatar:hover{
+    color: green;
+    border-color: green;
+    box-shadow: 10px 5px 5px red;
+  }
+  
+  .cerrarSesionLink:hover{
+    color: crimson;
+    text-decoration: underline;
+  }
+  
+  .configuracionLink:hover{
+    color: green;
+    text-decoration: underline;
+  }
+  
+  .configIcon{
+    position: absolute;
+    font-size: 23px;
+    left: 123px;
+    text-align: justify;
+  }
+  
+  .exitIcon{
+    margin-top: 1px;
+    position: absolute;
+    font-size: 21px;
+    left: 123px;
+    text-align: justify;
+  }
+  
+  
+
+  @media(max-width: 360px){
+    .configIcon{
+      position: absolute;
+      font-size: 23px;
+      left: 105px;
+      text-align: justify;
+    }
+    
+    .exitIcon{
+      margin-top: 1px;
+      position: absolute;
+      font-size: 21px;
+      left: 105px;
+      text-align: justify;
+    }
+  }
+
+  /* ------------ICONOS DE MIS TICKETS------------ */
+  .eye_tickets{
+    display: flex;
+    flex-direction: row;
+    margin-top: 18px;
+    margin-left: 2rem;
+    font-size: 20px;
+}
+.iconEye{
+    font-size: 1.8rem;
+}
+
+/* ------------ICONOS DE MIS TICKETS TABLA------------ */
+.table_mis_tickets_eye {
+  position: relative;
+  margin-top: 15px;
+  left: 13px;
+  font-size: 22px;
+  border: none;
+  color: var(--teal_color);
+}
+
+.table_mis_tickets_eye:hover {
+  color: rgb(73, 167, 15);
+  background-color: transparent;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  transform: scale(1.05);
+}
+
+/* -------------ICONO DE EDITAR USUARIO--------------- */
+.icon_editar_usuario:hover {
+  color: rgb(62, 135, 17);
+  background-color: transparent;
+  box-shadow: 0 8px 15px rgba(2, 2, 2, 0.3);
+  transform: scale(1.05);
+}
+

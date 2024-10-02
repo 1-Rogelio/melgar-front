@@ -1,20 +1,26 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Dropdown } from 'primereact/dropdown';
 import { InputTextarea } from "primereact/inputtextarea";
-import { InputText } from "primereact/inputtext";
+// import { InputText } from "primereact/inputtext";
 import { FloatLabel } from "primereact/floatlabel";
 import { Editor } from "primereact/editor";
 import { Toast } from 'primereact/toast';
-
 import axios from "axios";
 
-import '../components/FormCrearTickets.css';
 
-function FormCrearTickets() {
-  
+// -------------Styles-----------------
+//import '../crearTickets/CrearTickets.css';
+
+// --------importamos Componentes-------
+import Header from './Header';
+// import FormCrearTickets from "../FormCrearTickets";
+// import FormCrearTickets from '../../FormCrearTickets';
+
+function CrearTickets() {
+
+
   const [selectedDestinatario, setSelectedDestinatario] = useState(null);
   const [destinatarios, setDestinatarios] = useState([]);
-
   const [solicitante, setSolicitante] = useState('');
   const [asunto, setAsunto] = useState('');
   const [descripcion, setDescripcion] = useState('');
@@ -43,8 +49,6 @@ function FormCrearTickets() {
   }
 
   const handleSubmit = async () => {
-    console.log('Submit button clicked');
-    
     try {
       await axios.post('http://localhost:3000/api/v1/tickets', {
         solicitante,
@@ -54,31 +58,30 @@ function FormCrearTickets() {
         tipo
       });
       toast.current.show({ severity: 'success', summary: 'Guardado', detail: 'Datos Guardados' });
+      //Limpiar datos al enviar
+      setSolicitante('');
+      setDestinatarios('');
+      setAsunto('');
+      setDescripcion('');
+      setTipo('');
     } catch (error) {
       console.error('Error al guardar ticket');
       toast.current.show({ severity: 'error', summary: 'Error', detail: 'Error al guardar los datos' });
     }
   };
 
-  //---------------Editor----------------
-/*const [text, setText] = useState('');
-
-//--------------Text area--------------
-const [value, setValue] = useState('');
- 
-     const save = () => {
-         toast.current.show({ severity: 'success', summary: 'Guardado', detail: 'Datos Guardados' });
-     };
-*/
   return (
     <>
-    
-    <div className='container_all clearfix '>
+      <div>
+        <Header />
+      </div>
+
+      <div className='container_all clearfix '>
         {/* -----------Mandamos a llamar los componentes a ocupar-------- */}     
 
           {/* ----------------FORMULARIO---------------- */}
           <div className="container_Tickets bg_nav">
-            <form onSubmit={(e) => e.preventDefault}>
+            <form>
                 <div>
                   <h1 className="titulo_Ticket text_positionCenter c_white">Generar tickets</h1><hr />
                 </div>
@@ -87,49 +90,50 @@ const [value, setValue] = useState('');
                     
                     <div className="solicitante_destinatario">
                       <div className="solicitante cajas_form">
-                        <label htmlFor="">Solicitante</label>
-                        {/* <textarea className="form-control text-center input_solicitante" placeholder="Tu nombre" cols={28} rows={1} name="" id=""></textarea> */}
-                        <input type="text" className="form-control text-center input_solicitante" style={{height: '2rem'}} placeholder="Escribe tu nombre" value={solicitante} onChange={(e) => setSolicitante(e.target.value)}/>
-                      {/* <FloatLabel className='input_tickets'>
-                        <InputText style={{background: 'none', border:'none', color:'black'}} id="username" value={value} onChange={(e) => setValue(e.target.value)} />
-                        <label for="username">Solicitante</label>
-                    </FloatLabel> */}
+                        <label className="text_global" htmlFor="">Solicitante</label>
+                        <input type="text" value={solicitante} onChange={(e) => setSolicitante(e.target.value)} className="form-control text-center input_solicitante" style={{height: '2rem'}} placeholder="Escribe tu nombre"/>
                       </div>
                       <div className="destinatario cajas_form">
                           <Dropdown value={selectedDestinatario} onChange={(e) => setSelectedDestinatario(e.value)} options={destinatarios} optionLabel={(option) => `${option.nombre} ${option.apellidoPaterno} ${option.apellidoMaterno}`} optionValue="id_usuarios" placeholder="Selecciona un destinatario" 
-                          filter itemTemplate={destinatarioOptionTemplate} className="w-full md:w-15rem" /> 
-                          {/* <label className="icon_arrow pi pi-arrow-right"></label> */}
+                          filter itemTemplate={destinatarioOptionTemplate} className="w-full md:w-15rem"/> 
                       </div>
                     </div>
 
                     <div className="asunto_descripcion">
                       <div className="asunto cajas_form">
                         <FloatLabel>
-                          <InputTextarea id="asunto" value={asunto} onChange={(e) => setAsunto(e.target.value)} rows={4} cols={80} />
-                          <label htmlFor="asunto" className="pi pi-file"> Asunto</label>
+                          <InputTextarea value={asunto} onChange={(e) => setAsunto(e.target.value)} rows={4} cols={80} />
+                          <label className="pi pi-file"> Asunto</label>
                         </FloatLabel>
                       </div>
                       {/* <div className="descripcion cajas_form">
                         <FloatLabel>
-                          <InputTextarea id="descripcion" value={value} onChange={(e) => setValue(e.target.value)} rows={4} cols={40} />
+                          <InputTextarea id="descripcion" value={descripcion} onChange={(e) => setDescripcion(e.target.value)} rows={4} cols={40} />
                           <label htmlFor="descripcion" className="pi pi-file-edit"> Descripcion</label>
                         </FloatLabel>
                       </div> */}
                     </div>
 
+                    {/* <div className="editor cajas_form">
+                        <Editor value={descripcion} onTextChange={(e) => setDescripcion(e.textValue)} style={{ height: '200px' }}/>
+                    </div> */}
                     <div className="editor cajas_form">
-                        <Editor value={descripcion} onTextChange={(e) => setDescripcion(e.htmlValue)} style={{ height: '200px' }}/>
+                      <Editor
+                        value={descripcion}
+                        onTextChange={(e) => setDescripcion(e.htmlValue)}
+                        style={{ height: '200px' }}
+                      />
                     </div>
 
                     <center>
                       <div className="tipo cajas_form">
                         <label className="tipo_text" htmlFor="">Tipo</label>
                         {/* <input className="" value={tipo} onChange={(e) => setTipo(e.target.value)} type="text" /> */}
-                        <select className="form-select" value={tipo} onChange={(e) => setTipo(e.target.value)}>
+                        <select value={tipo} onChange={(e) => setTipo(e.target.value)} className="form-select">
                           <option value="" className='text-center'>--</option>
-                          <option value="1">Tipo 1</option>
-                          <option value="2">Tipo 2</option>
-                          <option value="3">Tipo 3</option>
+                          <option value="Contable">Contable</option>
+                          <option value="Tecnico">Tecnico</option>
+                          <option value="Otro">Otro</option>
                         </select>
                         <button type="button" className="boton_enviar col-md-5 offset-md-4 btn bg_green" data-bs-toggle="modal"
                 data-bs-target="#exampleModal"><label className='pi pi-check'></label>Enviar</button>
@@ -165,7 +169,7 @@ const [value, setValue] = useState('');
                     <div className="modal-footer">
                       <button type="button" className="btn btn-danger" data-bs-dismiss="modal"><label className='pi pi-times'></label> Cancelar</button>
                       <Toast ref={toast}></Toast>
-                      <button type="button" className="btn btn-success" icon="pi pi-check" onClick={handleSubmit}><label className='pi pi-check'></label> Sí, enviar</button>
+                      <button type="button" onClick={handleSubmit} className="btn btn-success" icon="pi pi-check"><label className='pi pi-check'></label> Sí, enviar</button>
                     </div>
                   </div>
                 </div>
@@ -173,9 +177,11 @@ const [value, setValue] = useState('');
             </form>
           </div>
       </div>
-
+        
+      
     </>
   );
 }
 
-export default FormCrearTickets;
+export default CrearTickets;
+

@@ -13,27 +13,41 @@ import "../node_modules/primereact/resources/themes/lara-light-cyan/theme.css";
 import '../node_modules/primeicons/primeicons.css';
 import "../node_modules/primeflex/primeflex.css";
         
-// -----------Importación de Componentes del Usuario Administrador para RUTAS--------------
-import Home from './components/componentsAdmin/home/Home'
-import CrearTickets from './components/componentsAdmin/crearTickets/CrearTickets'
-import TodosTickets from './components/componentsAdmin/todosTickets/TodosTickets'
-import Login from './components/componentsAdmin/login/Login'
-import ConfigUser from './components/componentsAdmin/configuracionUser/ConfigUser'
-import MisTickets from './components/componentsAdmin/misTickets/MisTickets';
-import MisFieles from './components/componentsAdmin/misFieles/MisFieles';
-import FielesPersonales from './components/componentsAdmin/fielesPersonales/FielesPersonales';
-import Clientes from './components/componentsAdmin/clientes/Clientes';
-import TodosUsuarios from './components/componentsAdmin/todosUsuarios/TodosUsuarios';
+// -----------Componentes del Usuario ADMINISTRADOR para RUTAS--------------
+import Home from './components/admin/home/Home'
+import CrearTickets from './components/admin/CrearTickets'
+import TodosTickets from './components/admin/todosTickets/TodosTickets'
+import Login from './components/admin/login/Login'
+import ConfigUser from './components/admin/ConfigUser'
+import MisTickets from './components/admin/MisTickets';
+import MisFieles from './components/admin/MisFieles';
+import FielesPersonales from './components/admin/FielesPersonales';
+import Clientes from './components/admin/Clientes';
+import TodosUsuarios from './components/admin/TodosUsuarios';
+import VerTickets from './components/admin/VerTickets';
+import ConvertirImg from './components/admin/ConvertirImg';
+import Form_Reenviar from './components/admin/Form_Reenviar';
 
 // --------------Importación de Componentes del Usuario para RUTAS-------------------------
-import HomeUser from './components/componentsUsers/homeUser/HomeUser';
+import HomeUser from './components/componentsUsers/home/HomeUser';
 
 // -----------Importación de Componentes del Contador para RUTAS-----------------
 import HomeContador from './components/componentsContadores/home/HomeContador';
-import CrearTicketsContador from './components/componentsContadores/crearTickets/CrearTicketsContador';
+import CrearTicketsContador from './components/componentsContadores/CrearTicketsContador';
+import ClientesContadores from './components/componentsContadores/ClientesContadores';
+import ConfigContador from './components/componentsContadores/ConfigContador';
+import MisFielesContador from './components/componentsContadores/MisFielesContador';
+import MisTicketsContador from './components/componentsContadores/MisTicketsContador';
+import ConvertirImgContador from './components/componentsContadores/ConvertirImgContador';
+import VerTicketsContador from './components/componentsContadores/VerTicketsContador';
 
 // -----------Importación de Componentes del Auxiliar para RUTAS-----------------
-import HomeAuxiliar from './components/componentesAuxiliares/homeAuxiliar/HomeAuxiliar';
+import HomeAuxiliar from './components/componentesAuxiliares/home/HomeAuxiliar';
+import CrearTicketsAuxiliar from './components/componentesAuxiliares/CrearTicketsAuxiliar';
+import ConfigAuxiliar from './components/componentesAuxiliares/ConfigAuxiliar';
+import MisTicketsAuxiliar from './components/componentesAuxiliares/MisTicketsAuxiliar';
+import ConvertirImgAuxiliar from './components/componentesAuxiliares/ConvertirImgAuxiliar';
+import VerTicketsAuxiliar from './components/componentesAuxiliares/VerTicketsAuxiliar';
 
 // ------------------------------React Router------------------------------------
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
@@ -42,7 +56,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import LayoutPublic from './layout/LayoutPublic'
 import PrivateRoute from './privateRoute/PrivateRoute'
 
-// ------------------------RUTAS---------------------------
+// ------------------------RUTAS ADMINISTRADOR---------------------------
 const router = createBrowserRouter([
   {   
     path: '/',
@@ -88,6 +102,18 @@ const router = createBrowserRouter([
         path: '/usuarios',
         element: <PrivateRoute element={<TodosUsuarios/>}/>
       },
+      {
+        path: '/ver-mas-tickets/:ticketId',
+        element: <PrivateRoute element={<VerTickets/>}/>
+      },
+      {
+        path: '/convertir-imagen',
+        element: <PrivateRoute element={<ConvertirImg/>}/>
+      },
+      {
+        path: '/responder-ticket',
+        element: <PrivateRoute element={<Form_Reenviar/>}/>
+      },
 
       // ------------------RUTAS USER--------------------
       {
@@ -104,10 +130,54 @@ const router = createBrowserRouter([
         path: '/crear-tickets',
         element: <PrivateRoute element={<CrearTicketsContador/>}/>
       },
-      // ------------------RUTAS Auxiliar--------------------
+      {
+        path: '/clientes-contadores',
+        element: <PrivateRoute element={<ClientesContadores/>}/>
+      },
+      {
+        path: '/configuracion-contador',
+        element: <PrivateRoute element={<ConfigContador/>}/>
+      },
+      {
+        path: '/mis-fieles-contador',
+        element: <PrivateRoute element={<MisFielesContador/>}/>
+      },
+      {
+        path: '/mis-tickets-contador',
+        element: <PrivateRoute element={<MisTicketsContador/>}/>
+      },
+      {
+        path: '/convertir-imagen-contador',
+        element: <PrivateRoute element={<ConvertirImgContador/>}/>
+      },
+      {
+        path: '/ver-mas-tickets-contador/:ticketId',
+        element: <PrivateRoute element={<VerTicketsContador/>}/>
+      },
+      // ------------------RUTAS AUXILIAR--------------------
       {
         path: '/home-auxiliar',
         element: <PrivateRoute element= {<HomeAuxiliar/>}/>
+      },
+      {
+        path: '/crear-tickets-auxiliar',
+        element: <PrivateRoute element= {<CrearTicketsAuxiliar/>}/>
+      },
+      {
+        path: '/configuracion-auxiliar',
+        element: <PrivateRoute element={<ConfigAuxiliar/>}/>
+      },
+      {
+        path: '/mis-tickets-auxiliar',
+        element: <PrivateRoute element={<MisTicketsAuxiliar/>}/>
+      },
+      {
+        path: '/convertir-imagen-auxiliar',
+        element: <PrivateRoute element={<ConvertirImgAuxiliar/>}/>
+      },
+      {
+        path: '/ver-mas-tickets-auxiliar/:ticketId',
+        element: <PrivateRoute element={<VerTicketsAuxiliar/>}/>
       },
     ]
   },
