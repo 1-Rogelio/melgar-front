@@ -21,10 +21,10 @@ function User() {
 
     useEffect(() => {
         //Recupera la imagen del usuario
-        // const imgUrl = sessionStorage.getItem('img');
-        // if (imgUrl) {
-        //     setImageUrl(imgUrl)
-        // }
+        const imgUrl = sessionStorage.getItem('img');
+        if (imgUrl) {
+            setImageUrl(imgUrl)
+        }
 
         const token = sessionStorage.getItem('token');
          // Si el token está presente, se procede

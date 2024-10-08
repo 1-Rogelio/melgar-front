@@ -34,6 +34,11 @@ body {
     margin-right: 15px;
 }
 
+.text_title_global {
+    font-size: 35px;
+    font-family: mondaySans;
+}
+
 /* -----------TEXTO PARA SUBTITULOS---------- */
 .text_caption {
     font-size: 3rem;
