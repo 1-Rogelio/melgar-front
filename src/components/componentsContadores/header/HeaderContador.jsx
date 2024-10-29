@@ -1,7 +1,6 @@
-import {React, useState} from 'react';
+import {React, useState, useEffect} from 'react';
 import { Sidebar } from 'primereact/sidebar';
 import { Badge } from 'primereact/badge';
-
 
 import '../header/HeaderContador.css';
 import '../navbar/NavContador.css';
@@ -15,12 +14,11 @@ import { NavLink } from 'react-router-dom';
 //-------------------IMPORTAMOS COMPONENTES-------------------
 import NavContador from '../navbar/NavContador';
 import AvatarContador from '../AvatarContador';
+import Notificaciones from '../../admin/Notificaciones';
 
 function HeaderUser() {
 
   const [visibleRight, setVisibleRight] = useState(false);
-
-
 
   return (
     <>
@@ -41,10 +39,10 @@ function HeaderUser() {
         <NavContador/>
       </div>
 
-      <div className="icon_noti">
-        <i className="pi pi-bell p-overlay-badge" style={{ fontSize: '1.8rem' }} aria-controls="offcanvasRight" type='button'  onClick={() => setVisibleRight(true)}>
-          <Badge severity="danger"></Badge>
-        </i>
+      <div className='icon_noti'>
+            <i className="pi pi-bell p-overlay-badge" style={{ fontSize: '1.8rem' }} aria-controls="offcanvasRight" type='button'  onClick={() => setVisibleRight(true)}>
+            <Badge severity="danger"></Badge>
+            </i>
       </div>
 
       <div >
@@ -55,23 +53,9 @@ function HeaderUser() {
 
     <div className="card">
         <Sidebar visible={visibleRight} position="right" onHide={() => setVisibleRight(false)}>
-          <div>
-            <h1 className='text_positionCenter text_caption'>Notificaciones</h1>
-          </div><hr />
-
-          {/* <div className='text_positionCenter'>
-            {notificaciones.length > 0 ? (
-              notificaciones.map((noti, index) => (
-                <div key={index} className='notificaciones'>
-                  <h1 className='title_noti'>{noti.titulo}</h1>
-                  <p className='text_noti'>{noti.descripcion} <i className='pi pi-file-pdf sizeIcon'></i></p>
-                  <hr />
-                </div>
-              ))
-            ) : (
-              <p>No tienes notificaciones</p>
-            )}
-          </div> */}
+          <div className='text_positionCenter container_notificaciones'>
+                <Notificaciones/>
+          </div>
         </Sidebar>
       </div>
 

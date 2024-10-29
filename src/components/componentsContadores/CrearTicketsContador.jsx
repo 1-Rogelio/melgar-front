@@ -13,6 +13,7 @@ import FormCrearTickets from '../FormCrearTickets';
 function CrearTickets() {
 
   const [selectedDestinatario, setSelectedDestinatario] = useState(null);
+  const [apellidoPaterno, setApellidoPaterno] = useState('');
   const [destinatarios, setDestinatarios] = useState([]);
   const [solicitante, setSolicitante] = useState('');
   const [asunto, setAsunto] = useState('');
@@ -20,6 +21,9 @@ function CrearTickets() {
   const [tipo, setTipo] = useState('');
   const toast = useRef(null);
 
+  const [solicitanteId, setSolicitanteId] = useState(null);
+
+  // Obtener destinatarios
   const fetchDestinatarios = async () => {
     try {
       const response = await axios.get('http://localhost:3000/api/v1/usuarios/buscador');
@@ -29,7 +33,24 @@ function CrearTickets() {
     }
   };
 
+  // Obtener solicitante de sessionStorage al cargar el componente
   useEffect(() => {
+    const nombreUsuario = sessionStorage.getItem('nombre'); 
+    const apellidoPaternoUser = sessionStorage.getItem('apellidoPaterno');
+    const idUsuario = sessionStorage.getItem('userId');
+
+    if (nombreUsuario) {
+      setSolicitante(nombreUsuario);
+    }
+
+    if (apellidoPaternoUser) {
+      setApellidoPaterno(apellidoPaternoUser)
+    }
+
+    if (idUsuario) {
+      setSolicitanteId(idUsuario); // Guarda el id del solicitante
+    }
+
     fetchDestinatarios();
   }, []);
 
@@ -44,15 +65,15 @@ function CrearTickets() {
   const handleSubmit = async () => {
     try {
       await axios.post('http://localhost:3000/api/v1/tickets', {
-        solicitante,
+        solicitante: solicitanteId ,
         destinatario: selectedDestinatario ? selectedDestinatario.id_usuarios : null,
         asunto,
         descripcion,
         tipo
       });
       toast.current.show({ severity: 'success', summary: 'Guardado', detail: 'Datos Guardados' });
-      //Limpiar datos al enviar
-      setSolicitante('');
+      // Limpiar datos al enviar
+      setSelectedDestinatario('')
       setDestinatarios('');
       setAsunto('');
       setDescripcion('');
@@ -85,7 +106,7 @@ function CrearTickets() {
                     <div className="solicitante_destinatario">
                       <div className="solicitante cajas_form">
                         <label className="text_global" htmlFor="">Solicitante</label>
-                        <input type="text" value={solicitante} onChange={(e) => setSolicitante(e.target.value)} className="form-control text-center input_solicitante" style={{height: '2rem'}} placeholder="Escribe tu nombre"/>
+                        <input type="text" value={`${solicitante} ${apellidoPaterno}`} onChange={(e) => setSolicitante(e.target.value)} className="form-control text-center input_solicitante" style={{height: '2rem'}} readOnly/>
                       </div>
                       <div className="destinatario cajas_form">
                           <Dropdown value={selectedDestinatario} onChange={(e) => setSelectedDestinatario(e.value)} options={destinatarios} optionLabel={(option) => `${option.nombre} ${option.apellidoPaterno} ${option.apellidoMaterno}`} optionValue="id_usuarios" placeholder="Selecciona un destinatario" 

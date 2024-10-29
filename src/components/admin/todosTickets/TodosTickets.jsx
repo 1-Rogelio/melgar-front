@@ -20,6 +20,10 @@ function TodosTickets() {
              });
      }, []); // El array vacío asegura que el efecto solo se ejecute una vez después del primer renderizado
 
+     const getStatusClass = (activo) => {
+        return activo === 1 ? 'status-circle active' : 'status-circle inactive';
+    };
+
     return(
     <>
         <div className='container_todosTickets'>
@@ -43,9 +47,9 @@ function TodosTickets() {
                             <th scope="col">Asunto</th>
                             <th scope="col">Descripción</th>
                             <th scope="col">Tipo</th>
-                            <th scope="col">Fecha de creación</th>
-                            <th scope="col">Fecha de actualización</th>
-                            <th scope="col">Fecha de cierre</th>
+                            <th scope="col">Fecha creación</th>
+                            <th scope="col">Fecha actualiza</th>
+                            <th scope="col">Fecha cierre</th>
                             <th scope='col'>Activo</th>
                         </tr>
                     </thead>
@@ -62,7 +66,7 @@ function TodosTickets() {
                             <td >{ticket.fecha_creacion.length > 10 ? ticket.fecha_creacion.slice(0, 10) + '...' : ticket.fecha_actualizacion}</td>
                             <td >{ticket.fecha_actualizacion}</td>
                             <td >{ticket.fecha_cierre}</td>
-                            <td></td>
+                            <td><span className={getStatusClass(ticket.activo)}></span></td>
                         </tr>
                         ))}
                     </tbody>

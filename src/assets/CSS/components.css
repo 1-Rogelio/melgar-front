@@ -28,7 +28,6 @@
 }
 
 .container_perfil {
-  height: 34rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -98,7 +97,7 @@
 /* ----------FORMULARIO CLIENTES---------- */
 .container_box {
   width: 60rem;
-  height: 27rem;
+  height: 23rem;
   border: 2px solid black;
   border-radius: 12px;
   background: rgba(71, 120, 131, 0.989);
@@ -376,81 +375,25 @@
 
 
 /* --------------FORMULARIO USUARIOS---------------- */
-.container_box {
-  width: 60rem;
-  height: 27rem;
-  border: 2px solid black;
-  border-radius: 12px;
-  background: rgba(71, 120, 131, 0.989);
-}
 
-.container_form {
-  border: 2px solid rgb(69, 177, 236);
-  border-radius: 15px;
-  height: 20rem;
-  width: 55rem;
-  margin-top: 3rem;
-  position: absolute;
+.form_editar_usuarios {
   display: flex;
   justify-content: center;
-  justify-items: center;
-  background: rgb(233, 236, 246);
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
 }
 
-.container_form input{
-  border: 1px solid rgb(217, 213, 213);
-}
-
-.inputs_usuarios {
+.buttons_edit_users {
   display: flex;
-  justify-content: space-between;
-  justify-items: center;
+  justify-content: center;
   flex-direction: row;
-  width: 50rem;
-  margin: 0 auto;
-  flex-wrap: wrap;
+  gap: 1rem;
 }
 
-.caja {
-  width: 12rem;
-  text-align: center;
-  margin: 5px;
-}
-
-
-.nombre {
-  order: 1;
-}
-
-.apellido_paterno {
-  order: 2;  
-}
-
-.apellido_materno {
-  order: 3; 
-}
-
-.email {
-  order: 4;
-  flex-grow: 5;
-}
-
-.contrasena {
-  order: 5;
-  flex-grow: 5;
-}
-
-.rol {
-  order: 6;
-}
-
-.img {
-  order: 7;
-  flex-grow: 5;
-}
-
-.activo {
-  order: 8;
+.modal_editar_usuario {
+  text-align: start;
+  
 }
 
 /* -----------COMPONENTE HEADER------------ */
@@ -655,6 +598,24 @@ border-radius: 55px;
   }
 }
 
+/* ----------COMPONENTE TODOS LOS USUARIOS TABLA----------- */
+
+.table_usuariosTodos {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  flex-direction: column;
+  width: 75rem;
+}
+
+.table_usuariosTodos th, .table_usuariosTodos td {
+  width: 9rem;
+}
+
+.text_table_usuarios {
+  font-size: 14px;
+}
+
 /* ----------COMPONENTE TODOS LOS TICKETS TABLA----------- */
 .table_ticketsTodos{
   display: flex;
@@ -668,8 +629,12 @@ border-radius: 55px;
   width: 8rem;
 }
 
+/* .text_table {
+  font-size: 25px;
+} */
+
 .text {
-  font-size: 12px;
+  font-size: 14px;
 }
 
 @media(max-width: 768px){
@@ -799,22 +764,31 @@ border-radius: 55px;
 
 /* ---------------VER MAS DETALLES DE MIS TICKETS-------------------*/
 
+.title_detalle_ticket {
+  display: flex;
+  justify-content: start;
+  flex-direction: row;
+  margin-left: 2rem;
+}
+
 .main_detalles_ticket {
   padding: 3rem;
 }
 
 .container_main_ver_mas_tickets {
-  border: 2px solid rgb(13, 148, 157);
   border-radius: 1rem;
-  width: 75%;
+  width: 65%;
   display: flex;
   justify-content: center;
   justify-items: center;
-  margin-top: -2rem;
+  margin-top: -1rem;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 .hrr {
-  border: 1px solid rgb(13, 76, 80);
+  border: 1px solid rgb(105, 106, 106);
   color: rgb(8, 63, 49);
 }
 
@@ -830,6 +804,9 @@ border-radius: 55px;
   flex-direction: column;
   gap: -1rem;
   padding: 0.5rem;
+  /* border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
 }
 
 .container_detalles_ticket input {
@@ -847,7 +824,7 @@ border-radius: 55px;
   justify-content: center;
   justify-items: center;
   flex-direction: row;
-  gap: 15rem;
+  gap: 13rem;
 }
 
 .columUno input {
@@ -891,18 +868,11 @@ border-radius: 55px;
   height: 2rem;
 }
 
-.columTres {
-  display: flex;
-  justify-content: center;
-  justify-items: center;
-  padding: 1rem;
-  /* margin-top: 1rem; */
-}
-
 .editor_responder_ticket {
   margin: 2rem;
   margin-top: -1rem;
-  border: 1px solid teal;
+  border: 1px solid rgb(123, 126, 126);
+  border-radius: 6px;
 }
 
 .steps {
@@ -912,21 +882,22 @@ border-radius: 55px;
 /* --------------Chat tickets------------- */
 
 .container_respuestas {
-  display: flex;
-  flex-direction: column;
-  border: 2px solid rgb(16, 165, 16);
-  border-radius: 1rem;
-  width: 75%;
-  padding: 2rem;
-  background-color: #f9f9f9;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  max-height: 30rem;
+  overflow-y: auto;
 }
 
 .container_chat_solicitante {
   display: flex;
   justify-content: flex-start;
   flex-direction: row;
-  margin-top: 2rem;
+  margin-top: 1rem;
   align-items: flex-start;
 }
 
@@ -934,7 +905,7 @@ border-radius: 55px;
   display: flex;
   justify-content: flex-end;
   flex-direction: row;
-  margin-top: 2rem;
+  margin-top: 1rem;
   align-items: flex-start;
 }
 
@@ -945,16 +916,29 @@ border-radius: 55px;
 }
 
 .caja_chat {
-  background-color: #d4ecd4; /* Light green for solicitante */
-  border-radius: 8px;
+  background-color: #b8d9b8; /* Light green for solicitante */
+  border-radius: 2rem;
   padding: 1rem;
-  max-width: 60%;
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
+  max-width: 80%;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
   word-wrap: break-word;
+  border-radius: 0px 30px 30px 30px;
+  -moz-border-radius: 0px 30px 30px 30px;
+  -webkit-border-radius: 0px 30px 30px 30px;
+  border: 0px solid #000000;
 }
 
 .container_chat_destinatario .caja_chat {
-  background-color: #cfddf6; /* Light blue for destinatario */
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  border-radius: 30px 0px 30px 30px;
+  -moz-border-radius: 30px 0px 30px 30px;
+  -webkit-border-radius: 30px 0px 30px 30px;
+  border: 0px solid #000000;
+  background-color: #c1d2e9; /* Light blue for destinatario */
 }
 
 .img_chat {
@@ -964,11 +948,25 @@ border-radius: 55px;
   display: flex;
 }
 
-.message_content {
+.message_content_solicitante {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  justify-items: center;
+  align-items: center;
+  max-width: 80%;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  
+}
+
+.message_content_destinatario {
+  display: flex;
+  align-items: center;
+  max-width: 80%;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  flex-direction: row-reverse;
+  gap: 10px;
 }
 
 .container_datos {
@@ -977,6 +975,29 @@ border-radius: 55px;
   flex-direction: column;
   margin-right: 1rem;
   gap: 5px;
+}
+
+.box_respuesta {
+  margin-top: 1rem;
+  width: 50rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+  gap: 1rem;
+}
+
+/* Quitar barra de herramientas al editor */
+.custom-editor .p-editor-toolbar {
+  display: none;
+}
+
+.caja_boton_cerrar_ticket {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+
 }
 
 /* .message_header {
@@ -1077,3 +1098,52 @@ border-radius: 55px;
   flex-direction: row;
   gap: 2rem;
 } */
+
+
+/* Notificaciones */
+.container_notificaciones {
+  font-size: 15px;
+  padding: 4px;
+}
+
+.notificacion {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 2rem;
+  cursor: pointer;
+  height: 7rem;
+}
+
+/* .notificacion.leida {
+  background-color: #f0f0f0;
+  color: #999;
+}
+
+.notificacion.nueva {
+  background-color: #d9f7d9;
+  color: #333;
+} */
+
+.notificacion_usuario {
+  display: flex;
+  justify-content: start;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.avatar_notificacion {
+  width: 45px;
+  border-radius: 50%;
+}
+
+.mensaje_notificacion {
+  margin-top: 4px;
+  font-size: 12px;
+}
+
+.container_body_notificaciones {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}

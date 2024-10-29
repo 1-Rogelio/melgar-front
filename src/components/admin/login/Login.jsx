@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Password } from 'primereact/password';
 import { InputText } from "primereact/inputtext";
 import { FloatLabel } from 'primereact/floatlabel';
 import { Button } from 'primereact/button';
 import { useNavigate } from 'react-router-dom';
+import { Toast } from 'primereact/toast';
+import Swal from 'sweetalert2'; // Importa SweetAlert2
 import axios from 'axios'
 // import { Message } from 'primereact/message';
 
@@ -21,6 +23,7 @@ function Login() {
 
     const [email, setEmail] = useState('');
     const [contrasena, setContrasena] = useState('');
+    const toast = useRef(null);
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
@@ -79,32 +82,45 @@ function Login() {
                 sessionStorage.setItem('token', response.data.token);
                 sessionStorage.setItem('userId', response.data.id_usuarios);
                 sessionStorage.setItem('userRole', response.data.rol);
+                sessionStorage.setItem('nombre', response.data.nombre);
+                sessionStorage.setItem('apellidoPaterno', response.data.apellidoPaterno);
                 // sessionStorage.setItem('img', response.data.img || userImg);
                 //console.log(response.data);  
 
                 // console.log(response.data.token);
                 console.log(response.data.id_usuarios);
                 console.log(response.data.rol);
+                console.log(response.data.nombre);
+                console.log(response.data.apellidoPaterno);
                 // console.log(response.data.img);
                 
-
-                if (response.data.rol == 'admin') {
-                    navigate('/');
-                } else if (response.data.rol == 'user') {
-                    navigate('/home-user');
-                } else if (response.data.rol == 'contador') {
-                    navigate('/home-contador');
-                } else if (response.data.rol == 'auxiliar') {
-                    navigate('/home-auxiliar');
-                } else {
-                    navigate('/login');
-                }
+                Swal.fire({
+                    title: 'Bienvenido!',
+                    text: `Hola ${response.data.nombre}, has iniciado sesión como ${response.data.rol}`,
+                    icon: 'success',
+                    confirmButtonText: 'Continuar'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        // Redirigir según el rol del usuario
+                        if (response.data.rol === 'admin') {
+                            navigate('/');
+                        } else if (response.data.rol === 'user') {
+                            navigate('/home-user');
+                        } else if (response.data.rol === 'contador') {
+                            navigate('/home-contador');
+                        } else if (response.data.rol === 'auxiliar') {
+                            navigate('/home-auxiliar');
+                        } else {
+                            navigate('/login');
+                        }
+                    }
+                });
 
                 //Dirigir al home
                 //navigate('/');
 
         } catch (error) {
-            alert('Credenciales inválidas');
+            toast.current.show({ severity: 'error', summary: 'Error', detail: 'Credenciales inválidas', life: 3000 });
             console.error(error);
         } 
     };
@@ -122,7 +138,7 @@ function Login() {
                 email,
                 contrasena
             });
-            alert('Usuario registrado exitosamente');
+            toast.current.show({severity:'success', summary: 'Success', detail:'Usuario Registrado', life: 3000});
             //Limpiar inpust al registrar
             setNombre('');
             setApellidoPaterno('');
@@ -131,14 +147,15 @@ function Login() {
             setContrasena('');
             
         } catch (err) {
-            setError('Error al registrar usuario');
+            toast.current.show({ severity: 'error', summary: 'Error', detail: 'Error al registrar usuario', life: 3000 });
         }
     };
 
     ScriptLogin();
 
     return (
-        <>         
+        <>   
+             <Toast ref={toast} /> {/* Toast component */}      
             <div className='login_body mainLogin'>
                 <main>
                     <div className="contenedor__todo">
@@ -161,7 +178,7 @@ function Login() {
                                 <label htmlFor="" className='icon_user_login pi pi-user'></label><br />
                                 <h2>Iniciar Sesión</h2>     
                                 <InputText id="email" type='email' value={email} onChange={(e) => setEmail(e.target.value)} placeholder='email' required/>
-                                <input required value={contrasena} onChange={(e) => setContrasena(e.target.value)} type="password" placeholder='contraseña' />
+                                <input required value={contrasena} onChange={(e) => setContrasena(e.target.value)} type="password" placeholder='contraseña'/>
                                 {/* <Password placeholder='contraseña' type='password' value={contrasena} onChange={(e) => setContrasena(e.target.value)} toggleMask required /> */}
                                    
                                 {/* <input required value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder='email'/>

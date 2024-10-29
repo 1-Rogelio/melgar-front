@@ -6,7 +6,7 @@ import userImg from '../../assets/images/usuario.png';
 
 function ConfigContador() {
 
-  const [imageUrl, setImageUrl] = useState(userImg);
+    const [imageUrl, setImageUrl] = useState(userImg);
     const [newImageUrl, setNewImageUrl] = useState('');
     const userId = sessionStorage.getItem('userId'); // Obtén el ID del local storage
 

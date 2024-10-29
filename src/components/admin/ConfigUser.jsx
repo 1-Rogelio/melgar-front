@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import userImg from '../../assets/images/usuario.png';
 
 function ConfigUser() {
+
     const [imageUrl, setImageUrl] = useState(userImg);
     const [newImageUrl, setNewImageUrl] = useState('');
     const userId = sessionStorage.getItem('userId'); // Obtén el ID del local storage
@@ -55,7 +56,7 @@ function ConfigUser() {
         <>
             <div className='container_perfil'>
                 <div className='box_center'>
-                    <h1 className='m_top text_caption'>Perfil</h1>
+                    <h1 className='text_caption'>Perfil</h1>
                 </div>
 
                 <div className="botonExit">
@@ -88,7 +89,7 @@ function ConfigUser() {
                     </div>
                     <div className="boton_subir_img">
                     <label htmlFor="" className='text_paragraphs'>CONVERTIR IMAGEN A URL</label>
-                        <NavLink to="/convertir-imagen">
+                        <NavLink to="/convertir-imagen-contador">
                             <center><Button className='boton_add_img' label="Convertir"  icon="pi pi-check"/></center>
                         </NavLink>
                     </div>

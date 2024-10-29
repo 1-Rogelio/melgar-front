@@ -17,7 +17,6 @@ function TusTickets() {
 
     const fetchNotificaciones = async (userId) => {
         try {
-            console.log('UserId:', userId);
             const response = await axios.get(`http://localhost:3000/api/v1/tickets/user-tickets-actives/${userId}`);
             setTickets(response.data);
         } catch (error) {
