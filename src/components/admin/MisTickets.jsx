@@ -40,8 +40,8 @@ function MisTickets() {
     setFilter(e.target.value); // Actualizar el filtro seleccionado
   };
 
-  const handleVerDetalles = (ticketId) => {
-    navigate(`/ver-mas-tickets/${ticketId}`);
+  const handleVerDetalles = (id_tickets) => {
+    navigate(`/ver-mas-tickets/${id_tickets}`);
   };
 
   const getHeaderClass = (tipo) => {

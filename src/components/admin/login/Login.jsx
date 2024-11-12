@@ -147,8 +147,17 @@ function Login() {
             setContrasena('');
             
         } catch (err) {
-            toast.current.show({ severity: 'error', summary: 'Error', detail: 'Error al registrar usuario', life: 3000 });
-        }
+            if (err.response && err.response.status === 409) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Correo en uso',
+                    text: 'El correo ingresado ya está registrado. Intenta con otro.',
+                    confirmButtonText: 'Aceptar'
+                });
+            } else {
+                toast.current.show({ severity: 'error', summary: 'Error', detail: 'Error al registrar usuario', life: 3000 });
+            }
+        }    
     };
 
     ScriptLogin();

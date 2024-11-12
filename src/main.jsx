@@ -103,7 +103,7 @@ const router = createBrowserRouter([
         element: <PrivateRoute element={<TodosUsuarios/>}/>
       },
       {
-        path: '/ver-mas-tickets/:ticketId',
+        path: '/ver-mas-tickets/:id_tickets',
         element: <PrivateRoute element={<VerTickets/>}/>
       },
       {
@@ -151,7 +151,7 @@ const router = createBrowserRouter([
         element: <PrivateRoute element={<ConvertirImgContador/>}/>
       },
       {
-        path: '/ver-mas-tickets-contador/:ticketId',
+        path: '/ver-mas-tickets-contador/:id_tickets',
         element: <PrivateRoute element={<VerTicketsContador/>}/>
       },
       // ------------------RUTAS AUXILIAR--------------------
@@ -176,7 +176,7 @@ const router = createBrowserRouter([
         element: <PrivateRoute element={<ConvertirImgAuxiliar/>}/>
       },
       {
-        path: '/ver-mas-tickets-auxiliar/:ticketId',
+        path: '/ver-mas-tickets-auxiliar/:id_tickets',
         element: <PrivateRoute element={<VerTicketsAuxiliar/>}/>
       },
     ]

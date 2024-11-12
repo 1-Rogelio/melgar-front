@@ -12,26 +12,59 @@ import 'primeicons/primeicons.css';
 
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
         
+// Importaciones de iconos
+import URL_ICONO_DEFAULT from '../../assets/images/Iconos/aceptacion.png';
+import iconTxt from '../../assets/images/Iconos/agenda_txt.png';
+import URL_ICONO_PDF from '../../assets/images/Iconos/pdf.png';
+import URL_ICONO_DOC from '../../assets/images/Iconos/word.png';
+import URL_ICONO_EXCEL from '../../assets/images/Iconos/excel.png';
+import iconXml from '../../assets/images/Iconos/xml.png';
+import iconImg from '../../assets/images/Iconos/img.png';
+
 import imgUserChat from '../../assets/images/usuario.png';
 
-
 function VerTickets() {
+
+    const { id_tickets } = useParams();
+    const [ticket, setTicket] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [messages, setMessages] = useState([]);
+    const [respuestaRecibida, setRespuestaRecibida] = useState('');
+    const [adjuntos, setAdjuntos] = useState([]); // Estado para los archivos adjuntos
+    const [isSolicitante, setIsSolicitante] = useState(true);
+    const fileInputRef = useRef(null); // Referencia para el input de archivos
+
+    const [stepIndex, setStepIndex] = useState(0); // Índice del Step actual
+
+    const modalRef = useRef(null); // Referencia para controlar el modal
+
+    // const downloadFile = (filename) => {
+    //     window.open(`${filename}`, '_blank');
+    // };
+
+    // Función para obtener el icono según la extensión del archivo
+    const getFileIcon = (fileUrl) => {
+        const extension = fileUrl.split('.').pop().toLowerCase();
+        
+        if (["jpg", "jpeg", "png", "gif"].includes(extension)) {
+            return <img src={fileUrl} alt="Imagen" className="file-image" />;
+        } else if (extension === "pdf") {
+            return <img src={URL_ICONO_PDF} alt="PDF Icon" className="file-icon" />;
+        } else if (["doc", "docx"].includes(extension)) {
+            return <img src={URL_ICONO_DOC} alt="Word Icon" className="file-icon" />;
+        } else if (["xls", "xlsx"].includes(extension)) {
+            return <img src={URL_ICONO_EXCEL} alt="Excel Icon" className="file-icon" />;
+        } else {
+            return <img src={URL_ICONO_DEFAULT} alt="File Icon" className="file-icon" />;
+        }
+    }
+    
 
     const items = [
         { label: 'en espera' },
         { label: 'en proceso' },
         { label: 'resuelto' }
     ];
-
-    const { ticketId } = useParams();
-    const [ticket, setTicket] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [messages, setMessages] = useState([]);
-    const [respuestaRecibida, setRespuestaRecibida] = useState('');
-    const [isSolicitante, setIsSolicitante] = useState(true);
-    const [stepIndex, setStepIndex] = useState(0); // Índice del Step actual
-
-    const modalRef = useRef(null); // Referencia para controlar el modal
 
     // Socket connection and listening to incoming messages
     useEffect(() => {
@@ -69,13 +102,13 @@ function VerTickets() {
     useEffect(() => {
         const fetchTicket = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/api/v1/tickets/${ticketId}`);
+                const response = await axios.get(`http://localhost:3000/api/v1/tickets/${id_tickets}`);
                 setTicket(response.data);
                 setLoading(false);
                 updateStepIndex(response.data.estado); // Establecer el estado inicial del Step
 
                 // Load existing messages
-                const res = await axios.get(`http://localhost:3000/api/v1/respuestas/ver-respuestas/${ticketId}`);
+                const res = await axios.get(`http://localhost:3000/api/v1/respuestas/ver-respuestas/${id_tickets}`);
                 setMessages(res.data);
             } catch (error) {
                 console.error('Error al obtener los detalles del ticket', error);
@@ -83,32 +116,57 @@ function VerTickets() {
             }
         };
 
-        if (ticketId) {
+        if (id_tickets) {
             fetchTicket();
         }
-    }, [ticketId]);
+    }, [id_tickets]);
+
+    const handleFileChange = (e) => {
+        setAdjuntos(Array.from(e.target.files));
+    };
 
     // Sending a new message
-    const handleSendMessage = async () => {
+    const handleSendMessage = async (e) => {
+        e.preventDefault();
+
         if (respuestaRecibida.trim()) {
-            const messageObj = {
-                id_tickets: ticketId,
-                id_usuarios: isSolicitante ? ticket.solicitante : ticket.destinatario,
-                mensaje: respuestaRecibida,
-            };
+
+            console.log('Enviando mensaje:', respuestaRecibida);
+            console.log('isSolicitante:', isSolicitante);
+            console.log('Solicitante ID:', ticket.solicitante);
+            console.log('Destinatario ID:', ticket.destinatario);
+
+            const formData = new FormData();
+            formData.append('id_tickets', id_tickets);
+            formData.append('id_usuarios', isSolicitante ? ticket.solicitante : ticket.destinatario);
+            formData.append('mensaje', respuestaRecibida);
+
+            adjuntos.forEach((file) => {
+                formData.append('adjunto', file);
+            });
+
+            // Agregar todos los archivos adjuntos seleccionados
+            /* const fileInput = document.querySelector('input[type="file"]');
+            if (fileInput.files.length > 0) {
+                for (let i = 0; i < fileInput.files.length; i++) {
+                    formData.append('adjunto', fileInput.files[i]);
+                }
+            } */
     
             try {
+                const response = await axios.post('http://localhost:3000/api/v1/respuestas', formData, {
+                    headers: { 'Content-Type': 'multipart/form-data' }
+                });
 
-                // Save message in backend
-                await axios.post('http://localhost:3000/api/v1/respuestas', messageObj);
+                socket.emit('nuevaRespuesta', response.data);
 
-                // Emit message through Socket.IO for real-time update
-                socket.emit('nuevaRespuesta', messageObj);
-                
-                // Clear input after sending
                 setRespuestaRecibida('');
+                setAdjuntos([]);
 
-                // Cambiar estado a "En proceso" si hay respuestas
+                if (fileInputRef.current) {
+                    fileInputRef.current.value = ''; // Limpiar el campo de archivo
+                }
+
                 if (ticket.estado === 'en espera') {
                     await updateTicketState('en proceso');
                 }
@@ -120,7 +178,7 @@ function VerTickets() {
 
     const updateTicketState = async (nuevoEstado) => {
         try {
-            const response = await axios.patch(`http://localhost:3000/api/v1/tickets/${ticketId}`, {
+            const response = await axios.patch(`http://localhost:3000/api/v1/tickets/${id_tickets}`, {
                 estado: nuevoEstado,
                 activo: nuevoEstado === 'resuelto' ? 0 : 1
             });
@@ -138,7 +196,7 @@ function VerTickets() {
         return <p>Cargando...</p>;
     }
 
-    if (!ticketId) {
+    if (!id_tickets) {
         return <p>No se encontró el ticket...</p>;
     }
 
@@ -253,32 +311,32 @@ function VerTickets() {
                                         />
                                     </div>
                                 </div>
+
+                                {/* Editor para mandar mensaje */} 
+                                {ticket.estado !== 'resuelto' && (
+                                        <center>
+                                        <div className='box_respuesta'><br />
+                                            <div>
+                                                <p className='text_positionCenter text_global c_blue'>Responder al ticket</p>
+                                            </div>
+                                            <div>
+                                                {/* <label htmlFor="">Responder ticket</label> */}
+                                                <Editor className='editor_responder_ticket' id='mensaje' name='mensaje' value={respuestaRecibida} onTextChange={(e) => setRespuestaRecibida(e.htmlValue)} style={{ height: '120px' }}/>
+                                                <label className='text_global c_red' htmlFor="">Adjuntar archivo</label>
+                                                <input  className='form-control' type="file" multiple onChange={handleFileChange} ref={fileInputRef}/>
+                                            </div>
+                                            
+                                            <div className='button_enviar_respuesta'>
+                                                <button className='button_reply_ticket' onClick={handleSendMessage} style={{width:'100%'}}>Enviar Respuesta</button>
+                                            </div>                                 
+                                        </div><br /><br />
+                                    </center>
+                                    )}
+
                             </div>
                         </div>
                     </div>
                 </center><br />
-
-                
-                {/* Editor para mandar mensaje */} 
-                {ticket.estado !== 'resuelto' && (
-                        <center>
-                        <div className='box_respuesta'><br />
-                            <div>
-                                <p className='text_positionCenter text_global c_blue'>Responder al ticket</p>
-                            </div>
-                            <div>
-                                {/* <label htmlFor="">Responder ticket</label> */}
-                                <Editor className='editor_responder_ticket' id='mensaje' name='mensaje' value={respuestaRecibida} onTextChange={(e) => setRespuestaRecibida(e.htmlValue)} style={{ height: '120px' }}/>
-                                <label className='text_global c_red' htmlFor="">Adjuntar archivo</label>
-                                <input  className='form-control' type="file" />
-                            </div>
-                            
-                            <div className='button_enviar_respuesta'>
-                                <button className='button_reply_ticket' onClick={handleSendMessage} style={{width:'100%'}}>Enviar Respuesta</button>
-                            </div>                                 
-                        </div><br /><br />
-                    </center>
-                    )}
 
                 <center>
                     <div className="container_respuestas">
@@ -290,8 +348,8 @@ function VerTickets() {
                             {messages.length === 0 ? (
                             <p className='text_no_respuestas'>No hay respuestas todavía</p>
                             ) : (
-                                messages.slice().reverse().map((msg, index) => (
-                                    <div key={index} className={`container_chat_${msg.id_usuarios === ticket.solicitante ? "solicitante" : "destinatario"}`}>
+                                messages.slice().reverse().map((msg) => (
+                                    <div key={msg.id_respuestas} className={`container_chat_${msg.id_usuarios === ticket.solicitante ? "solicitante" : "destinatario"}`}>
                                         <div className={`message_content_${msg.id_usuarios === ticket.solicitante ? "solicitante" : "destinatario"}`}>
                                             <div className='container_datos'>
                                                 <img className='img_chat' src={(msg.Usuario && msg.Usuario.img) ? msg.Usuario.img : imgUserChat} width={'55rem'} alt="Usuario" />
@@ -300,6 +358,28 @@ function VerTickets() {
                                             </div>
                                             <div className='caja_chat'>
                                                 <Editor className='mensaje_chat custom-editor' id='mensaje' name='mensaje' value={msg.mensaje} readOnly style={{border: 'none'}}/>
+                                                {msg.adjunto && Array.isArray(msg.adjunto) ? (
+                                                    msg.adjunto.map((fileUrl) => (
+                                                        <div key={fileUrl} className="file-attachment">
+                                                            {getFileIcon(fileUrl)}
+                                                            <a href={fileUrl} target="_blank" rel="noopener noreferrer" className="file-link">{fileUrl.substring(55)}</a>
+                                                        </div>
+                                                    ))
+                                                ) : (
+                                                    msg.adjunto && (
+                                                        <div className="file-attachment">
+                                                            {getFileIcon(msg.adjunto)}
+                                                            <a href={msg.adjunto} target="_blank" rel="noopener noreferrer" className="file-link">{msg.adjunto}</a>
+                                                        </div>
+                                                    )
+                                                )} 
+                                                {/* {msg.adjunto && msg.adjunto.map((fileUrl, index) => (
+                                                    <div key={index} className="file-attachment">
+                                                        {getFileIcon(fileUrl)}
+                                                        <a href={fileUrl} target="_blank" rel="noopener noreferrer" className="file-link">{fileUrl}</a>
+                                                    </div>
+                                                ))} */}
+
                                             </div>
                                         </div>
                                     </div>
