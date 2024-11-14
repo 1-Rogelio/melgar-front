@@ -73,6 +73,7 @@ function VerTickets() {
         if (ticket) {
             setIsSolicitante(ticket.solicitante === loggedInUserId);
             updateStepIndex(ticket.estado);
+
         }
     }, [ticket]);
 
@@ -88,15 +89,28 @@ function VerTickets() {
 
     // Socket para escuchar respuestas en tiempo real
     useEffect(() => {
-        
+        socket.emit('unirTicketSala', `ticket_${id_tickets}`); // Unirse a la sala del ticket
+
         socket.on('respuestaRecibida', (respuestaRecibida) => {
             setMessages((prevMessages) => [...prevMessages, respuestaRecibida]);
         });
 
+        socket.on('ticketCerrado', (data) => {
+            if (data.id_tickets === parseInt(id_tickets)) {
+                setTicket((prevTicket) => ({
+                    ...prevTicket,
+                    estado: data.estado //Actualiza el estado del ticket
+                }));
+                updateStepIndex(data.estado); //Actualiza la interfaz según el estado
+            }
+        });
+
         return () => {
             socket.off('respuestaRecibida');
+            socket.emit('salirTicket', `ticket_${id_tickets}`); // Salir de la sala cuando el componente se desmonta
+            socket.off('ticketCerrado');
         };
-    }, [ticket]);
+    }, [ticket, id_tickets]);
 
     // Fetch ticket and existing messages
     useEffect(() => {
@@ -182,8 +196,12 @@ function VerTickets() {
                 estado: nuevoEstado,
                 activo: nuevoEstado === 'resuelto' ? 0 : 1
             });
+
             setTicket(response.data);
-            updateStepIndex(nuevoEstado); // Actualizar el Step según el nuevo estado
+            updateStepIndex(nuevoEstado);
+
+            // Emitir evento a ambos usuarios
+            socket.emit('ticketCerrado', response.data);
 
             //Simular clic en el boton de cierre modal
             document.querySelector('.btn-close').click();

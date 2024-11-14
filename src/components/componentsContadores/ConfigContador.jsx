@@ -7,7 +7,8 @@ import userImg from '../../assets/images/usuario.png';
 function ConfigContador() {
 
     const [imageUrl, setImageUrl] = useState(userImg);
-    const [newImageUrl, setNewImageUrl] = useState('');
+    const [previewImage, setPreviewImage] = useState(null); // Estado para la vista previa de la imagen
+    const [file, setFile] = useState(null);
     const userId = sessionStorage.getItem('userId'); // Obtén el ID del local storage
 
     useEffect(() => {
@@ -28,20 +29,36 @@ function ConfigContador() {
         fetchUserImage();
     }, [userId]); // Dependencia en userId para volver a ejecutar si cambia
 
-    const handleInputChange = (e) => {
-        setNewImageUrl(e.target.value);
+    const handleFileChange = (e) => {
+        const file = e.target.files[0]; // Actualiza el estado con el archivo seleccionado
+        if (file) {
+            setFile(file); // Guarda el archivo seleccionado
+            setPreviewImage(URL.createObjectURL(file)); // Genera una URL de vista previa de la imagen
+        }
+    };
+
+    const handleCancel = () => {
+        // Limpia la vista previa y el archivo seleccionado
+        setPreviewImage(null);
+        setFile(null);
     };
 
     const handleUpload = async () => {
-        if (newImageUrl && userId) {
+        if (file && userId) {
+            const formData = new FormData();
+            formData.append('img', file);
+
             try {
-                const response = await axios.patch(`http://localhost:3000/api/v1/usuarios/actualizar-imagen/${userId}`, {
-                    img: newImageUrl
+                const response = await axios.patch(`http://localhost:3000/api/v1/usuarios/${userId}`, formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
                 });
                 if (response.status === 200) {
-                    setImageUrl(newImageUrl);
-                    sessionStorage.setItem('userImage', newImageUrl);
-                    setNewImageUrl('');
+                    setImageUrl(response.data.img);
+                    sessionStorage.setItem('userImage', response.data.img);
+                    setFile(null); //Limpia el archivo seleccionado después de cargar
+                    setPreviewImage(null); // Limpia la vista previa después de cargar
                     console.log('Imagen actualizada exitosamente');
                 }
             } catch (error) {
@@ -68,33 +85,43 @@ function ConfigContador() {
                 </div>
 
                 <div className='box_center'>
-                    <img className='imagenConfig p_a' src={imageUrl} alt="Imagen de perfil" />
+                    <img 
+                        className='imagenConfig p_a' 
+                        src={previewImage || imageUrl} // Muestra la vista previa o la imagen actual
+                        alt="Imagen de perfil" 
+                    />
                     <div className='container_title_files c_black text_paragraphs m_top_medium'><br />
-                        <p className='text_paragraphs'>Agregar foto de perfil</p>
+                        <p className='text_paragraphs'>
+                            Agregar foto de perfil <br />
+                        </p>
+                        <p className='text_paragraphs c_red'>Solo acepta jpeg, png, gif, jpg, avif, svg </p>
                     </div>
-                </div><br />
+                </div>
 
                 <div className="container_subir_img box_center text-center">
-                    <div className="label_subir_img">
-                        <label htmlFor="" className='text_paragraphs'>Subir URL de la imagen</label>
-                    </div>
                     <div className="input_subir_img">
                         <input 
-                            type="text" 
-                            className='form-control input_url text-center' 
-                            value={newImageUrl} 
-                            onChange={handleInputChange} 
+                            type="file" 
+                            className='form-control input_file' 
+                            accept="image/*" 
+                            onChange={handleFileChange} 
                         />
                     </div>
                     <div className="boton_subir_img">
-                        <center><Button className='boton_add_img' label="Cargar"  icon="pi pi-check" onClick={handleUpload}/></center>
+                        <center>
+                            <Button className='boton_add_img' label="Subir Imagen" icon="pi pi-check" onClick={handleUpload} disabled={!file}/>
+                            {previewImage && (
+                                <Button 
+                                    className='boton_cancel_img' 
+                                    label="Cancelar" 
+                                    icon="pi pi-times" 
+                                    onClick={handleCancel} 
+                                    style={{ marginLeft: '10px' }} // Espacio entre los botones
+                                />
+                            )}
+                        </center>
                     </div>
-                    <div className="boton_subir_img">
-                    <label htmlFor="" className='text_paragraphs'>CONVERTIR IMAGEN A URL</label>
-                        <NavLink to="/convertir-imagen-contador">
-                            <center><Button className='boton_add_img' label="Convertir"  icon="pi pi-check"/></center>
-                        </NavLink>
-                    </div>
+                        
                 </div>
             </div>
 

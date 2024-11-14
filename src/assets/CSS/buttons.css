@@ -139,7 +139,7 @@
     }
 }
 
-/*-------------BOTON DE SUBIR IMG------------------*/
+/*-------------BOTON DE SUBIR IMG Y CANCELAR------------------*/
 .boton_add_img {
     width: 10rem;
     height: 2rem;
@@ -158,6 +158,26 @@
 .boton_add_img:hover{
     color: #000000;
     box-shadow: inset 0 0 0 50px #55c0b3;
+}
+
+.boton_cancel_img {
+    width: 10rem;
+    height: 2rem;
+    border: none;
+    background: #ad1010;
+    cursor: pointer;
+    color: rgb(255, 251, 251);
+    outline: none;
+
+    box-shadow: inset 0 0 0 0 #db0707;
+    -webkit-transition: ease-out 0.4s;
+    -moz-transition: ease-out 0.4s;
+    transition: ease-out 0.4s;
+}
+
+.boton_cancel_img:hover {
+    color: #000000;
+    box-shadow: inset 0 0 0 50px #fa0303;
 }
 
 /*-------------BOTON RESPONDER TICKET------------------*/

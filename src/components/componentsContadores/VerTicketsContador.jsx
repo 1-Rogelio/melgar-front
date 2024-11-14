@@ -59,6 +59,7 @@ function VerTicketsContador() {
     const fileInputRef = useRef(null); // Referencia para el input de archivos
 
     const [stepIndex, setStepIndex] = useState(0); // Índice del Step actual
+    const modalRef = useRef(null); // Referencia para controlar el modal
 
     // Socket connection and listening to incoming messages
     useEffect(() => {
@@ -82,15 +83,28 @@ function VerTicketsContador() {
 
     // Socket para escuchar respuestas en tiempo real
     useEffect(() => {
+        socket.emit('unirTicketSala', `ticket_${id_tickets}`); // Unirse a la sala del ticket
         
         socket.on('respuestaRecibida', (respuestaRecibida) => {
             setMessages((prevMessages) => [...prevMessages, respuestaRecibida]);
         });
 
+        socket.on('ticketCerrado', (data) => {
+            if (data.id_tickets === parseInt(id_tickets)) {
+                setTicket((prevTicket) => ({
+                    ...prevTicket,
+                    estado: data.estado // Actualizar el estado del ticket
+                }));
+                updateStepIndex(data.estado); // Actualizar la interfaz según el nuevo estado
+            }
+        });
+
         return () => {
             socket.off('respuestaRecibida');
+            socket.emit('salirTicket', `ticket_${id_tickets}`); // Salir de la sala cuando el componente se desmonta
+            socket.off('ticketCerrado');
         };
-    }, [ticket]);
+    }, [ticket, id_tickets]);
 
     // Fetch ticket and existing messages
     useEffect(() => {
@@ -171,12 +185,11 @@ function VerTicketsContador() {
             setTicket(response.data);
             updateStepIndex(nuevoEstado); // Actualizar el Step según el nuevo estado
 
+           // Emitir evento a ambos usuarios
+           socket.emit('ticketCerrado', response.data);
+
             //Simular clic en el boton de cierre modal
             document.querySelector('.btn-close').click();
-
-            // Realiza una nueva petición GET para asegurar que los datos estén actualizados, incluido el solicitante
-            const updatedTicket = await axios.get(`http://localhost:3000/api/v1/tickets/${id_tickets}`);
-            setTicket(updatedTicket.data); // Actualiza los datos del ticket con la nueva información
         } catch (error) {
             console.error('Error al actualizar el estado del ticket', error);
         }
@@ -237,6 +250,7 @@ function VerTicketsContador() {
                                     tabIndex="-1"
                                     aria-labelledby="exampleModalLabel"
                                     aria-hidden="true"
+                                    ref={modalRef}
                                     >
                                     <div className="modal-dialog">
                                         <div className="modal-content">

@@ -25,7 +25,6 @@ import FielesPersonales from './components/admin/FielesPersonales';
 import Clientes from './components/admin/Clientes';
 import TodosUsuarios from './components/admin/TodosUsuarios';
 import VerTickets from './components/admin/VerTickets';
-import ConvertirImg from './components/admin/ConvertirImg';
 import Form_Reenviar from './components/admin/Form_Reenviar';
 
 // --------------Importación de Componentes del Usuario para RUTAS-------------------------
@@ -38,7 +37,6 @@ import ClientesContadores from './components/componentsContadores/ClientesContad
 import ConfigContador from './components/componentsContadores/ConfigContador';
 import MisFielesContador from './components/componentsContadores/MisFielesContador';
 import MisTicketsContador from './components/componentsContadores/MisTicketsContador';
-import ConvertirImgContador from './components/componentsContadores/ConvertirImgContador';
 import VerTicketsContador from './components/componentsContadores/VerTicketsContador';
 
 // -----------Importación de Componentes del Auxiliar para RUTAS-----------------
@@ -107,10 +105,6 @@ const router = createBrowserRouter([
         element: <PrivateRoute element={<VerTickets/>}/>
       },
       {
-        path: '/convertir-imagen',
-        element: <PrivateRoute element={<ConvertirImg/>}/>
-      },
-      {
         path: '/responder-ticket',
         element: <PrivateRoute element={<Form_Reenviar/>}/>
       },
@@ -147,10 +141,6 @@ const router = createBrowserRouter([
         element: <PrivateRoute element={<MisTicketsContador/>}/>
       },
       {
-        path: '/convertir-imagen-contador',
-        element: <PrivateRoute element={<ConvertirImgContador/>}/>
-      },
-      {
         path: '/ver-mas-tickets-contador/:id_tickets',
         element: <PrivateRoute element={<VerTicketsContador/>}/>
       },
@@ -170,10 +160,6 @@ const router = createBrowserRouter([
       {
         path: '/mis-tickets-auxiliar',
         element: <PrivateRoute element={<MisTicketsAuxiliar/>}/>
-      },
-      {
-        path: '/convertir-imagen-auxiliar',
-        element: <PrivateRoute element={<ConvertirImgAuxiliar/>}/>
       },
       {
         path: '/ver-mas-tickets-auxiliar/:id_tickets',
