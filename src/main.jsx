@@ -29,6 +29,10 @@ import Form_Reenviar from './components/admin/Form_Reenviar';
 
 // --------------Importación de Componentes del Usuario para RUTAS-------------------------
 import HomeUser from './components/componentsUsers/home/HomeUser';
+// import SobreLaApi from './components/componentsUsers/SobreLaApi';
+import CrearTicketsInfo from './components/componentsUsers/CrearTicketsInfo';
+import Seguimiento from './components/componentsUsers/Seguimiento';
+
 
 // -----------Importación de Componentes del Contador para RUTAS-----------------
 import HomeContador from './components/componentsContadores/home/HomeContador';
@@ -113,6 +117,18 @@ const router = createBrowserRouter([
       {
         path: '/home-user',
         element: <PrivateRoute element={<HomeUser/>}/>
+      },
+      // {
+      //   path: '/sobre-la-api',
+      //   element: <PrivateRoute element={<SobreLaApi/>}/>
+      // },
+      {
+        path: '/crear-tickets-info',
+        element: <PrivateRoute element={<CrearTicketsInfo/>}/>
+      },
+      {
+        path: '/seguimiento',
+        element: <PrivateRoute element={<Seguimiento/>}/>
       },
       
       // ------------------RUTAS CONTADOR--------------------

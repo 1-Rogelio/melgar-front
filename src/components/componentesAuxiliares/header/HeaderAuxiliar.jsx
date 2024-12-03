@@ -13,11 +13,18 @@ import { NavLink } from 'react-router-dom';
 
 //-------------------------IMPORTAMOS COMPONENTES-------------------------
 import NavAuxiliar from '../nav/NavAuxiliar';
+import Notificaciones from '../../admin/Notificaciones';
 import AvatarAuxiliar from '../AvatarAuxiliar';
 
 function HeaderAuxiliar() {
 
     const [visibleRight, setVisibleRight] = useState(false);
+    const [notificacionesNoLeidas, setNotificacionesNoLeidas] = useState(0);
+
+  // Función para manejar actualizaciones del número de notificaciones no leídas
+  const actualizarNotificacionesNoLeidas = (cantidad) => {
+    setNotificacionesNoLeidas(cantidad);
+  };
 
   return (
     <>
@@ -40,7 +47,7 @@ function HeaderAuxiliar() {
 
       <div className="icon_noti">
         <i className="pi pi-bell p-overlay-badge" style={{ fontSize: '1.8rem' }} aria-controls="offcanvasRight" type='button'  onClick={() => setVisibleRight(true)}>
-          <Badge severity="danger"></Badge>
+          {notificacionesNoLeidas > 0 && <Badge value={notificacionesNoLeidas} severity="danger" />}
         </i>
       </div>
 
@@ -51,24 +58,10 @@ function HeaderAuxiliar() {
     </div>
 
     <div className="card">
-        <Sidebar visible={visibleRight} position="right" onHide={() => setVisibleRight(false)}>
-          <div>
-            <h1 className='text_positionCenter text_caption'>Notificaciones</h1>
-          </div><hr />
-
-          {/* <div className='text_positionCenter'>
-            {notificaciones.length > 0 ? (
-              notificaciones.map((noti, index) => (
-                <div key={index} className='notificaciones'>
-                  <h1 className='title_noti'>{noti.titulo}</h1>
-                  <p className='text_noti'>{noti.descripcion} <i className='pi pi-file-pdf sizeIcon'></i></p>
-                  <hr />
-                </div>
-              ))
-            ) : (
-              <p>No tienes notificaciones</p>
-            )}
-          </div> */}
+      <Sidebar visible={visibleRight} position="right" onHide={() => setVisibleRight(false)}>
+          <div className='text_positionCenter container_notificaciones'>
+                <Notificaciones onActualizarNoLeidas={actualizarNotificacionesNoLeidas}/>
+          </div>
         </Sidebar>
       </div>
 

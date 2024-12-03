@@ -56,6 +56,11 @@ body {
     font-size: 18px;
     font-family: mondaySans;
 }
+/* -----------TEXTO NOMBRE DE USUARIO------------ */
+.text_name_user{
+    font-size: 30px;
+    font-family: mondaySans;
+}
 
 /* -----------TEXTO GLOBAL------------ */
 
@@ -71,6 +76,11 @@ body {
 
 .text_global_medium {
     font-size: 30px;
+    font-family: mondaySans;
+}
+
+.text_global_small {
+    font-size: 25px;
     font-family: mondaySans;
 }
 
@@ -186,10 +196,10 @@ body {
   }
 
   .nombre_user{
-    margin-top: -3rem;
+    margin-top: -3.2rem;
     position: relative;
     left: 15rem;
-    font-size: 18px;
+    font-size: 30px;
   }
 
   .nombre_perfil_home {

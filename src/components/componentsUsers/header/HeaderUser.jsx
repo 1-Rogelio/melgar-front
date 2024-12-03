@@ -39,11 +39,11 @@ function HeaderUser() {
         <NavUser/>
       </div>
 
-      <div className="icon_noti">
+      {/* <div className="icon_noti">
         <i className="pi pi-bell p-overlay-badge" style={{ fontSize: '1.8rem' }} aria-controls="offcanvasRight" type='button'  onClick={() => setVisibleRight(true)}>
           <Badge severity="danger"></Badge>
         </i>
-      </div>
+      </div> */}
 
       <div>
         <AvatarUser/>

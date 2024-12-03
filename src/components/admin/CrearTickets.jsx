@@ -3,7 +3,7 @@ import { Dropdown } from 'primereact/dropdown';
 import { InputTextarea } from "primereact/inputtextarea";
 import { FloatLabel } from "primereact/floatlabel";
 import { Editor } from "primereact/editor";
-import { Toast } from 'primereact/toast';
+import Swal from 'sweetalert2';
 import axios from "axios";
 
 // --------importamos Componentes-------
@@ -62,31 +62,52 @@ function CrearTickets() {
   }
 
   const handleSubmit = async () => {
-    try {
-      await axios.post('http://localhost:3000/api/v1/tickets', {
-        solicitante: solicitanteId ,
-        destinatario: selectedDestinatario ? selectedDestinatario.id_usuarios : null,
-        asunto,
-        descripcion,
-        tipo
-      });
-      toast.current.show({ severity: 'success', summary: 'Guardado', detail: 'Datos Guardados' });
 
-      // Simular clic en el botón de cierre modal
-      const closeButton = document.querySelector('.btn-close');
-      if (closeButton) {
-        closeButton.click();  // Simula el clic para cerrar el modal
+    // Usamos SweetAlert2 para confirmar antes de enviar
+    const result = await Swal.fire({
+      title: '¿Los datos son correctos?',
+      text: 'Si es así, da clic en enviar.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, enviar',
+      cancelButtonText: 'Cancelar',
+      reverseButtons: true
+    });
+
+    if (result.isConfirmed) {
+      // Enviar ticket si el usuario confirma
+      try {
+        await axios.post('http://localhost:3000/api/v1/tickets', {
+          solicitante: solicitanteId ,
+          destinatario: selectedDestinatario ? selectedDestinatario.id_usuarios : null,
+          asunto,
+          descripcion,
+          tipo
+        });
+        
+        // Muestra la alerta de éxito
+        Swal.fire({
+          icon: 'success',
+          title: '¡Éxito!',
+          text: 'El ticket ha sido creado correctamente.'
+        });
+
+        // Limpiar datos al enviar
+        setSelectedDestinatario('')
+        setAsunto('');
+        setDescripcion('');
+        setTipo('');
+      } catch (error) {
+        console.error('Error al guardar ticket');
+        // Muestra la alerta de error
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Hubo un problema al guardar el ticket. Intenta nuevamente.'
+        });
       }
-
-      // Limpiar datos al enviar
-      setSelectedDestinatario('')
-      setAsunto('');
-      setDescripcion('');
-      setTipo('');
-    } catch (error) {
-      console.error('Error al guardar ticket');
-      toast.current.show({ severity: 'error', summary: 'Error', detail: 'Error al guardar los datos' });
     }
+    
   };
 
   return (
@@ -170,44 +191,13 @@ function CrearTickets() {
                   </select>
                   <button 
                     type="button" 
-                    className="boton_enviar col-md-5 offset-md-4 btn bg_green" 
-                    data-bs-toggle="modal"
-                    data-bs-target="#exampleModal"
+                    className="boton_enviar col-md-5 offset-md-4 btn bg_green"
+                    onClick={handleSubmit}
                   >
                     <label className='pi pi-check'></label>Enviar
                   </button>
                 </div>
               </center>
-            </div>
-
-            <div
-              className="modal fade"
-              id="exampleModal"
-              tabIndex="-1"
-              aria-labelledby="exampleModalLabel"
-              aria-hidden="true"
-            >
-              <div className="modal-dialog">
-                <div className="modal-content">
-                  <div className="modal-header">
-                    <h5 className="modal-title" id="exampleModalLabel">
-                      ¿Los datos están correctos?
-                    </h5>
-                    <button
-                      type="button"
-                      className="btn-close"
-                      data-bs-dismiss="modal"
-                      aria-label="Close"
-                    ></button>
-                  </div>
-                  <div className="modal-body">Si es así, haga clic en enviar</div>
-                  <div className="modal-footer">
-                    <button type="button" className="btn btn-danger" data-bs-dismiss="modal"><label className='pi pi-times'></label> Cancelar</button>
-                    <Toast ref={toast}></Toast>
-                    <button type="button" onClick={handleSubmit} className="btn btn-success"><label className='pi pi-check'></label> Sí, enviar</button>
-                  </div>
-                </div>
-              </div>
             </div>
           </form>
         </div>

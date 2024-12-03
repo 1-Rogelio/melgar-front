@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from 'primereact/button';
+import Swal from 'sweetalert2';
 import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 import userImg from '../../assets/images/usuario.png';
@@ -49,7 +50,7 @@ function ConfigContador() {
             formData.append('img', file);
 
             try {
-                const response = await axios.patch(`http://localhost:3000/api/v1/usuarios/${userId}`, formData, {
+                const response = await axios.patch(`http://localhost:3000/api/v1/usuarios/actualizar-imagen/${userId}`, formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }
@@ -60,6 +61,15 @@ function ConfigContador() {
                     setFile(null); //Limpia el archivo seleccionado después de cargar
                     setPreviewImage(null); // Limpia la vista previa después de cargar
                     console.log('Imagen actualizada exitosamente');
+
+                    // Muestra el alert de éxito
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Imagen actualizada correctamente',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+
                 }
             } catch (error) {
                 console.error('Error al subir la imagen:', error);

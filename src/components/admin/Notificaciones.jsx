@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import socket from '../socket';
 
-function Notificaciones() {
+function Notificaciones({ onActualizarNoLeidas }) {
   const [notificaciones, setNotificaciones] = useState([]);
   const userId = sessionStorage.getItem('userId');
   const token = sessionStorage.getItem('token');
@@ -16,6 +16,9 @@ function Notificaciones() {
           }
         });
         setNotificaciones(response.data);
+        // Filtrar notificaciones no leídas y actualizar el estado en el componente padre
+        const noLeidas = response.data.filter((n) => !n.leida).length;
+        onActualizarNoLeidas(noLeidas);
       } catch (error) {
         console.error("Error al obtener las notificaciones: ", error);
       }
@@ -33,11 +36,21 @@ function Notificaciones() {
     });
 
     socket.on('ticketCreado', (notificacion) => {
-      setNotificaciones(prevNotificaciones => [notificacion, ...prevNotificaciones]);
+      ssetNotificaciones((prevNotificaciones) => {
+        const actualizadas = [notificacion, ...prevNotificaciones];
+        const noLeidas = actualizadas.filter((n) => !n.leida).length;
+        onActualizarNoLeidas(noLeidas);
+        return actualizadas;
+      });
     });
   
     socket.on('ticketCerrado', (notificacion) => {
-      setNotificaciones(prevNotificaciones => [notificacion, ...prevNotificaciones]);
+      setNotificaciones((prevNotificaciones) => {
+        const actualizadas = [notificacion, ...prevNotificaciones];
+        const noLeidas = actualizadas.filter((n) => !n.leida).length;
+        onActualizarNoLeidas(noLeidas);
+        return actualizadas;
+      });
     });
   
 
@@ -47,7 +60,7 @@ function Notificaciones() {
       socket.off('ticketCreado');
       socket.off('ticketCerrado');
     };
-  }, [userId, token]);
+  }, [userId, token, onActualizarNoLeidas]);
 
   // const marcarComoLeida = async (id_notificaciones) => {
   //   try {

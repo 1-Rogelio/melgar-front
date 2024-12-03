@@ -1,3 +1,4 @@
+/* ----------Boton general---------- */
 .button {
     position: absolute;
     right: 18rem;
@@ -5,6 +6,7 @@
     width: 5rem;
 }
 
+/* ---------Botones de colores---------- */
 .button_blue {
     color: #fff;
     background-color: var(--blue_color);
@@ -85,7 +87,7 @@
     background: var(--white_color);
 }
 
-/* ---------FORMULARIO USUARIOS------------ */
+/* ---------Botones de FORMULARIO USUARIOS------------ */
 .button_confirm {
     margin-left: 1rem;
     background: rgb(207, 236, 197);
@@ -230,3 +232,5 @@
     color: #fffbfb;
     box-shadow: inset 0 0 0 50px #ed1a1a;
 }
+
+/*-------------BOTONES FORMULARIOS CLIENTES------------------*/

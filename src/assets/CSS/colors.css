@@ -14,7 +14,7 @@
 }
 
 
-/* ----------COLORS----------- */
+/* ----------COLORES Ej en etiquetas: a, p, h1...----------- */
 .c_blue {
     color: var(--blue_color);
 }
@@ -55,7 +55,7 @@
     color: var(--green_x);
 }
 
-/* ---------BACKGROUD COLOR----------- */
+/* ---------BACKGROUD COLORS----------- */
 
 .bg_blue {
     background: var(--blue_color);

@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useParams, NavLink } from 'react-router-dom';
 import { Editor } from "primereact/editor";
 import { Steps } from 'primereact/steps';
+import Swal from 'sweetalert2';
+
 import axios from 'axios';
 import socket from '../socket';
 
@@ -10,13 +12,14 @@ import { format } from 'date-fns'; // Para formatear las fechas
 import 'primeicons/primeicons.css';
 
 // Importaciones de iconos
-import URL_ICONO_DEFAULT from '../../assets/images/Iconos/aceptacion.png';
-import URL_ICONO_TXT from '../../assets/images/Iconos/agenda_txt.png';
-import URL_ICONO_PDF from '../../assets/images/Iconos/pdf.png';
-import URL_ICONO_DOC from '../../assets/images/Iconos/word.png';
-import URL_ICONO_EXCEL from '../../assets/images/Iconos/excel.png';
-import URL_ICONO_XML from '../../assets/images/Iconos/xml.png';
-import URL_ICONO_IMG from '../../assets/images/Iconos/img.png';
+import URL_ICON_DEFAULT from '../../assets/images/Iconos/aceptacion.png';
+import URL_ICON_TXT from '../../assets/images/Iconos/agenda_txt.png';
+import URL_ICON_PDF from '../../assets/images/Iconos/pdf.png';
+import URL_ICON_DOC from '../../assets/images/Iconos/word.png';
+import URL_ICON_EXCEL from '../../assets/images/Iconos/excel.png';
+import URL_ICON_POWERPOINT from '../../assets/images/Iconos/png_powerpoint-copia.png'
+import URL_ICON_XML from '../../assets/images/Iconos/xml.png';
+import URL_ICON_IMG from '../../assets/images/Iconos/img.png';
         
 import imgUserChat from '../../assets/images/usuario.png';
 
@@ -27,19 +30,21 @@ function VerTicketsContador() {
         const extension = fileUrl.split('.').pop().toLowerCase();
         
         if (["jpg", "jpeg", "png", "gif"].includes(extension)) {
-            return <img src={fileUrl} alt="Imagen" className="file-image" />;
+            return <img src={URL_ICON_IMG} alt="Imagen" className="file-image" />;
         } else if (extension === "pdf") {
-            return <img src={URL_ICONO_PDF} alt="PDF Icon" className="file-icon" />;
+            return <img src={URL_ICON_PDF} alt="PDF Icon" className="file-icon" />;
         } else if (["doc", "docx"].includes(extension)) {
-            return <img src={URL_ICONO_DOC} alt="Word Icon" className="file-icon" />;
+            return <img src={URL_ICON_DOC} alt="Word Icon" className="file-icon" />;
         } else if (["xls", "xlsx"].includes(extension)) {
-            return <img src={URL_ICONO_EXCEL} alt="Excel Icon" className="file-icon" />;
+            return <img src={URL_ICON_EXCEL} alt="Excel Icon" className="file-icon" />;
+        } else if (["pptx", "pptm", "potx", "potm"].includes(extension)) {
+            return <img src={URL_ICON_POWERPOINT} alt="PwPoint Icon" className="file-icon" />;
         } else if (extension === "xml") {
-            return <img src={URL_ICONO_XML} alt="XML Icon" className="file-icon" />;
+            return <img src={URL_ICON_XML} alt="XML Icon" className="file-icon" />;
         } else if (extension === "txt") {
-            return <img src={URL_ICONO_TXT} alt="Txt Icon" className="file-icon" />;
-        }else {
-            return <img src={URL_ICONO_DEFAULT} alt="File Icon" className="file-icon" />;
+            return <img src={URL_ICON_TXT} alt="Txt Icon" className="file-icon" />;
+        } else {
+            return <img src={URL_ICON_DEFAULT} alt="File Icon" className="file-icon" />;
         }
     }
 
@@ -83,7 +88,7 @@ function VerTicketsContador() {
 
     // Socket para escuchar respuestas en tiempo real
     useEffect(() => {
-        socket.emit('unirTicketSala', `ticket_${id_tickets}`); // Unirse a la sala del ticket
+        socket.emit('unirTicketSala', id_tickets); // Unirse a la sala del ticket
         
         socket.on('respuestaRecibida', (respuestaRecibida) => {
             setMessages((prevMessages) => [...prevMessages, respuestaRecibida]);
@@ -93,7 +98,8 @@ function VerTicketsContador() {
             if (data.id_tickets === parseInt(id_tickets)) {
                 setTicket((prevTicket) => ({
                     ...prevTicket,
-                    estado: data.estado // Actualizar el estado del ticket
+                    estado: data.estado, // Actualizar el estado del ticket
+                    fecha_cierre: data.fecha_cierre, //Actualiza la fecha de cierre
                 }));
                 updateStepIndex(data.estado); // Actualizar la interfaz según el nuevo estado
             }
@@ -137,6 +143,35 @@ function VerTicketsContador() {
     const handleSendMessage = async (e) => {
         e.preventDefault();
 
+        // Verificar si el campo "mensaje" está vacío
+        if (!respuestaRecibida.trim()) {
+            // Mostrar alerta de SweetAlert2 si el mensaje está vacío
+            Swal.fire({
+                icon: 'error',
+                title: 'Campo mensaje requerido',
+                text: 'Por favor, ingrese un mensaje antes de enviar.',
+            });
+            return; // Detener la ejecución si el campo está vacío
+        }
+
+        // Verifica si el número de archivos adjuntos excede el límite
+        if (adjuntos.length > 10) {
+            // Muestra la alerta usando SweetAlert2
+            Swal.fire({
+                icon: 'error',
+                title: 'Límite de archivos alcanzado',
+                text: 'Se excedió el límite de archivos adjuntos (máximo 10 archivos).',
+            });
+            return;  // Detiene la ejecución si el número de archivos es mayor a 10
+        }
+
+        if (respuestaRecibida.trim()) {
+
+            console.log('Enviando mensaje:', respuestaRecibida);
+            console.log('isSolicitante:', isSolicitante);
+            console.log('Solicitante ID:', ticket.solicitante);
+            console.log('Destinatario ID:', ticket.destinatario);
+
             const formData = new FormData();
             formData.append('id_tickets', id_tickets);
             formData.append('id_usuarios', isSolicitante ? ticket.solicitante : ticket.destinatario);
@@ -145,15 +180,7 @@ function VerTicketsContador() {
             adjuntos.forEach((file) => {
                 formData.append('adjunto', file);
             });
-
-            // Agregar todos los archivos adjuntos seleccionados
-            /* const fileInput = document.querySelector('input[type="file"]');
-            if (fileInput.files.length > 0) {
-                for (let i = 0; i < fileInput.files.length; i++) {
-                    formData.append('adjunto', fileInput.files[i]);
-                }
-            }*/
-
+    
             try {
                 const response = await axios.post('http://localhost:3000/api/v1/respuestas', formData, {
                     headers: { 'Content-Type': 'multipart/form-data' }
@@ -174,13 +201,15 @@ function VerTicketsContador() {
             } catch (error) {
                 console.error('Error al enviar el mensaje', error);
             }
-        }
+        }        
+    }
 
     const updateTicketState = async (nuevoEstado) => {
         try {
             const response = await axios.patch(`http://localhost:3000/api/v1/tickets/${id_tickets}`, {
                 estado: nuevoEstado,
-                activo: nuevoEstado === 'resuelto' ? 0 : 1
+                activo: nuevoEstado === 'resuelto' ? 0 : 1,
+                fecha_cierre:  new Date()
             });
             setTicket(response.data);
             updateStepIndex(nuevoEstado); // Actualizar el Step según el nuevo estado
@@ -203,19 +232,22 @@ function VerTicketsContador() {
         return <p>No se encontró el ticket...</p>;
     }
 
-    // Función para agrupar mensajes por día
-//     const groupMessagesByDate = (messages) => {
-//     return messages.reduce((groups, message) => {
-//         const date = format(new Date(message.fecha_respuesta), 'yyyy-MM-dd');
-//         if (!groups[date]) {
-//             groups[date] = [];
-//         }
-//         groups[date].push(message);
-//         return groups;
-//     }, {});
-// };
-
-// const groupedMessages = groupMessagesByDate(messages);
+    // Función para formatear fechas
+    const formatDate = (timestamp) => {
+        if (!timestamp) return 'fecha no disponible';
+        const date = new Date(timestamp);
+        // Ajustar a tu zona horaria si es necesario
+        const localDate = new Date(date.getTime() - date.getTimezoneOffset() * 60000);
+        const options = {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+            // hour: 'numeric',
+            // minute: '2-digit',
+            // hour12: true 
+        };
+        return date.toLocaleString('es-ES', options);
+    };
 
   return (
     <>
@@ -292,7 +324,13 @@ function VerTicketsContador() {
 
                                     <div>
                                         <label className='text_global fechass'>{ticket.activo ? 'Fecha de creación' : 'Fecha de cierre'}</label>
-                                        <input className={`form-control text_global ${ticket.activo ? 'c_green' : 'c_red'}`} value={ticket.activo ? (ticket.fecha_creacion || 'fecha no disponible') : (ticket.fecha_cierre || 'fecha no disponible') } readOnly type="text" />
+                                        <input className={`form-control text_global ${ticket.activo ? 'c_green' : 'c_red'}`} 
+                                        value={ticket.activo 
+                                            ? formatDate(ticket.fecha_creacion || 'fecha no disponible') 
+                                            : formatDate(ticket.fecha_cierre || 'fecha no disponible')
+                                        } 
+                                        readOnly 
+                                        type="text" />
                                     </div>
                                 </div>
 
@@ -358,7 +396,10 @@ function VerTicketsContador() {
                                             <div className='container_datos'>
                                                 <img className='img_chat' src={(msg.Usuario && msg.Usuario.img) ? msg.Usuario.img : imgUserChat} width={'55rem'} alt="Usuario" />
                                                 <p>{(msg.Usuario && msg.Usuario.nombre) ? msg.Usuario.nombre : 'usuario desconocido'}</p>
-                                                <p className='time'>{new Date(msg.fecha_respuesta).toLocaleTimeString()}</p>
+                                                <div className='date_time'>
+                                                    <p className='date'>{new Date(msg.fecha_respuesta).toLocaleDateString()}</p>
+                                                    <p className='time'>{new Date(msg.fecha_respuesta).toLocaleTimeString()}</p>
+                                                </div>
                                             </div>
                                             <div className='caja_chat'>
                                                 <Editor className='mensaje_chat custom-editor' id='mensaje' name='mensaje' value={msg.mensaje} readOnly style={{border: 'none'}}/>

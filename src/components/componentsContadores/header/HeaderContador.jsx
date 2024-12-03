@@ -19,6 +19,12 @@ import Notificaciones from '../../admin/Notificaciones';
 function HeaderUser() {
 
   const [visibleRight, setVisibleRight] = useState(false);
+  const [notificacionesNoLeidas, setNotificacionesNoLeidas] = useState(0);
+
+  // Función para manejar actualizaciones del número de notificaciones no leídas
+  const actualizarNotificacionesNoLeidas = (cantidad) => {
+    setNotificacionesNoLeidas(cantidad);
+  };
 
   return (
     <>
@@ -41,7 +47,7 @@ function HeaderUser() {
 
       <div className='icon_noti'>
             <i className="pi pi-bell p-overlay-badge" style={{ fontSize: '1.8rem' }} aria-controls="offcanvasRight" type='button'  onClick={() => setVisibleRight(true)}>
-            <Badge severity="danger"></Badge>
+            {notificacionesNoLeidas > 0 && <Badge value={notificacionesNoLeidas} severity="danger" />}
             </i>
       </div>
 
@@ -54,7 +60,7 @@ function HeaderUser() {
     <div className="card">
         <Sidebar visible={visibleRight} position="right" onHide={() => setVisibleRight(false)}>
           <div className='text_positionCenter container_notificaciones'>
-                <Notificaciones/>
+                <Notificaciones onActualizarNoLeidas={actualizarNotificacionesNoLeidas}/>
           </div>
         </Sidebar>
       </div>

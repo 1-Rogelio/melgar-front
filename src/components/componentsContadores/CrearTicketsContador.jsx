@@ -1,14 +1,13 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Dropdown } from 'primereact/dropdown';
 import { InputTextarea } from "primereact/inputtextarea";
-// import { InputText } from "primereact/inputtext";
 import { FloatLabel } from "primereact/floatlabel";
 import { Editor } from "primereact/editor";
+import Swal from 'sweetalert2';
 import { Toast } from 'primereact/toast';
 import axios from "axios";
 
 import HeaderContador from './header/HeaderContador';
-import FormCrearTickets from '../FormCrearTickets';
 
 function CrearTickets() {
 
@@ -63,24 +62,50 @@ function CrearTickets() {
   }
 
   const handleSubmit = async () => {
-    try {
-      await axios.post('http://localhost:3000/api/v1/tickets', {
-        solicitante: solicitanteId ,
-        destinatario: selectedDestinatario ? selectedDestinatario.id_usuarios : null,
-        asunto,
-        descripcion,
-        tipo
-      });
-      toast.current.show({ severity: 'success', summary: 'Guardado', detail: 'Datos Guardados' });
-      // Limpiar datos al enviar
-      setSelectedDestinatario('')
-      setDestinatarios('');
-      setAsunto('');
-      setDescripcion('');
-      setTipo('');
-    } catch (error) {
-      console.error('Error al guardar ticket');
-      toast.current.show({ severity: 'error', summary: 'Error', detail: 'Error al guardar los datos' });
+
+    // Usamos SweetAlert2 para confirmar antes de enviar
+    const result = await Swal.fire({
+      title: '¿Los datos son correctos?',
+      text: 'Si es así, da clic en enviar.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, enviar',
+      cancelButtonText: 'Cancelar',
+      reverseButtons: true
+    });
+
+    if (result.isConfirmed) {
+      // Enviar ticket si el usuario confirma
+      try {
+        await axios.post('http://localhost:3000/api/v1/tickets', {
+          solicitante: solicitanteId ,
+          destinatario: selectedDestinatario ? selectedDestinatario.id_usuarios : null,
+          asunto,
+          descripcion,
+          tipo
+        });
+        
+        // Muestra la alerta de éxito
+        Swal.fire({
+          icon: 'success',
+          title: '¡Éxito!',
+          text: 'El ticket ha sido creado correctamente.'
+        });
+
+        // Limpiar datos al enviar
+        setSelectedDestinatario('')
+        setAsunto('');
+        setDescripcion('');
+        setTipo('');
+      } catch (error) {
+        console.error('Error al guardar ticket');
+        // Muestra la alerta de error
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Hubo un problema al guardar el ticket. Intenta nuevamente.'
+        });
+      }
     }
   };
 
@@ -117,21 +142,11 @@ function CrearTickets() {
                     <div className="asunto_descripcion">
                       <div className="asunto cajas_form">
                         <FloatLabel>
-                          <InputTextarea value={asunto} onChange={(e) => setAsunto(e.target.value)} rows={4} cols={80} />
+                          <InputTextarea className="text-center" value={asunto} onChange={(e) => setAsunto(e.target.value)} rows={4} cols={80} />
                           <label className="pi pi-file"> Asunto</label>
                         </FloatLabel>
                       </div>
-                      {/* <div className="descripcion cajas_form">
-                        <FloatLabel>
-                          <InputTextarea id="descripcion" value={descripcion} onChange={(e) => setDescripcion(e.target.value)} rows={4} cols={40} />
-                          <label htmlFor="descripcion" className="pi pi-file-edit"> Descripcion</label>
-                        </FloatLabel>
-                      </div> */}
                     </div>
-
-                    {/* <div className="editor cajas_form">
-                        <Editor value={descripcion} onTextChange={(e) => setDescripcion(e.textValue)} style={{ height: '200px' }}/>
-                    </div> */}
                     <div className="editor cajas_form">
                       <Editor
                         value={descripcion}
@@ -150,50 +165,19 @@ function CrearTickets() {
                           <option value="Tecnico">Tecnico</option>
                           <option value="Otro">Otro</option>
                         </select>
-                        <button type="button" className="boton_enviar col-md-5 offset-md-4 btn bg_green" data-bs-toggle="modal"
-                data-bs-target="#exampleModal"><label className='pi pi-check'></label>Enviar</button>
+                        <button 
+                          type="button" 
+                          className="boton_enviar col-md-5 offset-md-4 btn bg_green" 
+                          onClick={handleSubmit}
+                          >
+                          <label className='pi pi-check'></label>Enviar
+                        </button>
                       </div>
                     </center>    
                 </div> 
-
-                
-              
-              
-              {/* ----------------------------------Boton de confirmar----------------------------- */}
-              <div
-                className="modal fade"
-                id="exampleModal"
-                tabIndex="-1"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true"
-              >
-                <div className="modal-dialog">
-                  <div className="modal-content">
-                    <div className="modal-header">
-                      <h5 className="modal-title" id="exampleModalLabel">
-                        ¿Los datos están correctos?
-                      </h5>
-                      <button
-                        type="button"
-                        className="btn-close"
-                        data-bs-dismiss="modal"
-                        aria-label="Close"
-                      ></button>
-                    </div>
-                    <div className="modal-body">Si es así, haga clic en enviar</div>
-                    <div className="modal-footer">
-                      <button type="button" className="btn btn-danger" data-bs-dismiss="modal"><label className='pi pi-times'></label> Cancelar</button>
-                      <Toast ref={toast}></Toast>
-                      <button type="button" onClick={handleSubmit} className="btn btn-success" icon="pi pi-check"><label className='pi pi-check'></label> Sí, enviar</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </form>
           </div>
       </div>
-    
-
     </>
   );
 }
